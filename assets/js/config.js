@@ -1,0 +1,151 @@
+/**
+ * Runtime bridge for the static site.
+ * Canonical TypeScript source: src/config/journal.ts — keep values in sync.
+ * Use null for unknown facts. Never invent ISSN, DOI, publisher, or people.
+ */
+window.BS_CONFIG = {
+  journalName: "Biological Systems and Methods",
+  journalNameRU: "Биологические системы и методы",
+  journalNameShort: "BSM",
+  journalSubtitle: "An International Journal of Biological Research and Methodology",
+  /** aliases for older UI helpers */
+  journalNameRu: "Биологические системы и методы",
+  journalSubtitleEn: "An International Journal of Biological Research and Methodology",
+  journalAcronym: "BSM",
+  journalTaglineRu:
+    "Рецензируемый журнал открытого доступа, публикующий экспериментальные, вычислительные и методологические исследования биологических систем.",
+  journalTaglineEn:
+    "Peer-reviewed open access journal publishing experimental, computational and methodological research on biological systems.",
+  fundingInfo: [],
+  publisherType: "ANO + LLC",
+  /** @type {{ id: string, name: string, url?: string|null, logoUrl?: string|null, role?: string }[]} */
+  partners: [],
+  chatEnabled: true,
+  /**
+   * Submission routing:
+   * - "local" — temporary form on this site (submit.html)
+   * - "ojs" — redirect "Подать рукопись" to Open Journal Systems
+   * Set ojsUrl when the OJS journal is live, then submissionMode: "ojs".
+   */
+  submissionMode: "local",
+  ojsUrl: null,
+  ojsEnabled: false,
+  currentYear: 2026,
+  volumeNumber: 1,
+  issueNumber: null,
+  issn: null,
+  eissn: null,
+  publisherName: null,
+  legalEntityName: null,
+  registrationCountry: null,
+  legalAddress: null,
+  postalAddress: null,
+  registrationDetails: null,
+  responsiblePublisher: null,
+  editorInChief: null,
+  officialDomain: null,
+  officialEmail: null,
+  temporaryEmail: "arina.atom@gmail.com",
+  /** @deprecated use temporaryEmail / emails.coordinator */
+  editorialEmail: "arina.atom@gmail.com",
+  emails: {
+    coordinator: "arina.atom@gmail.com",
+    editorial: null,
+    support: null,
+    submissions: null,
+    ethics: null,
+  },
+  apcRUB: 75000,
+  apcCNY: 6000,
+  license: "CC BY 4.0",
+  licenseAppliedToPublishedContent: false,
+  firstDecisionDaysTarget: 21,
+  issuesPerYear: 4,
+  articlesCount: 0,
+  issuesCount: 0,
+  authorsCount: 0,
+  editorsCount: 0,
+  reviewersCount: 0,
+  countriesCount: 0,
+  boardStats: {
+    editorInChief: 0,
+    scientificEditors: 0,
+    sectionEditors: 0,
+    statisticalEditors: 0,
+    dataEditors: 0,
+  },
+  conferenceEnabled: false,
+  submissionsEnabled: true,
+  doiInfrastructureActive: false,
+  languages: ["en", "ru", "zh"],
+  defaultLanguage: "ru",
+  formSubmitEnabled: true,
+  apiBase: "",
+  auth: {
+    enabled: true,
+    providers: ["yandex", "mailru", "google", "orcid"],
+    /** Secrets live in server env (.env) — never put client secrets here */
+  },
+  recordLanguage: "en",
+  apc: {
+    base: { amount: 75000, code: "RUB", symbol: "₽", label: "Russian ruble" },
+    currencies: {
+      RUB: { amount: 75000, symbol: "₽", code: "RUB", label: "Russian ruble" },
+      CNY: { amount: 6000, symbol: "¥", code: "CNY", label: "Chinese yuan" },
+    },
+    defaultCurrency: "RUB",
+    submissionFree: true,
+    reviewFree: true,
+    waiverPolicyPublished: false,
+  },
+  plannedIssues: [
+    {
+      volume: 1,
+      issue: 1,
+      year: 2026,
+      coverLabel: "Vol. 1 · No. 1",
+      titleKey: "issue.1.title",
+      themeKey: "issue.1.theme",
+      summaryKey: "issue.1.summary",
+      statusKey: "issue.status.open",
+      features: ["issue.1.f1", "issue.1.f2", "issue.1.f3", "issue.1.f4"],
+      published: false,
+    },
+    {
+      volume: 1,
+      issue: 2,
+      year: 2026,
+      coverLabel: "Vol. 1 · No. 2",
+      titleKey: "issue.2.title",
+      themeKey: "issue.2.theme",
+      summaryKey: "issue.2.summary",
+      statusKey: "issue.status.open",
+      features: ["issue.2.f1", "issue.2.f2", "issue.2.f3", "issue.2.f4"],
+      published: false,
+    },
+    {
+      volume: 1,
+      issue: 3,
+      year: 2026,
+      coverLabel: "Vol. 1 · No. 3",
+      titleKey: "issue.3.title",
+      themeKey: "issue.3.theme",
+      summaryKey: "issue.3.summary",
+      statusKey: "issue.status.open",
+      features: ["issue.3.f1", "issue.3.f2", "issue.3.f3", "issue.3.f4"],
+      published: false,
+    },
+    {
+      volume: 1,
+      issue: 4,
+      year: 2026,
+      coverLabel: "Vol. 1 · No. 4",
+      titleKey: "issue.4.title",
+      themeKey: "issue.4.theme",
+      summaryKey: "issue.4.summary",
+      statusKey: "issue.status.open",
+      features: ["issue.4.f1", "issue.4.f2", "issue.4.f3", "issue.4.f4"],
+      published: false,
+    },
+  ],
+};

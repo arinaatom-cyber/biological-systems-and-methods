@@ -1,0 +1,30 @@
+Title: Demo manuscript for BSM chat agent
+
+Abstract
+This is a short demo abstract about biological systems.
+
+Keywords: biology, methods, reproducibility
+
+Introduction
+We describe a demo study.
+
+Materials and Methods
+Sample size n = 12. Statistics: t-test.
+
+Results
+No significant difference was observed.
+
+Discussion
+Limitations are discussed.
+
+Data availability
+None.
+
+Funding
+None.
+
+Conflict of interest
+None.
+
+References
+1. Demo Author. Demo Journal. 2026.

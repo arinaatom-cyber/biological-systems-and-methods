@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Статьи — Biological Systems and Methods</title>
+  <meta name="description" content="Опубликованные статьи журнала Biological Systems and Methods." />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body data-page="articles">
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="site-header" id="site-header"></header>
+  <main id="main" class="container">
+    <section class="page-header">
+      <p class="page-kicker">Материалы</p>
+      <h1>Статьи</h1>
+      <p class="page-lede">Поиск и фильтры по опубликованным материалам журнала.</p>
+    </section>
+
+    <form id="article-search" class="search-panel" role="search">
+      <div class="field-row">
+        <label>Поиск
+          <input name="q" type="search" data-i18n-placeholder="search.placeholder" placeholder="Поиск по журналу" />
+        </label>
+        <label>Год
+          <input name="year" inputmode="numeric" placeholder="2026" />
+        </label>
+        <label>Выпуск
+          <input name="issue" inputmode="numeric" placeholder="1–4" />
+        </label>
+      </div>
+      <div class="field-row">
+        <label>Тип статьи
+          <input name="type" placeholder="Original Research" />
+        </label>
+        <label>Направление
+          <input name="section" placeholder="Biology" />
+        </label>
+        <label>Язык
+          <select name="language">
+            <option value="">—</option>
+            <option value="en">EN</option>
+            <option value="ru">RU</option>
+            <option value="zh">中文</option>
+          </select>
+        </label>
+      </div>
+      <div class="filter-checks">
+        <label class="check"><input type="checkbox" name="openData" /> Open Data</label>
+        <label class="check"><input type="checkbox" name="hasCode" /> Код доступен</label>
+        <label class="check"><input type="checkbox" name="negative" /> Negative Results</label>
+        <label class="check"><input type="checkbox" name="registered" /> Registered Reports</label>
+      </div>
+      <button type="submit" class="btn btn-primary" data-i18n="search.submit">Найти</button>
+    </form>
+
+    <div id="article-filters" class="filters" aria-label="Filter by section"></div>
+    <div id="articles-empty" hidden></div>
+    <p id="articles-none" class="empty-state" hidden></p>
+    <ul class="article-list" id="articles-list"></ul>
+  </main>
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/articles.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+</body>
+</html>

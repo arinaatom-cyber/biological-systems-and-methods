@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Подать рукопись — Biological Systems and Methods</title>
+  <meta name="description" content="Submit a manuscript to Biological Systems and Methods. Publisher-style upload aligned with MDPI / FEBS / Nature initial submission practice." />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body data-page="submit">
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main" class="container">
+    <section class="page-header">
+      <p class="page-kicker">Авторам</p>
+      <h1>Подать рукопись</h1>
+      <p class="page-lede">Подача и рецензирование бесплатны. APC взимается только после принятия рукописи. Способность автора оплатить APC не учитывается при научной и редакционной оценке рукописи.</p>
+      <div id="ojs-submit-banner" class="notice-banner" hidden>
+        <p data-i18n="submit.ojs.banner">Подача рукописей ведётся в системе OJS. Локальная форма — временный контур до полного запуска.</p>
+        <p class="cta-row">
+          <a class="btn btn-primary" id="ojs-submit-link" href="#" data-i18n="submit.ojs.cta" target="_blank" rel="noopener">Перейти к подаче в OJS</a>
+        </p>
+      </div>
+      <p class="cta-row">
+        <a class="btn btn-ghost" href="templates/BSM-manuscript-template.docx" download>Скачать шаблон статьи (DOCX)</a>
+        <a class="btn btn-ghost" href="authors-guidelines.html">Инструкции авторам</a>
+      </p>
+    </section>
+
+    <div class="submit-layout">
+      <section class="panel" id="form-section">
+        <h2 style="margin-top: 0">Новая подача</h2>
+        <p class="form-note">APC <strong data-apc="all"></strong> · только после принятия · единый тариф независимо от академического статуса</p>
+
+        <div class="wizard-steps" aria-label="Submission steps">
+          <div class="wizard-step is-active" data-step-label="1">1 · Metadata</div>
+          <div class="wizard-step" data-step-label="2">2 · Authors</div>
+          <div class="wizard-step" data-step-label="3">3 · Files</div>
+          <div class="wizard-step" data-step-label="4">4 · Declarations</div>
+        </div>
+
+        <form id="submit-form" novalidate>
+          <div class="wizard-pane is-active" data-step-pane="1">
+            <div class="form-grid">
+              <label>Manuscript title *
+                <input type="text" id="title" required maxlength="300" placeholder="Concise scientific title (avoid abbreviations where possible)" />
+                <span class="field-error"></span>
+              </label>
+              <div class="field-row">
+                <label>Article type *
+                  <select id="articleType" required>
+                    <option value="article">Article (Original Research)</option>
+                    <option value="review">Review</option>
+                    <option value="invited">Invited Review</option>
+                    <option value="short">Short Communication / Letter</option>
+                    <option value="methods">Methods</option>
+                    <option value="negative">Negative Result</option>
+                    <option value="interview">Interview / Success Story</option>
+                  </select>
+                  <span class="field-error"></span>
+                </label>
+                <label>Section *
+                  <select id="section" required>
+                    <option value="biology">Biology</option>
+                    <option value="bioinformatics">Bioinformatics</option>
+                    <option value="biochemistry">Biochemistry</option>
+                    <option value="biophysics">Biophysics</option>
+                  </select>
+                  <span class="field-error"></span>
+                </label>
+              </div>
+              <div class="field-row">
+                <label>Manuscript language *
+                  <select id="language" required>
+                    <option value="en">English</option>
+                    <option value="ru">Russian</option>
+                  </select>
+                  <span class="field-error"></span>
+                </label>
+                <label>Target issue *
+                  <select id="targetIssue" required>
+                    <option value="1">Issue 1 — Research &amp; interviews</option>
+                    <option value="2" selected>Issue 2 — Original research</option>
+                    <option value="3">Issue 3 — Invited Reviews</option>
+                    <option value="4">Issue 4 — Negative Results</option>
+                  </select>
+                  <span class="field-error"></span>
+                </label>
+              </div>
+              <label>Keywords * <span class="hint">3–8 terms, comma-separated</span>
+                <input type="text" id="keywords" required placeholder="gene regulation, metabolism, membrane proteins" />
+                <span class="field-error"></span>
+              </label>
+              <label>Abstract * <span class="hint">≤ 250 words recommended (FEBS); required for screening</span>
+                <textarea id="abstract" required placeholder="Non-technical summary of problem, approach, main findings…"></textarea>
+                <span class="hint" id="abstract-count">0 words</span>
+                <span class="field-error"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="wizard-pane" data-step-pane="2">
+            <div class="form-grid">
+              <div>
+                <p style="margin:0 0 0.55rem;font-weight:600;font-size:0.9rem">Authors * <span class="hint">mark corresponding author</span></p>
+                <div class="authors-box" id="authors-box">
+                  <div class="author-row author-row-full" data-author>
+                    <label>Full name
+                      <input type="text" name="authorName" required placeholder="Jane A. Smith" />
+                      <span class="field-error"></span>
+                    </label>
+                    <label>Affiliation
+                      <input type="text" name="authorAffiliation" required placeholder="University / Institute" />
+                      <span class="field-error"></span>
+                    </label>
+                    <label class="check-row corr-label">
+                      <input type="radio" name="corresponding" value="0" checked />
+                      <span>Corresponding</span>
+                    </label>
+                    <button type="button" class="btn btn-secondary btn-sm remove-author" hidden aria-label="Remove author">✕</button>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-ghost btn-sm" id="add-author" style="margin-top:0.75rem">+ Add author</button>
+              </div>
+              <div class="field-row">
+                <label>Corresponding author email *
+                  <input type="email" id="email" required placeholder="author@university.edu" />
+                  <span class="field-error"></span>
+                </label>
+                <label>ORCID of corresponding author <span class="hint">(recommended)</span>
+                  <input type="text" id="orcid" placeholder="0000-0000-0000-0000" />
+                  <span class="field-error"></span>
+                </label>
+              </div>
+              <label>Author contributions (CRediT) <span class="hint">Nature-style statement</span>
+                <textarea id="contributions" placeholder="A.B. designed research; C.D. performed experiments; …"></textarea>
+              </label>
+              <label>Suggested reviewers <span class="hint">optional · up to 4, FEBS-style — Name, email, affiliation</span>
+                <textarea id="suggestedReviewers" placeholder="Dr Name, email@uni.edu, Affiliation"></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div class="wizard-pane" data-step-pane="3">
+            <div class="form-grid">
+              <div class="upload-guide">
+                <strong>File guidance (MDPI · FEBS · Nature)</strong>
+                <ul>
+                  <li><strong>Preferred:</strong> one PDF or DOCX with text + figures + tables (initial submission).</li>
+                  <li><strong>LaTeX:</strong> ZIP with sources <em>and</em> a compiled PDF.</li>
+                  <li><strong>Cover letter:</strong> required text below (MDPI-style statements).</li>
+                  <li>Max main file <strong>50 MB</strong>. Supplementary files optional.</li>
+                </ul>
+              </div>
+
+              <label>Cover letter * <span class="hint">why this journal; novelty; prior submissions</span>
+                <textarea id="coverLetter" required placeholder="Please explain significance and fit to Biological Systems and Methods…"></textarea>
+                <span class="field-error"></span>
+              </label>
+
+              <div>
+                <p style="margin:0 0 0.55rem;font-weight:600;font-size:0.9rem">Main manuscript file *</p>
+                <div class="file-drop" id="file-drop">
+                  <input type="file" id="manuscript" accept=".pdf,.doc,.docx,.zip,.tex,.rtf" />
+                  <strong>Drop manuscript or browse</strong>
+                  <p>PDF · DOCX · DOC · RTF · ZIP (LaTeX) · max 50 MB</p>
+                  <p class="file-name" id="file-name">No file selected</p>
+                </div>
+                <span class="field-error" id="file-error"></span>
+              </div>
+
+              <div>
+                <p style="margin:0 0 0.55rem;font-weight:600;font-size:0.9rem">Supplementary files <span class="hint">(optional)</span></p>
+                <div class="file-drop" id="supp-drop">
+                  <input type="file" id="supplementary" accept=".pdf,.doc,.docx,.zip,.csv,.xlsx,.txt,.png,.jpg,.tif,.tiff" multiple />
+                  <strong>Drop supplementary files</strong>
+                  <p>Data, extended figures, code archive…</p>
+                  <p class="file-name" id="supp-name">None selected</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="wizard-pane" data-step-pane="4">
+            <div class="form-grid">
+              <div>
+                <p style="margin:0 0 0.55rem;font-weight:600;font-size:0.9rem">Review before send</p>
+                <div class="review-box" id="review-box"></div>
+              </div>
+              <label>Номер гранта / финансирование (Grant Number / Funding) *
+                <input type="text" id="funding" required placeholder="RSF-… / NSFC-… / None" />
+                <span class="field-error"></span>
+              </label>
+              <label>Идентификаторы данных (Data identifiers) *
+                <input type="url" id="dataIdentifiers" required placeholder="https://zenodo.org/… или https://github.com/… / GEO / SRA / None" />
+                <span class="hint">Ссылка на Zenodo, GitHub, GEO, SRA и т.п. Если данных нет — укажите обоснование в Data availability и вставьте «None».</span>
+                <span class="field-error"></span>
+              </label>
+              <label>Competing interests *
+                <input type="text" id="coi" required placeholder="None declared" />
+                <span class="field-error"></span>
+              </label>
+              <label>Data availability *
+                <input type="text" id="dataAvailability" required placeholder="Upon reasonable request / repository accession…" />
+                <span class="field-error"></span>
+              </label>
+              <label>Use of generative AI <span class="hint">Nature/FEBS disclosure</span>
+                <input type="text" id="aiUse" placeholder="None / ChatGPT used for language editing only…" />
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="fairData" required />
+                <span>Мои данные соответствуют стандартам FAIR (Findable, Accessible, Interoperable, Reusable), либо я явно обосновал исключения в заявлении о доступности данных.</span>
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="doubleBlind" required />
+                <span>Double-blind: I uploaded an anonymized manuscript (author names/affiliations removed from the file and self-citations blinded where needed).</span>
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="confirm" required />
+                <span>We confirm that neither the manuscript nor any parts of its content are under consideration elsewhere, and all authors approved this submission (MDPI cover-letter statements).</span>
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="ethics" required />
+                <span>Work complies with the <a href="policies.html#ethics">ethics policy</a>; human/animal approvals obtained where required.</span>
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="apcAck" required />
+                <span>I understand APC is <strong data-apc="all"></strong>, payable only after acceptance (no free waiver for early-career authors).</span>
+              </label>
+            </div>
+          </div>
+
+          <p class="field-error hidden" id="form-error" style="margin-top:1rem"></p>
+          <div class="form-actions">
+            <button type="button" class="btn btn-ghost" id="prev-step" hidden>Back</button>
+            <button type="button" class="btn btn-primary" id="next-step">Continue</button>
+            <button type="submit" class="btn btn-primary" id="submit-final" hidden>Send to Editorial Office</button>
+            <button type="button" class="btn btn-secondary" id="save-draft">Save draft</button>
+            <button type="button" class="btn btn-ghost" id="clear-draft">Clear</button>
+          </div>
+          <p class="draft-status" id="draft-status">No draft saved</p>
+        </form>
+      </section>
+
+      <aside class="aside-stack">
+        <div class="panel aside-panel">
+          <h3>Checklist</h3>
+          <ol>
+            <li>Single PDF/DOCX preferred (FEBS/Nature).</li>
+            <li>Title, authors, affiliations, abstract, keywords.</li>
+            <li>Cover letter with originality statements.</li>
+            <li>Declarations: COI, data, ethics, AI use.</li>
+          </ol>
+        </div>
+        <div class="panel aside-panel">
+          <h3>APC</h3>
+          <p><strong data-apc="all"></strong></p>
+          <p>RUB or CNY · after accept · all authors</p>
+        </div>
+        <div class="panel aside-panel">
+          <h3>Editorial stages</h3>
+          <ul class="timeline">
+            <li class="is-current"><i></i><div><strong>Submitted</strong><br>Awaiting editorial screening</div></li>
+            <li><i></i><div>Under review</div></li>
+            <li><i></i><div>Revision / decision</div></li>
+            <li><i></i><div>Production · publication</div></li>
+          </ul>
+        </div>
+      </aside>
+
+      <section class="panel receipt hidden" id="receipt" style="grid-column:1/-1">
+        <span class="badge">Submission received</span>
+        <h2 style="margin-top:0.7rem">Submission receipt — queued for editorial screening</h2>
+        <p class="status-ok" id="delivery-status">Status: Submission received · Awaiting editorial screening (not an acceptance decision)</p>
+        <div class="receipt-meta" id="receipt-meta"></div>
+        <div class="receipt-actions">
+          <button type="button" class="btn btn-primary" id="download-package">Download ZIP package</button>
+          <button type="button" class="btn btn-secondary" id="download-file">Download manuscript file</button>
+          <a class="btn btn-ghost" id="mailto-link" href="#">Open email draft</a>
+          <button type="button" class="btn btn-ghost" id="open-ack-chat">Submission receipt letter (chat)</button>
+          <button type="button" class="btn btn-ghost" id="new-submission">New submission</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/email.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+  <script src="assets/js/submit.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.2 20190208//EN" "https://jats.nlm.nih.gov/publishing/1.2/JATS-journalpublishing1-2.dtd">
+<article xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="1.2" xml:lang="en">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="publisher-id">biological-systems-and-methods</journal-id>
+      <journal-title-group>
+        <journal-title>Biological Systems and Methods</journal-title>
+      </journal-title-group>
+
+      <publisher>
+        <publisher-name>Biological Systems and Methods Editorial Office</publisher-name>
+        <publisher-loc>ANO + LLC</publisher-loc>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="doi">10.0000/molsciera.dummy.0001</article-id>
+      <article-id pub-id-type="publisher-id">e0001</article-id>
+      <title-group>
+        <article-title>Dummy molecular assay validation for JATS deposit testing in Biological Systems and Methods</article-title>
+      </title-group>
+      <contrib-group>
+      <contrib contrib-type="author" corresp="yes">
+        <contrib-id contrib-id-type="orcid">https://orcid.org/0000-0002-1825-0097</contrib-id>
+        <name>
+          <surname>Ivanova</surname>
+          <given-names>Anna</given-names>
+        </name>
+        <email>anna.ivanova@example.org</email>
+        <xref ref-type="aff" rid="aff1"/>
+      </contrib>
+      <contrib contrib-type="author">
+        <contrib-id contrib-id-type="orcid">https://orcid.org/0000-0001-5109-3700</contrib-id>
+        <name>
+          <surname>Chen</surname>
+          <given-names>Wei</given-names>
+        </name>
+
+        <xref ref-type="aff" rid="aff1"/>
+        <xref ref-type="aff" rid="aff2"/>
+      </contrib>
+      </contrib-group>
+      <aff id="aff1">
+        <institution content-type="orgname">Institute of Molecular Systems, Example University</institution>
+        <institution-id institution-id-type="ror">https://ror.org/00aaaaa00</institution-id>
+        <country>RU</country>
+      </aff>
+      <aff id="aff2">
+        <institution content-type="orgname">Department of Chemical Biology, Example Institute</institution>
+        <institution-id institution-id-type="ror">https://ror.org/00bbbbb00</institution-id>
+        <country>CN</country>
+      </aff>
+      <history>
+      <date date-type="received">
+        <day>10</day>
+        <month>01</month>
+        <year>2026</year>
+      </date>
+      <date date-type="rev-recd">
+        <day>01</day>
+        <month>02</month>
+        <year>2026</year>
+      </date>
+      <date date-type="accepted">
+        <day>15</day>
+        <month>02</month>
+        <year>2026</year>
+      </date>
+      </history>
+      <pub-date pub-type="epub">
+        <day>01</day>
+        <month>03</month>
+        <year>2026</year>
+      </pub-date>
+      <volume>1</volume>
+      <issue>1</issue>
+      <fpage>1</fpage>
+      <lpage>12</lpage>
+      <permissions>
+        <copyright-statement>© The Author(s). Published under CC BY 4.0.</copyright-statement>
+        <license license-type="open-access" xlink:href="https://creativecommons.org/licenses/by/4.0/">
+          <license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License (CC BY 4.0).</license-p>
+        </license>
+      </permissions>
+      <self-uri content-type="html" xlink:href="https://example.org/article.html?id=MS-DUMMY-0001"/>
+      <self-uri content-type="pdf" xlink:href="https://example.org/articles/MS-DUMMY-0001.pdf"/>
+      <abstract>
+        <p>This is a synthetic abstract used only to verify JATS XML generation for Crossref and PMC workflows. It must never appear in the public articles index.</p>
+      </abstract>
+      <kwd-group kwd-group-type="author">
+        <kwd>JATS</kwd>
+        <kwd>Crossref</kwd>
+        <kwd>molecular sciences</kwd>
+        <kwd>open access</kwd>
+        <kwd>reproducibility</kwd>
+      </kwd-group>
+      <funding-group>
+        <award-group>
+          <funding-source>Russian Science Foundation</funding-source>
+          <award-id>RSF-00-00000</award-id>
+        </award-group>
+        <award-group>
+          <funding-source>National Natural Science Foundation of China</funding-source>
+          <award-id>NSFC-00000000</award-id>
+        </award-group>
+      </funding-group>
+      <custom-meta-group>
+      <custom-meta>
+        <meta-name>data-availability</meta-name>
+        <meta-value>Dummy datasets are not deposited; replace with FAIR repository links on publish.</meta-value>
+      </custom-meta>
+      <custom-meta>
+        <meta-name>data-identifier</meta-name>
+        <meta-value xlink:href="https://doi.org/10.5281/zenodo.0000000">https://doi.org/10.5281/zenodo.0000000</meta-value>
+      </custom-meta>
+      <custom-meta>
+        <meta-name>data-identifier</meta-name>
+        <meta-value xlink:href="https://github.com/example/molsciera-dummy">https://github.com/example/molsciera-dummy</meta-value>
+      </custom-meta>
+      </custom-meta-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="intro">
+      <title>Introduction</title>
+        <p>This dummy article exists solely to exercise the JATS generator before real content is available.</p>
+    </sec>
+    <sec id="methods">
+      <title>Methods</title>
+        <p>No experimental procedures were performed. Structured metadata only.</p>
+    </sec>
+    <sec id="results">
+      <title>Results</title>
+        <p>Generator output should validate against JATS 1.2 Publishing DTD.</p>
+    </sec>
+    <sec sec-type="supplementary-material">
+      <title>Supplementary material</title>
+      <supplementary-material id="supp1" xlink:href="https://example.org/articles/MS-DUMMY-0001/supp1.xlsx">
+        <label>Supplementary Table S1</label>
+        <caption><title>Assay parameters (dummy)</title></caption>
+      </supplementary-material>
+    </sec>
+  </body>
+</article>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Стать редактором или рецензентом — Biological Systems and Methods</title>
+  <meta name="description" content="Заявка в редакционную коллегию или пул рецензентов Biological Systems and Methods." />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body data-page="join">
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main" class="container">
+    <section class="page-header">
+      <p class="page-kicker">Редакторам и рецензентам</p>
+      <h1 data-i18n="join.title">Стать редактором или рецензентом</h1>
+      <p class="page-lede" data-i18n="join.lede">Заявка в редакционную коллегию или пул рецензентов.</p>
+    </section>
+
+    <section class="panel">
+      <form id="apply-form" class="form-grid" novalidate>
+        <div class="field-row">
+          <label>Имя *
+            <input id="firstName" name="firstName" required autocomplete="given-name" />
+            <span class="field-error"></span>
+          </label>
+          <label>Фамилия *
+            <input id="lastName" name="lastName" required autocomplete="family-name" />
+            <span class="field-error"></span>
+          </label>
+        </div>
+        <div class="field-row">
+          <label>Учёная степень
+            <input id="degree" name="degree" />
+          </label>
+          <label>Академическая должность
+            <input id="position" name="position" />
+          </label>
+        </div>
+        <div class="field-row">
+          <label>Организация *
+            <input id="organization" name="organization" required />
+            <span class="field-error"></span>
+          </label>
+          <label>Страна *
+            <input id="country" name="country" required />
+            <span class="field-error"></span>
+          </label>
+        </div>
+        <div class="field-row">
+          <label>Официальный email *
+            <input id="email" name="email" type="email" required autocomplete="email" />
+            <span class="field-error"></span>
+          </label>
+          <label>ORCID *
+            <input id="orcid" name="orcid" required placeholder="0000-0000-0000-0000" />
+            <span class="field-error"></span>
+          </label>
+        </div>
+        <div class="field-row">
+          <label>Scopus Author ID
+            <input id="scopus" name="scopus" />
+          </label>
+          <label>Web of Science ResearcherID
+            <input id="wos" name="wos" />
+          </label>
+        </div>
+        <label>Научные интересы *
+          <textarea id="interests" name="interests" rows="3" required></textarea>
+          <span class="field-error"></span>
+        </label>
+        <label>Ключевые слова *
+          <input id="keywords" name="keywords" required />
+          <span class="field-error"></span>
+        </label>
+        <label>Опыт рецензирования
+          <textarea id="reviewExperience" name="reviewExperience" rows="3"></textarea>
+        </label>
+        <label>Опыт редакционной работы
+          <textarea id="editorialExperience" name="editorialExperience" rows="3"></textarea>
+        </label>
+        <label>Ссылки на публикации
+          <textarea id="publications" name="publications" rows="3" placeholder="DOI или URL"></textarea>
+        </label>
+        <label>Желаемая роль *
+          <select id="role" name="role" required>
+            <option value="">—</option>
+            <option value="section-editor">Редактор раздела</option>
+            <option value="associate-editor">Научный редактор</option>
+            <option value="reviewer">Рецензент</option>
+            <option value="statistical-editor">Статистический редактор</option>
+            <option value="data-editor">Редактор по данным</option>
+          </select>
+          <span class="field-error"></span>
+        </label>
+        <label>Конфликт интересов
+          <textarea id="coi" name="coi" rows="2"></textarea>
+        </label>
+        <label>Комментарий
+          <textarea id="comment" name="comment" rows="3"></textarea>
+        </label>
+        <label class="check">
+          <input type="checkbox" id="policyConsent" name="policyConsent" required />
+          <span>Подтверждаю согласие с политиками журнала и обработкой персональных данных *</span>
+        </label>
+        <div id="apply-status" class="form-status" role="status" aria-live="polite"></div>
+        <div class="cta-row">
+          <button type="submit" class="btn btn-primary">Отправить заявку</button>
+          <button type="button" class="btn btn-ghost" id="apply-draft-btn">Сохранить черновик локально</button>
+        </div>
+        <p class="form-note">Если сервер недоступен, заявка может быть отправлена на email координатора. Успешная отправка подтверждается только после фактической передачи данных.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/email.js"></script>
+  <script src="assets/js/apply.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+{
+  "id": "MS-DUMMY-0001",
+  "articleNumber": "e0001",
+  "doi": "",
+  "title": "Dummy assay validation for JATS deposit testing in Biological Systems and Methods",
+  "abstract": "This is a synthetic abstract used only to verify JATS XML generation for Crossref and PMC workflows. It must never appear in the public articles index.",
+  "keywords": ["JATS", "Crossref", "molecular sciences", "open access", "reproducibility"],
+  "language": "en",
+  "articleType": "research-article",
+  "volume": 1,
+  "issue": 1,
+  "fpage": "1",
+  "lpage": "12",
+  "received": "2026-01-10",
+  "revised": "2026-02-01",
+  "accepted": "2026-02-15",
+  "published": "2026-03-01",
+  "license": "CC BY 4.0",
+  "pdfUrl": "https://example.org/articles/MS-DUMMY-0001.pdf",
+  "htmlUrl": "https://example.org/article.html?id=MS-DUMMY-0001",
+  "authors": [
+    {
+      "givenNames": "Anna",
+      "surname": "Ivanova",
+      "orcid": "0000-0002-1825-0097",
+      "email": "anna.ivanova@example.org",
+      "corresponding": true,
+      "aff": [1]
+    },
+    {
+      "givenNames": "Wei",
+      "surname": "Chen",
+      "orcid": "0000-0001-5109-3700",
+      "aff": [1, 2]
+    }
+  ],
+  "affiliations": [
+    {
+      "id": 1,
+      "name": "Institute of Molecular Systems, Example University",
+      "rorId": "https://ror.org/00aaaaa00",
+      "country": "RU"
+    },
+    {
+      "id": 2,
+      "name": "Department of Chemical Biology, Example Institute",
+      "rorId": "https://ror.org/00bbbbb00",
+      "country": "CN"
+    }
+  ],
+  "funding": [
+    { "funderName": "Russian Science Foundation", "awardId": "RSF-00-00000" },
+    { "funderName": "National Natural Science Foundation of China", "awardId": "NSFC-00000000" }
+  ],
+  "sections": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "paragraphs": [
+        "This dummy article exists solely to exercise the JATS generator before real content is available."
+      ]
+    },
+    {
+      "id": "methods",
+      "title": "Methods",
+      "paragraphs": ["No experimental procedures were performed. Structured metadata only."]
+    },
+    {
+      "id": "results",
+      "title": "Results",
+      "paragraphs": ["Generator output should validate against JATS 1.2 Publishing DTD."]
+    }
+  ],
+  "dataAvailability": "Dummy datasets are not deposited; replace with FAIR repository links on publish.",
+  "dataIdentifiers": [
+    "https://example.com/dataset-placeholder",
+    "https://github.com/example/molsciera-dummy"
+  ],
+  "supplementary": [
+    {
+      "id": "supp1",
+      "label": "Supplementary Table S1",
+      "href": "https://example.org/articles/MS-DUMMY-0001/supp1.xlsx",
+      "title": "Assay parameters (dummy)"
+    }
+  ],
+  "journal": {
+    "title": "Biological Systems and Methods",
+    "issn": null,
+    "eissn": null,
+    "publisherName": null,
+    "publisherType": "ANO + LLC"
+  }
+}
