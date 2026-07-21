@@ -42,7 +42,7 @@ Critical public DOI placeholders cleared. Remaining medium: article-types descri
 | Mode | URL | Chat / submit API |
 |------|-----|-------------------|
 | Local | `python server.py` → http://127.0.0.1:5173 | Full |
-| GitHub Pages | `https://<user>.github.io/<repo>/` | Showcase only (chat hidden) |
+| GitHub Pages | https://arinaatom-cyber.github.io/biological-systems-and-methods/ | Showcase only (chat hidden) |
 
 ## Re-run
 

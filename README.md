@@ -14,8 +14,11 @@ python server.py
 
 Открыть: http://127.0.0.1:5173
 
-Публичная витрина (статика) деплоится на **GitHub Pages** из ветки `master` (workflow `.github/workflows/pages.yml`).  
-На Pages работают страницы журнала; чат и API подачи — только через `python server.py`.
+**Репозиторий:** https://github.com/arinaatom-cyber/biological-systems-and-methods  
+
+**Публичная витрина (GitHub Pages):** https://arinaatom-cyber.github.io/biological-systems-and-methods/  
+
+На Pages — статическая витрина. Чат и API подачи работают только локально через `python server.py`.
 
 ## План и аудит
 
