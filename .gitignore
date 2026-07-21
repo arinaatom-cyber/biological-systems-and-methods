@@ -15,5 +15,6 @@ __pycache__/
 *.zip
 Biological-Sciences-review.zip
 tools/audit-report.json
+docs/AUDIT-live.json
 .localtunnel*
 
