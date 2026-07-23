@@ -23,14 +23,23 @@ LEGACY_COPIES = [
     ROOT / "templates" / "Biological-Sciences-manuscript-template.docx",
 ]
 ASSETS = ROOT / "templates" / "_assets"
+# Site accent (headings in body)
 TEAL = RGBColor(0x0D, 0x2B, 0x28)
+# MDPI-like journal teal for header bar
+MDPI_TEAL = "00A496"
+MDPI_TEAL_RGB = RGBColor(0x00, 0xA4, 0x96)
+BLACK = RGBColor(0x00, 0x00, 0x00)
 MUTED = RGBColor(0x5A, 0x68, 0x70)
-LINE = RGBColor(0xB8, 0xC0, 0xBA)
+WHITE = RGBColor(0xFF, 0xFF, 0xFF)
 FONT = "Palatino Linotype"
 BODY_SIZE = 14
 HINT_SIZE = 12
 GOST_LINE = 1.5
 GOST_FIRST_INDENT = Cm(1.25)
+JOURNAL_EN = "Biological Systems and Methods"
+JOURNAL_RU = "Биологические системы и методы"
+JOURNAL_SUB = "An International Journal of Biological Research and Methodology"
+JOURNAL_SHORT = "BSM"
 
 
 def set_run(run, *, size=BODY_SIZE, bold=False, italic=False, color=None, font=FONT):
@@ -198,44 +207,76 @@ def add_figure(doc, png: Path, caption: str, hint: str):
     add_hint(doc, hint)
 
 
-def add_header_footer(section):
-    header = section.header
-    hp = header.paragraphs[0]
-    hp.text = ""
-    p_style(hp, space_after=2, align=WD_ALIGN_PARAGRAPH.LEFT, first_indent=False, line=1.0)
-    r = hp.add_run(
-        "Biological Systems and Methods (BSM)  ·  An International Journal of Experimental and Computational Biosciences  ·  Manuscript template (GOST)"
-    )
-    set_run(r, size=9, color=MUTED)
+def shade_cell(cell, hex_color: str):
+    """Set cell background fill (e.g. MDPI teal bar)."""
+    tc = cell._tc
+    tcPr = tc.get_or_add_tcPr()
+    shd = OxmlElement("w:shd")
+    shd.set(qn("w:fill"), hex_color)
+    shd.set(qn("w:val"), "clear")
+    tcPr.append(shd)
 
-    pPr = hp._p.get_or_add_pPr()
-    pBdr = OxmlElement("w:pBdr")
-    bottom = OxmlElement("w:bottom")
-    bottom.set(qn("w:val"), "single")
-    bottom.set(qn("w:sz"), "6")
-    bottom.set(qn("w:space"), "4")
-    bottom.set(qn("w:color"), "0D2B28")
-    pBdr.append(bottom)
-    pPr.append(pBdr)
+
+def set_cell_margins(cell, *, top=40, bottom=40, left=80, right=80):
+    tc = cell._tc
+    tcPr = tc.get_or_add_tcPr()
+    tcMar = OxmlElement("w:tcMar")
+    for edge, val in (("top", top), ("bottom", bottom), ("left", left), ("right", right)):
+        node = OxmlElement(f"w:{edge}")
+        node.set(qn("w:w"), str(val))
+        node.set(qn("w:type"), "dxa")
+        tcMar.append(node)
+    tcPr.append(tcMar)
+
+
+def add_header_footer(section):
+    """MDPI-style teal header bar with journal name; simple page footer."""
+    header = section.header
+    header.is_linked_to_previous = False
+    # Clear default empty paragraph content carefully
+    hp0 = header.paragraphs[0]
+    hp0.text = ""
+
+    table = header.add_table(rows=1, cols=1, width=Cm(16.5))
+    table.autofit = True
+    cell = table.cell(0, 0)
+    shade_cell(cell, MDPI_TEAL)
+    set_cell_margins(cell, top=60, bottom=60, left=100, right=100)
+
+    cell.text = ""
+    p = cell.paragraphs[0]
+    p_style(p, space_before=0, space_after=0, align=WD_ALIGN_PARAGRAPH.LEFT, first_indent=False, line=1.0)
+    r1 = p.add_run(f"{JOURNAL_EN}  ·  {JOURNAL_SHORT}")
+    set_run(r1, size=10, bold=True, color=WHITE)
+    r2 = p.add_run(f"\n{JOURNAL_SUB}")
+    set_run(r2, size=8, italic=True, color=WHITE)
+
+    # Spacer under bar
+    spacer = header.add_paragraph()
+    p_style(spacer, space_before=2, space_after=0, align=WD_ALIGN_PARAGRAPH.LEFT, first_indent=False, line=1.0)
 
     footer = section.footer
+    footer.is_linked_to_previous = False
     fp = footer.paragraphs[0]
     fp.text = ""
     p_style(fp, space_before=2, align=WD_ALIGN_PARAGRAPH.CENTER, first_indent=False, line=1.0)
-    run1 = fp.add_run("BSM  ·  стр. ")
-    set_run(run1, size=9, color=MUTED)
+    run1 = fp.add_run(f"{JOURNAL_SHORT}  ·  стр. ")
+    set_run(run1, size=9, color=MDPI_TEAL_RGB)
     fld_begin = OxmlElement("w:fldChar")
     fld_begin.set(qn("w:fldCharType"), "begin")
     instr = OxmlElement("w:instrText")
     instr.set(qn("xml:space"), "preserve")
     instr.text = " PAGE "
+    fld_sep = OxmlElement("w:fldChar")
+    fld_sep.set(qn("w:fldCharType"), "separate")
     fld_end = OxmlElement("w:fldChar")
     fld_end.set(qn("w:fldCharType"), "end")
     run2 = fp.add_run()
     run2._r.append(fld_begin)
     run2._r.append(instr)
+    run2._r.append(fld_sep)
     run2._r.append(fld_end)
-    set_run(run2, size=9, color=MUTED)
+    set_run(run2, size=9, color=MDPI_TEAL_RGB)
 
 
 def main():
@@ -259,6 +300,7 @@ def main():
     style = doc.styles["Normal"]
     style.font.name = FONT
     style.font.size = Pt(BODY_SIZE)
+    style.font.color.rgb = BLACK
     rPr = style._element.get_or_add_rPr()
     rFonts = rPr.get_or_add_rFonts()
     rFonts.set(qn("w:ascii"), FONT)
@@ -271,30 +313,30 @@ def main():
 
     add_line(
         doc,
-        "Biological Systems and Methods",
+        JOURNAL_EN,
         size=18,
         bold=True,
-        color=TEAL,
+        color=BLACK,
         space_after=2,
         align=WD_ALIGN_PARAGRAPH.CENTER,
         first_indent=False,
     )
     add_line(
         doc,
-        "Биологические системы и методы (BSM)",
+        f"{JOURNAL_RU} ({JOURNAL_SHORT})",
         size=14,
         bold=True,
-        color=TEAL,
+        color=BLACK,
         space_after=4,
         align=WD_ALIGN_PARAGRAPH.CENTER,
         first_indent=False,
     )
     add_line(
         doc,
-        "An International Journal of Experimental and Computational Biosciences",
+        JOURNAL_SUB,
         size=11,
         italic=True,
-        color=MUTED,
+        color=BLACK,
         space_after=2,
         align=WD_ALIGN_PARAGRAPH.CENTER,
         first_indent=False,
@@ -303,7 +345,7 @@ def main():
         doc,
         "Шаблон рукописи  ·  Palatino Linotype  ·  ГОСТ (А4, поля 30/15/20/20 мм, 14 пт, интервал 1,5)  ·  CC BY 4.0 (planned)",
         size=10,
-        color=MUTED,
+        color=BLACK,
         space_after=10,
         align=WD_ALIGN_PARAGRAPH.CENTER,
         first_indent=False,
