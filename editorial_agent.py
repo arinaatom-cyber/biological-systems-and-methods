@@ -363,6 +363,140 @@ def _extract_zip(data: bytes) -> tuple[str, list[str]]:
     return "\n\n".join(texts), warnings
 
 
+def _build_fix_items(
+    *,
+    found: list[str],
+    missing: list[str],
+    chars: int,
+    words: int,
+    lang: str,
+    clean: str,
+    warnings: list[str],
+) -> list[dict[str, str]]:
+    """Structured author-facing comments with severity and example fixes."""
+    items: list[dict[str, str]] = []
+
+    def add(sev: str, title: str, detail: str, example: str) -> None:
+        items.append({"severity": sev, "title": title, "detail": detail, "example": example})
+
+    core = ["аннотация", "введение", "материалы и методы", "результаты", "обсуждение", "список литературы"]
+    for label in missing:
+        if label == "аннотация":
+            add(
+                "high",
+                "Добавьте аннотацию (Abstract)",
+                "Аннотация не распознана. Нужен отдельный блок 150–250 слов: цель, методы, главный результат, вывод.",
+                "Abstract\nWe tested whether X affects Y in Z cells (n = 12). "
+                "Mean difference was 0.4 (95% CI 0.1–0.7). We conclude that…",
+            )
+        elif label == "материалы и методы":
+            add(
+                "high",
+                "Расширьте «Материалы и методы»",
+                "Раздел методов не найден или слабо обозначен. Укажите дизайн, выборку, репликаты, статистику и ПО с версиями.",
+                "Materials and Methods\nSample size was justified a priori (α = 0.05, power 0.8). "
+                "Analyses used R 4.3; code is deposited at…",
+            )
+        elif label == "доступность данных":
+            add(
+                "high",
+                "Укажите доступность данных",
+                "Для BSM обязателен блок Data availability (репозиторий, DOI/URL или обоснованное «None»).",
+                "Data availability\nRaw counts are at https://zenodo.org/… (DOI will be added upon acceptance). "
+                "Or: None — data contain identifiable human information; summary tables are in Supplement.",
+            )
+        elif label == "конфликт интересов":
+            add(
+                "medium",
+                "Добавьте декларацию конфликтов интересов",
+                "Нужна явная фраза о наличии/отсутствии COI.",
+                "Conflicts of interest\nThe authors declare no competing interests.",
+            )
+        elif label == "финансирование / благодарности":
+            add(
+                "medium",
+                "Укажите финансирование",
+                "Нужен грант/номер или явное «None».",
+                "Funding\nThis work was supported by Grant No. … / None.",
+            )
+        elif label in core:
+            add(
+                "high",
+                f"Добавьте раздел «{label}»",
+                f"Заголовок «{label}» не распознан. Оформите как отдельный раздел рукописи.",
+                f"{label.capitalize()}\n[Краткое содержание раздела…]",
+            )
+        else:
+            add(
+                "low",
+                f"Проверьте раздел «{label}»",
+                "Маркер раздела не найден автоматически — добавьте явный заголовок.",
+                f"{label}\n…",
+            )
+
+    if chars < 1500 or words < 250:
+        add(
+            "high",
+            "Текст слишком короткий",
+            "Объём похож на фрагмент, а не на полную рукопись. Загрузите полный файл или вставьте полный текст.",
+            "Ожидаемый порядок: Title → Abstract → Introduction → Methods → Results → Discussion → References.",
+        )
+    elif words < 1500 and "обзоры" not in " ".join(found).lower():
+        add(
+            "medium",
+            "Проверьте полноту статьи",
+            "Слов относительно мало для original research. Если это short communication — укажите тип рукописи явно.",
+            "Article type: Short Communication\nWord count (main text): …",
+        )
+
+    if lang.startswith("русский") and not re.search(r"\babstract\b", clean, re.I):
+        add(
+            "medium",
+            "Рекомендуется английская аннотация",
+            "Запись журнала ориентирована на английский abstract даже при русском интерфейсе сайта.",
+            "Abstract (English)\n…",
+        )
+
+    if not re.search(r"\b(n\s*=|sample size|размер выборк|участник|пациент|biological replicate)", clean, re.I):
+        add(
+            "medium",
+            "Уточните размер выборки / репликаты",
+            "Не видно явного n / sample size / biological vs technical replicates.",
+            "We analysed n = 18 biological replicates (3 technical replicates each).",
+        )
+
+    if not re.search(r"\b(p\s*[<=>]|95%\s*ci|confidence interval|доверительн|effect size|размер эффект)", clean, re.I):
+        add(
+            "medium",
+            "Усильте статистическую отчётность",
+            "Желательно указать p-value и/или размер эффекта с доверительными интервалами.",
+            "Mean difference = 1.2 (95% CI 0.4–2.0), p = 0.01, Cohen’s d = 0.6.",
+        )
+
+    if re.search(r"\b(chatgpt|gpt-4|generative ai|нейросет)\b", clean, re.I) and not re.search(
+        r"\b(disclos|раскрыт|использован.*ии|ai use)\b", clean, re.I
+    ):
+        add(
+            "medium",
+            "Раскройте использование генеративного ИИ",
+            "Упоминание ИИ есть, но нет явного disclosure по политике журнала.",
+            "AI use\nChatGPT was used for language editing only; authors verified all scientific content.",
+        )
+
+    for w in warnings:
+        add("medium", "Техническое замечание", w, "Исправьте файл и повторите проверку.")
+
+    # Deduplicate by title
+    seen: set[str] = set()
+    unique: list[dict[str, str]] = []
+    for it in items:
+        if it["title"] in seen:
+            continue
+        seen.add(it["title"])
+        unique.append(it)
+    return unique[:12]
+
+
 def analyze_manuscript(text: str, *, filename: str | None = None, warnings: list[str] | None = None) -> dict[str, Any]:
     warnings = list(warnings or [])
     clean = text.replace("\r\n", "\n").replace("\r", "\n")
@@ -379,47 +513,111 @@ def analyze_manuscript(text: str, *, filename: str | None = None, warnings: list
     else:
         lang = "английский (эвристика)"
 
-    found = []
-    missing = []
+    found: list[str] = []
+    missing: list[str] = []
     low = clean.lower()
-    for key, pat, label in REQUIRED_HINTS:
+    for _key, pat, label in REQUIRED_HINTS:
         if re.search(pat, low, re.I):
             found.append(label)
         else:
             missing.append(label)
 
-    # Soft length guidance (not hard desk-reject)
     if chars < 1500:
         warnings.append("Текст очень короткий для полноценной статьи — возможно, загружен фрагмент.")
     elif chars > 250_000:
         warnings.append("Текст очень длинный; убедитесь, что загружен именно файл рукописи.")
 
-    if "аннотация" not in found and "abstract" not in " ".join(found):
-        pass  # already in missing
+    fixes = _build_fix_items(
+        found=found,
+        missing=missing,
+        chars=chars,
+        words=words,
+        lang=lang,
+        clean=clean,
+        warnings=warnings,
+    )
+    high = sum(1 for f in fixes if f["severity"] == "high")
+    medium = sum(1 for f in fixes if f["severity"] == "medium")
+    # Readiness: sections found / required hints, penalize high issues
+    section_score = int(100 * len(found) / max(len(REQUIRED_HINTS), 1))
+    penalty = min(60, high * 12 + medium * 5)
+    readiness = max(5, min(98, section_score - penalty))
+    if not clean.strip():
+        readiness = 0
 
-    report_lines = [
-        "Техническая предпроверка рукописи (не рецензирование и не решение редакции).",
-        "",
+    if readiness >= 75 and high == 0:
+        verdict = "Технически близко к подаче — устраните оставшиеся замечания и подайте рукопись."
+    elif readiness >= 45:
+        verdict = "Требуется доработка перед подачей (см. список «Что исправить»)."
+    else:
+        verdict = "Рукопись пока не готова к подаче: не хватает ключевых разделов или объёма."
+
+    report: list[str] = [
+        "Предпроверка рукописи BSM (техническая; не рецензирование и не решение редакции)",
+        "═" * 40,
         f"Файл: {filename or 'вставленный текст'}",
-        f"Символов (с пробелами): {chars:_}".replace("_", " "),
-        f"Символов (без пробелов): {chars_ns:_}".replace("_", " "),
-        f"Слов (эвристика): {words:_}".replace("_", " "),
-        f"Непустых строк: {lines}",
-        f"Язык текста: {lang}",
+        f"Объём: {chars:_} симв. · {words:_} слов · {lines} строк".replace("_", " "),
+        f"Язык (эвристика): {lang}",
+        f"Готовность к подаче (техскрининг): {readiness}%",
+        f"Вердикт: {verdict}",
         "",
-        "Обнаруженные разделы (эвристика):",
-        ("• " + "\n• ".join(found)) if found else "• не распознаны",
-        "",
-        "Возможно отсутствуют (проверьте вручную):",
-        ("• " + "\n• ".join(missing[:8])) if missing else "• явных пропусков по шаблону не видно",
+        "Чек-лист разделов:",
     ]
-    if warnings:
-        report_lines += ["", "Замечания:", *[f"• {w}" for w in warnings]]
-    report_lines += [
-        "",
-        "Дальше: приведите рукопись к инструкциям авторам и подайте через submit.html. "
-        "Этот отчёт не гарантирует принятие и не заменяет научное рецензирование.",
+    for _key, _pat, label in REQUIRED_HINTS:
+        mark = "✓" if label in found else "✗"
+        report.append(f"  {mark} {label}")
+
+    report += ["", "Что исправить (приоритет):"]
+    if not fixes:
+        report.append("  • Критичных технических пробелов не видно. Проверьте смысл, статистику и рисунки вручную.")
+    else:
+        for i, item in enumerate(fixes, 1):
+            badge = {"high": "ВЫСОКИЙ", "medium": "СРЕДНИЙ", "low": "НИЗКИЙ"}.get(item["severity"], item["severity"])
+            report += [
+                f"{i}. [{badge}] {item['title']}",
+                f"   {item['detail']}",
+                "   Пример, как улучшить:",
+                "   ┌─",
+                *[f"   │ {ln}" for ln in item["example"].splitlines()],
+                "   └─",
+                "",
+            ]
+
+    report += [
+        "Пример итогового ответа автору:",
+        "┌─",
+        f"│ Уважаемый автор, по файлу «{filename or 'manuscript'}» выполнен технический прескрин BSM.",
+        f"│ Оценка готовности: {readiness}%. {verdict}",
+        "│ Главное к исправлению:",
     ]
+    top = fixes[:3] if fixes else []
+    if top:
+        for item in top:
+            report.append(f"│ — {item['title']}")
+    else:
+        report.append("│ — Существенных технических пробелов не выявлено.")
+    report += [
+        "│ После правок повторите проверку в чате и подайте рукопись через форму журнала.",
+        "│ Это не решение о принятии.",
+        "└─",
+        "",
+        "Отправить эти замечания редакции: нажмите «Отправить отчёт редакции» в чате "
+        "или напишите «отправь отчёт».",
+        f"Подача: {JOURNAL['submit_url']} · Инструкции: {JOURNAL['guide_url']}",
+    ]
+
+    editorial_blob = "\n".join(
+        [
+            f"[BSM pre-check] {filename or 'manuscript'}",
+            f"Readiness: {readiness}%",
+            f"Chars/words: {chars}/{words}",
+            f"Language: {lang}",
+            f"Missing sections: {', '.join(missing) if missing else '—'}",
+            "",
+            "Fixes:",
+            *[f"- [{f['severity']}] {f['title']}: {f['detail']}" for f in fixes],
+        ]
+    )
 
     return {
         "ok": True,
@@ -432,7 +630,11 @@ def analyze_manuscript(text: str, *, filename: str | None = None, warnings: list
         "sectionsMissing": missing,
         "warnings": warnings,
         "filename": filename,
-        "reply": "\n".join(report_lines),
+        "readiness": readiness,
+        "verdict": verdict,
+        "fixes": fixes,
+        "editorialReport": editorial_blob,
+        "reply": "\n".join(report),
     }
 
 

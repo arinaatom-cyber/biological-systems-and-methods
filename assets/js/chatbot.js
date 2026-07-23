@@ -10,6 +10,7 @@
     sessionId: "",
     history: [],
     serverOnline: null,
+    lastReport: null,
   };
 
   function label() {
@@ -65,6 +66,7 @@
           <button type="button" data-q="Расскажите про отрицательные результаты">Отрицательные результаты</button>
           <button type="button" data-q="Какие выпуски в томе 1?">Выпуски</button>
           <button type="button" data-action="check">Проверить рукопись</button>
+          <button type="button" data-action="send-report">Отправить отчёт редакции</button>
           <button type="button" data-action="operator">Вызвать оператора</button>
         </div>
         <div class="chat-log" id="chat-log" role="log" aria-live="polite"></div>
@@ -91,6 +93,10 @@
       if (!btn) return;
       if (btn.dataset.action === "check") {
         document.getElementById("chat-file")?.click();
+        return;
+      }
+      if (btn.dataset.action === "send-report") {
+        sendReportToEditorial();
         return;
       }
       if (btn.dataset.action === "operator") {
@@ -211,18 +217,30 @@
         fd.append("manuscript", file, file.name);
         const res = await fetch(`${API()}/api/chat/check`, { method: "POST", body: fd });
         const data = await res.json();
+        rememberReport(data);
         appendBubble("bot", data.reply || data.error || "Проверка не удалась.");
+        if (data.reply) {
+          appendBubble(
+            "bot",
+            "Могу выслать эти замечания редакции: нажмите «Отправить отчёт редакции»."
+          );
+        }
       } else {
         const ext = (file.name.split(".").pop() || "").toLowerCase();
         if (!["txt", "md", "tex", "rtf", "csv"].includes(ext)) {
           appendBubble(
             "bot",
-            `В витринном режиме читаю .txt / .md / .tex. Для ${ext.toUpperCase()} запустите python server.py или вставьте текст в чат («проверь: …»).`
+            `В витринном режиме читаю .txt / .md / .tex. Для ${ext.toUpperCase()} запустите python server.py или вставьте текст («проверь: …»).`
           );
         } else {
           const text = await file.text();
           const result = Agent()?.analyzeText?.(text, file.name) || { reply: "Агент недоступен." };
+          rememberReport(result);
           appendBubble("bot", result.reply);
+          appendBubble(
+            "bot",
+            "Могу выслать эти замечания редакции: нажмите «Отправить отчёт редакции»."
+          );
         }
       }
     } catch {
@@ -233,11 +251,80 @@
     }
   }
 
+  function rememberReport(data) {
+    if (!data) return;
+    state.lastReport = {
+      reply: data.reply || "",
+      editorialReport: data.editorialReport || data.reply || "",
+      readiness: data.readiness,
+      filename: data.filename,
+      fixes: data.fixes || [],
+    };
+  }
+
+  async function sendReportToEditorial() {
+    setOpen(true);
+    if (!state.lastReport?.editorialReport && !state.lastReport?.reply) {
+      appendBubble(
+        "bot",
+        "Сначала проверьте рукопись (📎 «Проверить рукопись»). Затем я смогу выслать комментарии редакции."
+      );
+      return;
+    }
+    const report =
+      state.lastReport.editorialReport ||
+      state.lastReport.reply ||
+      "Отчёт предпроверки BSM";
+    appendBubble("user", "Отправить отчёт редакции");
+    setBusy(true);
+    try {
+      if (state.serverOnline) {
+        const res = await fetch(`${API()}/api/chat/escalate`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            sessionId: sessionId(),
+            message: report,
+            history: state.history.slice(-8),
+          }),
+        });
+        const data = await res.json();
+        appendBubble(
+          "bot",
+          (data.reply || "Отчёт передан.") +
+            "\n\nРедакция получит список замечаний и % готовности. Это не подача рукописи."
+        );
+      } else {
+        const mailto = Agent()?.reportMailto?.(report) || Agent()?.operatorMailto?.(report);
+        appendBubble(
+          "bot",
+          `Откроется письмо на ${Agent()?.email?.() || "редакцию"} с отчётом предпроверки.\n` +
+            "Отправьте его — мы получим комментарии и примеры правок."
+        );
+        if (mailto) window.setTimeout(() => {
+          window.location.href = mailto;
+        }, 350);
+      }
+    } catch {
+      const mailto = Agent()?.reportMailto?.(report);
+      appendBubble("bot", "Откроется письмо с отчётом для редакции.");
+      if (mailto) window.location.href = mailto;
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function sendMessage(text) {
     setOpen(true);
     appendBubble("user", text);
     setBusy(true);
     try {
+      if (/(отправь отчёт|отправь отчет|send report|отправ.*редакц)/i.test(text)) {
+        setBusy(false);
+        await sendReportToEditorial();
+        return;
+      }
+
       let data = null;
       if (state.serverOnline) {
         try {
@@ -262,7 +349,16 @@
           reply: "Агент временно недоступен. Напишите в редакцию.",
         };
       }
+      if (data.intent === "manuscript_check" || data.editorialReport || data.fixes) {
+        rememberReport(data);
+      }
       appendBubble("bot", data.reply);
+      if (data.intent === "manuscript_check") {
+        appendBubble(
+          "bot",
+          "Могу выслать эти замечания редакции: «Отправить отчёт редакции»."
+        );
+      }
       if (data.mailto) {
         window.setTimeout(() => {
           window.location.href = data.mailto;
