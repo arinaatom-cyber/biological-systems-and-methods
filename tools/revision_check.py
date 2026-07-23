@@ -94,6 +94,16 @@ def main() -> int:
     check((ROOT / "docs" / "ROADMAP.md").is_file(), "ROADMAP.md present", "ROADMAP.md missing")
     check((ROOT / "docs" / "ojs-setup.md").is_file(), "ojs-setup.md present", "ojs-setup.md missing")
     check((ROOT / "editorial_agent.py").is_file(), "Editorial agent present", "editorial_agent.py missing")
+    check(
+        (ROOT / "assets" / "js" / "editorial-agent.js").is_file(),
+        "Client hybrid agent present",
+        "assets/js/editorial-agent.js missing",
+    )
+    check(
+        'BSEditorialAgent' in (ROOT / "assets" / "js" / "chatbot.js").read_text(encoding="utf-8"),
+        "Chatbot uses hybrid agent",
+        "chatbot.js not wired to BSEditorialAgent",
+    )
 
     print("=== BSM revision check ===")
     for line in OK:

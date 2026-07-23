@@ -108,9 +108,8 @@
     hydrateApc();
     bindLanguage();
     window.BSi18n?.setLanguage(saved);
-    // Chat/API need python server.py — hide on static GitHub Pages hosts.
-    const staticHost = /\.github\.io$/i.test(location.hostname);
-    if (CFG.chatEnabled && !staticHost && window.BSChat) window.BSChat.mount();
+    // Hybrid agent: FAQ + text check on Pages; full file/ticket API when server.py is up.
+    if (CFG.chatEnabled && window.BSChat) window.BSChat.mount();
     // Auth header slot (login.html / account.html load auth.js themselves)
     if (!document.querySelector('script[src*="auth.js"]')) {
       const s = document.createElement("script");

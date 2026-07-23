@@ -2,12 +2,14 @@
   const NAME = () =>
     window.BS?.NAME || window.BS_CONFIG?.journalName || "Biological Systems and Methods";
   const API = () => (window.BS_CONFIG?.apiBase || "").replace(/\/$/, "");
+  const Agent = () => window.BSEditorialAgent;
 
   const state = {
     open: false,
     busy: false,
     sessionId: "",
     history: [],
+    serverOnline: null,
   };
 
   function label() {
@@ -37,6 +39,9 @@
   function mount() {
     if (window.BS_CONFIG?.chatEnabled === false) return;
     if (document.getElementById("bs-chat-root")) return;
+    if (!Agent()) {
+      console.warn("BSEditorialAgent missing — load editorial-agent.js before chatbot.js");
+    }
 
     const root = document.createElement("div");
     root.id = "bs-chat-root";
@@ -49,7 +54,7 @@
         <header class="chat-head">
           <div>
             <strong>Агент редакции · ${escapeHtml(NAME())}</strong>
-            <p>Стандартные вопросы · техпроверка рукописи · оператор</p>
+            <p id="chat-mode-line">FAQ · техпроверка · оператор</p>
           </div>
           <button type="button" class="chat-close" id="chat-close" aria-label="Закрыть чат">✕</button>
         </header>
@@ -58,6 +63,7 @@
           <button type="button" data-q="Как подать рукопись?">Подача</button>
           <button type="button" data-q="Какие сроки рецензирования?">Сроки</button>
           <button type="button" data-q="Расскажите про отрицательные результаты">Отрицательные результаты</button>
+          <button type="button" data-q="Какие выпуски в томе 1?">Выпуски</button>
           <button type="button" data-action="check">Проверить рукопись</button>
           <button type="button" data-action="operator">Вызвать оператора</button>
         </div>
@@ -91,9 +97,7 @@
         askOperator();
         return;
       }
-      if (btn.dataset.q) {
-        sendMessage(btn.dataset.q);
-      }
+      if (btn.dataset.q) sendMessage(btn.dataset.q);
     });
 
     window.addEventListener("bs:langchange", () => {
@@ -101,25 +105,36 @@
       if (el) el.textContent = label();
     });
 
-    loadWelcome();
+    probeServer().then((online) => {
+      state.serverOnline = online;
+      const mode = document.getElementById("chat-mode-line");
+      if (mode) {
+        mode.textContent = online
+          ? "Полный режим · сервер онлайн"
+          : "Витринный режим · FAQ и текстовая проверка";
+      }
+      appendBubble("bot", Agent()?.welcome?.(online) || defaultWelcome(online));
+    });
   }
 
-  async function loadWelcome() {
+  async function probeServer() {
     try {
       const res = await fetch(`${API()}/api/chat/welcome`, { cache: "no-store" });
+      if (!res.ok) return false;
       const data = await res.json();
-      appendBubble("bot", data.reply || defaultWelcome());
+      return Boolean(data && data.ok !== false && data.reply);
     } catch {
-      appendBubble("bot", defaultWelcome());
+      return false;
     }
   }
 
-  function defaultWelcome() {
+  function defaultWelcome(online) {
     return (
       `Редакционный агент · ${NAME()}\n\n` +
-      "Отвечаю на стандартные вопросы, делаю техническую предпроверку рукописи " +
-      "(символы, слова, разделы) и при необходимости вызываю оператора.\n\n" +
-      "Не принимаю статьи и не выношу решение о публикации."
+      (online
+        ? "Сервер онлайн: FAQ, проверка файлов, тикеты оператору."
+        : "Витринный режим: стандартные вопросы и проверка текста. Полный режим — python server.py.") +
+      "\n\nНе принимаю статьи и не выношу решение о публикации."
     );
   }
 
@@ -144,32 +159,38 @@
 
   async function askOperator() {
     setOpen(true);
-    const contact = window.prompt("Email для ответа оператора (необязательно):", "") || "";
     const note =
       window.prompt("Кратко опишите вопрос для оператора:", "Нужна помощь редакции") ||
       "Нужна помощь редакции";
+    const contact = window.prompt("Email для ответа (необязательно):", "") || "";
     appendBubble("user", note);
     setBusy(true);
     try {
-      const res = await fetch(`${API()}/api/chat/escalate`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          sessionId: sessionId(),
-          message: note,
-          contact: contact.trim() || undefined,
-          history: state.history.slice(-12),
-        }),
-      });
-      const data = await res.json();
-      appendBubble("bot", data.reply || "Обращение передано оператору.");
+      if (state.serverOnline) {
+        const res = await fetch(`${API()}/api/chat/escalate`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            sessionId: sessionId(),
+            message: note,
+            contact: contact.trim() || undefined,
+            history: state.history.slice(-12),
+          }),
+        });
+        const data = await res.json();
+        appendBubble("bot", data.reply || "Обращение передано оператору.");
+      } else {
+        const local = Agent()?.respondLocal?.(note) || {
+          reply: `Напишите в редакцию: ${Agent()?.email?.() || ""}`,
+          mailto: Agent()?.operatorMailto?.(note),
+        };
+        appendBubble("bot", local.reply);
+        if (local.mailto) window.location.href = local.mailto;
+      }
     } catch {
-      appendBubble(
-        "bot",
-        `Не удалось создать тикет. Напишите напрямую: ${
-          window.BS_CONFIG?.temporaryEmail || window.BS_CONFIG?.editorialEmail || "arina.atom@gmail.com"
-        }`
-      );
+      const mailto = Agent()?.operatorMailto?.(note);
+      appendBubble("bot", "Не удалось создать тикет. Откроется письмо в редакцию.");
+      if (mailto) window.location.href = mailto;
     } finally {
       setBusy(false);
     }
@@ -183,16 +204,29 @@
     appendBubble("user", `📎 Проверить рукопись: ${file.name}`);
     setBusy(true);
     try {
-      const fd = new FormData();
-      fd.append("sessionId", sessionId());
-      fd.append("message", "Проверь рукопись");
-      fd.append("manuscript", file, file.name);
-      fd.append("history", JSON.stringify(state.history.slice(-8)));
-      const res = await fetch(`${API()}/api/chat/check`, { method: "POST", body: fd });
-      const data = await res.json();
-      appendBubble("bot", data.reply || data.error || "Проверка не удалась.");
+      if (state.serverOnline) {
+        const fd = new FormData();
+        fd.append("sessionId", sessionId());
+        fd.append("message", "Проверь рукопись");
+        fd.append("manuscript", file, file.name);
+        const res = await fetch(`${API()}/api/chat/check`, { method: "POST", body: fd });
+        const data = await res.json();
+        appendBubble("bot", data.reply || data.error || "Проверка не удалась.");
+      } else {
+        const ext = (file.name.split(".").pop() || "").toLowerCase();
+        if (!["txt", "md", "tex", "rtf", "csv"].includes(ext)) {
+          appendBubble(
+            "bot",
+            `В витринном режиме читаю .txt / .md / .tex. Для ${ext.toUpperCase()} запустите python server.py или вставьте текст в чат («проверь: …»).`
+          );
+        } else {
+          const text = await file.text();
+          const result = Agent()?.analyzeText?.(text, file.name) || { reply: "Агент недоступен." };
+          appendBubble("bot", result.reply);
+        }
+      }
     } catch {
-      appendBubble("bot", "Не удалось отправить файл на проверку. Убедитесь, что запущен python server.py.");
+      appendBubble("bot", "Не удалось прочитать файл. Вставьте текст в сообщение или запустите сервер.");
     } finally {
       setBusy(false);
       if (input) input.value = "";
@@ -204,28 +238,36 @@
     appendBubble("user", text);
     setBusy(true);
     try {
-      const res = await fetch(`${API()}/api/chat`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          sessionId: sessionId(),
-          message: text,
-          history: state.history.slice(-12),
-        }),
-      });
-      const data = await res.json();
-      appendBubble("bot", data.reply || data.error || "Нет ответа от агента.");
-      if (data.intent === "faq" && /подат|submit/i.test(text) && window.BS?.submitHref) {
-        const href = window.BS.submitHref();
-        if (/^https?:\/\//i.test(href)) {
-          appendBubble("bot", `Прямая ссылка на подачу: ${href}`);
+      let data = null;
+      if (state.serverOnline) {
+        try {
+          const res = await fetch(`${API()}/api/chat`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              sessionId: sessionId(),
+              message: text,
+              history: state.history.slice(-12),
+            }),
+          });
+          data = await res.json();
+          if (!res.ok && !data?.reply) throw new Error("bad");
+        } catch {
+          state.serverOnline = false;
+          data = null;
         }
       }
-    } catch {
-      appendBubble(
-        "bot",
-        "Сервер агента недоступен. Запустите `python server.py` и обновите страницу, либо напишите в редакцию."
-      );
+      if (!data?.reply) {
+        data = Agent()?.respondLocal?.(text) || {
+          reply: "Агент временно недоступен. Напишите в редакцию.",
+        };
+      }
+      appendBubble("bot", data.reply);
+      if (data.mailto) {
+        window.setTimeout(() => {
+          window.location.href = data.mailto;
+        }, 400);
+      }
     } finally {
       setBusy(false);
     }
