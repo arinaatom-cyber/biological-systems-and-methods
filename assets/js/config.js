@@ -77,7 +77,7 @@ window.BS_CONFIG = {
   conferenceEnabled: false,
   submissionsEnabled: true,
   doiInfrastructureActive: false,
-  languages: ["en", "ru", "zh"],
+  languages: ["en", "ru", "zh", "ar"],
   defaultLanguage: "ru",
   formSubmitEnabled: true,
   apiBase: "",

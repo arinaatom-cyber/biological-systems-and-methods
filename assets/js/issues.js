@@ -38,7 +38,15 @@
         conferenceList.hidden = true;
         conferenceList.innerHTML = "";
       }
-      if (conferenceEmpty) conferenceEmpty.hidden = false;
+      if (conferenceEmpty) {
+        conferenceEmpty.hidden = false;
+        const lang = window.BSi18n?.getLanguage?.() || "ru";
+        const extras = window.BSPageI18n?.extras?.[lang] || {};
+        const h2 = conferenceEmpty.querySelector("h2");
+        const p = conferenceEmpty.querySelector("p");
+        if (h2 && extras.confOffTitle) h2.textContent = extras.confOffTitle;
+        if (p && extras.confOffBody) p.textContent = extras.confOffBody;
+      }
       return;
     }
 

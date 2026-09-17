@@ -9,67 +9,76 @@
   <link rel="manifest" href="site.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=m20" />
 </head>
 <body data-page="articles">
-  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Перейти к содержанию</a>
   <header class="site-header" id="site-header"></header>
   <main id="main" class="container">
     <section class="page-header">
-      <p class="page-kicker">Материалы</p>
-      <h1>Статьи</h1>
-      <p class="page-lede">Поиск и фильтры по опубликованным материалам журнала.</p>
+      <p class="page-kicker" data-i18n="articles.kicker">Материалы</p>
+      <h1 data-i18n="articles.title">Статьи</h1>
+      <p class="page-lede" data-i18n="articles.lede">Поиск и фильтры по опубликованным материалам журнала.</p>
     </section>
 
     <form id="article-search" class="search-panel" role="search">
       <div class="field-row">
-        <label>Поиск
+        <label>
+          <span data-i18n="articles.filter.q">Поиск</span>
           <input name="q" type="search" data-i18n-placeholder="search.placeholder" placeholder="Поиск по журналу" />
         </label>
-        <label>Год
+        <label>
+          <span data-i18n="articles.filter.year">Год</span>
           <input name="year" inputmode="numeric" placeholder="2026" />
         </label>
-        <label>Выпуск
+        <label>
+          <span data-i18n="articles.filter.issue">Выпуск</span>
           <input name="issue" inputmode="numeric" placeholder="1–4" />
         </label>
       </div>
       <div class="field-row">
-        <label>Тип статьи
+        <label>
+          <span data-i18n="articles.filter.type">Тип статьи</span>
           <input name="type" placeholder="Original Research" />
         </label>
-        <label>Направление
+        <label>
+          <span data-i18n="articles.filter.section">Направление</span>
           <input name="section" placeholder="Biology" />
         </label>
-        <label>Язык
+        <label>
+          <span data-i18n="articles.filter.language">Язык</span>
           <select name="language">
             <option value="">—</option>
             <option value="en">EN</option>
             <option value="ru">RU</option>
             <option value="zh">中文</option>
+            <option value="ar">عربي</option>
           </select>
         </label>
       </div>
       <div class="filter-checks">
-        <label class="check"><input type="checkbox" name="openData" /> Open Data</label>
-        <label class="check"><input type="checkbox" name="hasCode" /> Код доступен</label>
-        <label class="check"><input type="checkbox" name="negative" /> Negative Results</label>
-        <label class="check"><input type="checkbox" name="registered" /> Registered Reports</label>
+        <label class="check"><input type="checkbox" name="openData" /> <span data-i18n="articles.filter.openData">Открытые данные</span></label>
+        <label class="check"><input type="checkbox" name="hasCode" /> <span data-i18n="articles.filter.hasCode">Код доступен</span></label>
+        <label class="check"><input type="checkbox" name="negative" /> <span data-i18n="articles.filter.negative">Отрицательные результаты</span></label>
+        <label class="check"><input type="checkbox" name="registered" /> <span data-i18n="articles.filter.registered">Зарегистрированные отчёты</span></label>
       </div>
       <button type="submit" class="btn btn-primary" data-i18n="search.submit">Найти</button>
     </form>
 
-    <div id="article-filters" class="filters" aria-label="Filter by section"></div>
+    <div id="article-filters" class="filters" data-i18n-aria="articles.filters.aria" aria-label="Фильтр по разделу"></div>
     <div id="articles-empty" hidden></div>
     <p id="articles-none" class="empty-state" hidden></p>
     <ul class="article-list" id="articles-list"></ul>
   </main>
   <footer class="site-footer" id="site-footer"></footer>
   <script src="assets/js/config.js"></script>
-  <script src="assets/js/i18n.js"></script>
-  <script src="assets/js/site.js"></script>
-  <script src="assets/js/articles.js"></script>
-  <script src="assets/js/editorial-agent.js"></script>
-  <script src="assets/js/chatbot.js"></script>
+  <script src="assets/js/i18n.js?v=m20"></script>
+  <script src="assets/js/pages-i18n.js?v=m20"></script>
+  <script src="assets/js/i18n-ar.js?v=m20"></script>
+  <script src="assets/js/site.js?v=m20"></script>
+  <script src="assets/js/articles.js?v=m18"></script>
+  <script src="assets/js/editorial-agent.js?v=m18"></script>
+  <script src="assets/js/chatbot.js?v=m18"></script>
 </body>
 </html>

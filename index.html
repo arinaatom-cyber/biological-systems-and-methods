@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=m4" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=m20" />
   <script type="application/ld+json" id="schema-periodical">
   {
     "@context": "https://schema.org",
@@ -31,68 +31,165 @@
 <body data-page="home">
   <a class="skip-link" href="#main" data-i18n="a11y.skip">Перейти к содержанию</a>
   <div class="page-margin-field" aria-hidden="true">
-    <div class="page-margin-field-col is-left">
-      <figure class="mf-item">
-        <div class="mf-formula">C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></div>
-        <figcaption data-i18n="margin.glucose">глюкоза</figcaption>
-      </figure>
-      <p class="mf-note mf-topic" data-i18n="margin.cell">клетка</p>
-      <p class="mf-note mf-method">LC–MS</p>
-      <figure class="mf-item">
-        <div class="mf-formula">H<sub>2</sub>N–CHR–COOH</div>
-        <figcaption data-i18n="margin.aa">аминокислота</figcaption>
-      </figure>
-      <p class="mf-note mf-topic" data-i18n="margin.genome">геном</p>
-      <p class="mf-note mf-method" data-i18n="margin.nmr">ЯМР</p>
-      <figure class="mf-item">
-        <div class="mf-formula">ATP</div>
-        <figcaption data-i18n="margin.atp">аденозинтрифосфат</figcaption>
-      </figure>
-      <p class="mf-note mf-method">ANOVA</p>
-      <p class="mf-note mf-topic" data-i18n="margin.protein">белок</p>
-      <p class="mf-note mf-method" data-i18n="margin.pcr">ПЦР</p>
-    </div>
-    <div class="page-margin-field-col is-right">
-      <figure class="mf-item">
-        <div class="mf-formula">ΔG = ΔH − TΔS</div>
-        <figcaption data-i18n="margin.gibbs">энергия Гиббса</figcaption>
-      </figure>
-      <p class="mf-note mf-topic" data-i18n="margin.membrane">мембрана</p>
-      <p class="mf-note mf-method">RNA-seq</p>
-      <figure class="mf-item">
-        <div class="mf-formula">R–CO–NH–R′</div>
-        <figcaption data-i18n="margin.peptide">пептидная связь</figcaption>
-      </figure>
-      <p class="mf-note mf-topic" data-i18n="margin.immunity">иммунитет</p>
-      <p class="mf-note mf-method">PCA</p>
-      <figure class="mf-item">
-        <div class="mf-formula">pH = −log<sub>10</sub>[H<sup>+</sup>]</div>
-        <figcaption data-i18n="margin.ph">кислотность</figcaption>
-      </figure>
-      <p class="mf-note mf-method">t-test</p>
-      <p class="mf-note mf-topic" data-i18n="margin.metabolism">метаболизм</p>
-      <p class="mf-note mf-method">FDR</p>
-      <p class="mf-note mf-method">ELISA</p>
-    </div>
+    <div class="page-margin-field-col is-left"></div>
+    <div class="page-margin-field-col is-right"></div>
   </div>
   <header class="site-header" id="site-header"></header>
 
   <main id="main">
     <section class="hero-banner" aria-labelledby="hero-brand">
-      <div class="hero-banner-pattern" aria-hidden="true"></div>
       <div class="hero-banner-inner container">
-        <h1 id="hero-brand" class="hero-brand">Biological Systems and Methods</h1>
-        <p class="hero-banner-tag" data-i18n="home.hero.aside">Рецензируемый журнал · открытый доступ · мультиязычный интерфейс</p>
+      <svg class="hero-waves" viewBox="0 0 1600 80" preserveAspectRatio="none" fill="none" aria-hidden="true">
+        <path class="hero-waves-base" d="M40 68h1520" />
+        <path class="hero-spec-envelope" d="M40,68.0 46,67.97 52,67.78 58,67.02 64,64.94 70,61.33 76,57.85 82,57.22 88,60.01 94,63.87 100,66.49 106,67.52 112,67.43 118,66.15 124,62.78 130,56.49 136,48.21 142,41.51 148,40.39 154,45.58 160,53.82 166,61.02 172,65.32 178,67.2 184,67.81 190,67.96 196,67.94 202,67.64 208,66.4 214,63.0 220,57.08 226,51.38 232,50.36 238,54.93 244,61.24 250,65.56 256,67.39 262,67.89 268,67.99 274,68.0 280,68.0 286,68.0 292,68.0 298,68.0 304,68.0 310,68.0 316,68.0 322,68.0 328,68.0 334,67.99 340,67.97 346,67.86 352,67.46 358,66.32 364,63.67 370,58.69 376,51.35 382,43.21 388,37.28 394,36.32 400,40.82 406,48.59 412,56.47 418,62.3 424,65.65 430,67.2 436,67.77 442,67.95 448,67.99 454,68.0 460,68.0 466,68.0 472,67.98 478,67.87 484,67.24 490,64.82 496,58.04 502,44.87 508,28.08 514,16.85 520,19.33 526,33.6 532,49.95 538,60.96 544,65.96 550,67.56 556,67.93 562,67.98 568,67.92 574,67.6 580,66.42 586,63.13 592,56.31 598,46.16 604,36.23 610,32.0 616,36.23 622,46.16 628,56.31 634,63.13 640,66.42 646,67.6 652,67.92 658,67.99 664,68.0 670,68.0 676,68.0 682,68.0 688,68.0 694,68.0 700,68.0 706,68.0 712,67.98 718,67.82 724,67.1 730,64.83 736,60.21 742,54.64 748,52.0 754,54.64 760,60.21 766,64.83 772,67.04 778,67.47 784,66.51 790,63.4 796,57.32 802,49.58 808,44.39 814,45.54 820,52.12 826,59.67 832,64.75 838,67.06 844,67.8 850,67.97 856,68.0 862,68.0 868,68.0 874,68.0 880,68.0 886,68.0 892,68.0 898,68.0 904,68.0 910,68.0 916,67.98 922,67.87 928,67.43 934,66.09 940,63.01 946,57.87 952,51.99 958,48.28 964,49.08 970,53.87 976,59.78 982,64.27 988,66.69 994,67.64 1000,67.92 1006,67.99 1012,68.0 1018,68.0 1024,68.0 1030,68.0 1036,68.0 1042,68.0 1048,68.0 1054,68.0 1060,68.0 1066,68.0 1072,68.0 1078,67.99 1084,67.95 1090,67.76 1096,67.12 1102,65.35 1108,61.55 1114,55.34 1120,47.91 1126,42.25 1132,41.32 1138,45.66 1144,52.88 1150,59.73 1156,64.35 1162,66.69 1168,67.62 1174,67.91 1180,67.98 1186,68.0 1192,68.0 1198,68.0 1204,68.0 1210,68.0 1216,68.0 1222,68.0 1228,68.0 1234,68.0 1240,68.0 1246,67.99 1252,67.95 1258,67.74 1264,66.9 1270,64.55 1276,59.99 1282,54.18 1288,50.3 1294,51.15 1300,56.09 1306,61.75 1312,65.56 1318,67.29 1324,67.85 1330,67.98 1336,68.0 1342,68.0 1348,68.0 1354,68.0 1360,68.0 1366,68.0 1372,68.0 1378,68.0 1384,68.0 1390,68.0 1396,68.0 1402,68.0 1408,68.0 1414,68.0 1420,68.0 1426,68.0 1432,67.99 1438,67.92 1444,67.52 1450,66.11 1456,62.75 1462,57.83 1468,54.28 1474,55.08 1480,59.51 1486,64.11 1492,66.76 1498,67.72 1504,67.96 1510,68.0 1516,68.0 1522,68.0 1528,68.0 1534,68.0 1540,68.0 1546,68.0 1552,68.0 1558,68.0" />
+        <g class="hero-spec-sticks">
+          <line x1="48" y1="68" x2="48" y2="62"/>
+          <line x1="55" y1="68" x2="55" y2="66"/>
+          <line x1="62" y1="68" x2="62" y2="64"/>
+          <line x1="72" y1="68" x2="72" y2="62"/>
+          <line x1="80" y1="68" x2="80" y2="57"/>
+          <line x1="89" y1="68" x2="89" y2="63"/>
+          <line x1="102" y1="68" x2="102" y2="63"/>
+          <line x1="123" y1="68" x2="123" y2="65"/>
+          <line x1="140" y1="68" x2="140" y2="40"/>
+          <line x1="152" y1="68" x2="152" y2="42"/>
+          <line x1="178" y1="68" x2="178" y2="61"/>
+          <line x1="191" y1="68" x2="191" y2="64"/>
+          <line x1="198" y1="68" x2="198" y2="59"/>
+          <line x1="208" y1="68" x2="208" y2="65"/>
+          <line x1="230" y1="68" x2="230" y2="50"/>
+          <line x1="242" y1="68" x2="242" y2="60"/>
+          <line x1="259" y1="68" x2="259" y2="63"/>
+          <line x1="268" y1="68" x2="268" y2="62"/>
+          <line x1="276" y1="68" x2="276" y2="64"/>
+          <line x1="293" y1="68" x2="293" y2="65"/>
+          <line x1="300" y1="68" x2="300" y2="58"/>
+          <line x1="310" y1="68" x2="310" y2="66"/>
+          <line x1="318" y1="68" x2="318" y2="63"/>
+          <line x1="327" y1="68" x2="327" y2="62"/>
+          <line x1="335" y1="68" x2="335" y2="54"/>
+          <line x1="344" y1="68" x2="344" y2="63"/>
+          <line x1="361" y1="68" x2="361" y2="64"/>
+          <line x1="380" y1="68" x2="380" y2="46"/>
+          <line x1="392" y1="68" x2="392" y2="36"/>
+          <line x1="404" y1="68" x2="404" y2="47"/>
+          <line x1="412" y1="68" x2="412" y2="62"/>
+          <line x1="429" y1="68" x2="429" y2="63"/>
+          <line x1="440" y1="68" x2="440" y2="61"/>
+          <line x1="458" y1="68" x2="458" y2="64"/>
+          <line x1="480" y1="68" x2="480" y2="66"/>
+          <line x1="497" y1="68" x2="497" y2="62"/>
+          <line x1="510" y1="68" x2="510" y2="16"/>
+          <line x1="522" y1="68" x2="522" y2="50"/>
+          <line x1="534" y1="68" x2="534" y2="62"/>
+          <line x1="548" y1="68" x2="548" y2="65"/>
+          <line x1="560" y1="68" x2="560" y2="60"/>
+          <line x1="582" y1="68" x2="582" y2="62"/>
+          <line x1="599" y1="68" x2="599" y2="63"/>
+          <line x1="610" y1="68" x2="610" y2="32"/>
+          <line x1="622" y1="68" x2="622" y2="56"/>
+          <line x1="633" y1="68" x2="633" y2="65"/>
+          <line x1="650" y1="68" x2="650" y2="62"/>
+          <line x1="672" y1="68" x2="672" y2="59"/>
+          <line x1="684" y1="68" x2="684" y2="63"/>
+          <line x1="700" y1="68" x2="700" y2="63"/>
+          <line x1="718" y1="68" x2="718" y2="65"/>
+          <line x1="728" y1="68" x2="728" y2="57"/>
+          <line x1="735" y1="68" x2="735" y2="66"/>
+          <line x1="748" y1="68" x2="748" y2="52"/>
+          <line x1="760" y1="68" x2="760" y2="61"/>
+          <line x1="769" y1="68" x2="769" y2="63"/>
+          <line x1="790" y1="68" x2="790" y2="64"/>
+          <line x1="803" y1="68" x2="803" y2="65"/>
+          <line x1="810" y1="68" x2="810" y2="44"/>
+          <line x1="822" y1="68" x2="822" y2="59"/>
+          <line x1="837" y1="68" x2="837" y2="62"/>
+          <line x1="850" y1="68" x2="850" y2="62"/>
+          <line x1="870" y1="68" x2="870" y2="60"/>
+          <line x1="888" y1="68" x2="888" y2="65"/>
+          <line x1="900" y1="68" x2="900" y2="55"/>
+          <line x1="922" y1="68" x2="922" y2="62"/>
+          <line x1="930" y1="68" x2="930" y2="63"/>
+          <line x1="939" y1="68" x2="939" y2="63"/>
+          <line x1="960" y1="68" x2="960" y2="48"/>
+          <line x1="972" y1="68" x2="972" y2="61"/>
+          <line x1="990" y1="68" x2="990" y2="66"/>
+          <line x1="1000" y1="68" x2="1000" y2="60"/>
+          <line x1="1007" y1="68" x2="1007" y2="62"/>
+          <line x1="1025" y1="68" x2="1025" y2="64"/>
+          <line x1="1041" y1="68" x2="1041" y2="64"/>
+          <line x1="1050" y1="68" x2="1050" y2="53"/>
+          <line x1="1058" y1="68" x2="1058" y2="65"/>
+          <line x1="1072" y1="68" x2="1072" y2="62"/>
+          <line x1="1092" y1="68" x2="1092" y2="62"/>
+          <line x1="1100" y1="68" x2="1100" y2="59"/>
+          <line x1="1109" y1="68" x2="1109" y2="63"/>
+          <line x1="1130" y1="68" x2="1130" y2="41"/>
+          <line x1="1142" y1="68" x2="1142" y2="58"/>
+          <line x1="1160" y1="68" x2="1160" y2="66"/>
+          <line x1="1170" y1="68" x2="1170" y2="63"/>
+          <line x1="1177" y1="68" x2="1177" y2="62"/>
+          <line x1="1195" y1="68" x2="1195" y2="61"/>
+          <line x1="1211" y1="68" x2="1211" y2="64"/>
+          <line x1="1230" y1="68" x2="1230" y2="56"/>
+          <line x1="1245" y1="68" x2="1245" y2="66"/>
+          <line x1="1260" y1="68" x2="1260" y2="62"/>
+          <line x1="1279" y1="68" x2="1279" y2="63"/>
+          <line x1="1290" y1="68" x2="1290" y2="50"/>
+          <line x1="1302" y1="68" x2="1302" y2="62"/>
+          <line x1="1313" y1="68" x2="1313" y2="65"/>
+          <line x1="1330" y1="68" x2="1330" y2="64"/>
+          <line x1="1347" y1="68" x2="1347" y2="62"/>
+          <line x1="1355" y1="68" x2="1355" y2="60"/>
+          <line x1="1364" y1="68" x2="1364" y2="63"/>
+          <line x1="1380" y1="68" x2="1380" y2="57"/>
+          <line x1="1398" y1="68" x2="1398" y2="65"/>
+          <line x1="1410" y1="68" x2="1410" y2="63"/>
+          <line x1="1432" y1="68" x2="1432" y2="62"/>
+          <line x1="1440" y1="68" x2="1440" y2="61"/>
+          <line x1="1449" y1="68" x2="1449" y2="63"/>
+          <line x1="1470" y1="68" x2="1470" y2="54"/>
+          <line x1="1482" y1="68" x2="1482" y2="63"/>
+          <line x1="1500" y1="68" x2="1500" y2="66"/>
+          <line x1="1510" y1="68" x2="1510" y2="62"/>
+          <line x1="1517" y1="68" x2="1517" y2="62"/>
+          <line x1="1540" y1="68" x2="1540" y2="59"/>
+        </g>
+        <g class="hero-spec-markers">
+          <circle class="hero-spec-dot" cx="80" cy="53.8" r="4"/>
+          <circle class="hero-spec-dot" cx="140" cy="36.8" r="4"/>
+          <circle class="hero-spec-dot" cx="152" cy="38.8" r="4"/>
+          <circle class="hero-spec-dot" cx="230" cy="46.8" r="4"/>
+          <circle class="hero-spec-dot" cx="335" cy="50.8" r="4"/>
+          <circle class="hero-spec-dot" cx="380" cy="42.8" r="4"/>
+          <circle class="hero-spec-dot" cx="392" cy="32.8" r="4"/>
+          <circle class="hero-spec-dot" cx="404" cy="43.8" r="4"/>
+          <circle class="hero-spec-dot" cx="510" cy="12.8" r="4"/>
+          <circle class="hero-spec-dot" cx="522" cy="46.8" r="4"/>
+          <circle class="hero-spec-dot" cx="610" cy="28.8" r="4"/>
+          <circle class="hero-spec-dot" cx="672" cy="55.8" r="4"/>
+          <circle class="hero-spec-dot" cx="748" cy="48.8" r="4"/>
+          <circle class="hero-spec-dot" cx="810" cy="40.8" r="4"/>
+          <circle class="hero-spec-dot" cx="900" cy="51.8" r="4"/>
+          <circle class="hero-spec-dot" cx="960" cy="44.8" r="4"/>
+          <circle class="hero-spec-dot" cx="1050" cy="49.8" r="4"/>
+          <circle class="hero-spec-dot" cx="1130" cy="37.8" r="4"/>
+          <circle class="hero-spec-dot" cx="1230" cy="52.8" r="4"/>
+          <circle class="hero-spec-dot" cx="1290" cy="46.8" r="4"/>
+          <circle class="hero-spec-dot" cx="1380" cy="53.8" r="4"/>
+          <circle class="hero-spec-dot" cx="1470" cy="50.8" r="4"/>
+          <circle class="hero-spec-dot" cx="1540" cy="55.8" r="4"/>
+        </g>
+      </svg>
+        <h1 id="hero-brand" class="hero-brand" data-cfg="journalName">Biological Systems and Methods</h1>
       </div>
     </section>
 
     <section class="hero-intro" aria-labelledby="hero-title">
       <div class="container hero-intro-inner">
         <div class="hero-intro-copy">
-          <p class="hero-kicker" data-i18n="home.hero.kicker">BSM · БИОЛОГИЧЕСКИЕ СИСТЕМЫ И МЕТОДЫ · ОТКРЫТЫЙ ДОСТУП</p>
           <h2 id="hero-title" data-i18n="home.hero.title">Экспериментальные и вычислительные исследования биологических систем</h2>
           <p class="hero-lede" data-i18n="home.hero.lede">Biological Systems and Methods — рецензируемый журнал открытого доступа, публикующий оригинальные исследования, методологические работы и обзоры в области экспериментальной биологии, биоинформатики, биохимии, биофизики, протеомики и других омиксных дисциплин. Журнал рассматривает исследования с положительными, отрицательными, нулевыми и неожиданными результатами при условии корректного исследовательского дизайна, статистического анализа и научной интерпретации.</p>
-          <p class="hero-note" data-i18n="home.hero.note">Редакционные решения принимаются научными редакторами. Автоматизированные инструменты применяются только для технической проверки и языковой поддержки и не используются для самостоятельного принятия решений по рукописям.</p>
           <div class="cta-row">
             <a class="btn btn-primary" href="submit.html" data-i18n="home.hero.cta.submit">Подать рукопись</a>
             <a class="btn btn-ghost" href="authors-guidelines.html" data-i18n="home.hero.cta.guide">Инструкции авторам</a>
@@ -105,7 +202,7 @@
             <li data-i18n="home.hero.overview.i2">Эксперимент, вычисления и методы</li>
             <li data-i18n="home.hero.overview.i3">Положительные, отрицательные и нулевые результаты при корректном дизайне</li>
             <li data-i18n="home.hero.overview.i4">Воспроизводимость, данные и аналитический код</li>
-            <li data-i18n="home.hero.overview.i5">Решения принимают научные редакторы, не автоматика</li>
+            <li data-i18n="home.hero.overview.i5">Решения принимают научные редакторы</li>
           </ul>
         </aside>
       </div>
@@ -130,12 +227,12 @@
         </div>
         <div class="info-item">
           <span class="info-label" data-i18n="home.metric.access">Доступ</span>
-          <strong data-i18n="home.metric.access.val">Планируемая модель: открытый доступ, CC BY 4.0</strong>
+          <strong data-i18n="home.metric.access.val">Открытый доступ, CC BY 4.0</strong>
         </div>
       </div>
     </section>
 
-    <section class="section section-tight">
+    <section class="section section-tight" id="home-stats-block" hidden>
       <div class="container">
         <header class="section-head stacked">
           <h2 data-i18n="home.stats.title">Статистика журнала</h2>
@@ -163,11 +260,6 @@
           <div class="cta-row">
             <a class="btn btn-primary" href="submit.html" data-i18n="nav.submit">Подать рукопись</a>
             <a class="btn btn-ghost" href="article-types.html" data-i18n="home.articles.types">Посмотреть типы рукописей</a>
-          </div>
-          <div class="skeleton-grid" aria-hidden="true">
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
           </div>
         </div>
         <ul class="article-list" id="home-articles"></ul>
@@ -214,12 +306,14 @@
 
   <footer class="site-footer" id="site-footer"></footer>
   <script src="assets/js/config.js"></script>
-  <script src="assets/js/i18n.js"></script>
-  <script src="assets/js/site.js"></script>
+  <script src="assets/js/i18n.js?v=m20"></script>
+  <script src="assets/js/pages-i18n.js?v=m20"></script>
+  <script src="assets/js/i18n-ar.js?v=m20"></script>
+  <script src="assets/js/site.js?v=m20"></script>
   <script src="assets/js/articles.js"></script>
   <script src="assets/js/issues.js"></script>
   <script src="assets/js/pages/aims.js"></script>
-  <script src="assets/js/editorial-agent.js"></script>
-  <script src="assets/js/chatbot.js"></script>
+  <script src="assets/js/editorial-agent.js?v=m18"></script>
+  <script src="assets/js/chatbot.js?v=m18"></script>
 </body>
 </html>

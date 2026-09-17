@@ -24,11 +24,11 @@ SHELL = """<!DOCTYPE html>
   <link rel="alternate" hreflang="zh" href="{canonical}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=m20" />
 </head>
 <body data-page="{page}">
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Перейти к содержанию</a>
   <header class="site-header" id="site-header"></header>
   <main id="main" class="page-main">
     <div class="container narrow-prose">
@@ -43,9 +43,11 @@ SHELL = """<!DOCTYPE html>
   </main>
   <footer class="site-footer" id="site-footer"></footer>
   <script src="assets/js/config.js"></script>
-  <script src="assets/js/i18n.js"></script>
-  <script src="assets/js/site.js"></script>
-  <script src="assets/js/chatbot.js"></script>
+  <script src="assets/js/i18n.js?v=m20"></script>
+  <script src="assets/js/pages-i18n.js?v=m20"></script>
+  <script src="assets/js/i18n-ar.js?v=m20"></script>
+  <script src="assets/js/site.js?v=m20"></script>
+  <script src="assets/js/chatbot.js?v=m18"></script>
   {extra_scripts}
 </body>
 </html>
@@ -817,7 +819,7 @@ POLICY_PAGES = [
         "Основной язык version of record — English.",
         """
         <p>Английская версия полного текста является основной версией научной публикации, если для конкретной статьи не указано иное. Переводы должны быть связаны с той же записью статьи и содержать указание на основной текст.</p>
-        <p>Русская и китайская версии могут содержать название, аннотацию, ключевые слова, сведения об авторах, научно-популярное резюме и перевод интерфейса.</p>
+        <p>Русская, китайская и арабская версии могут содержать название, аннотацию, ключевые слова, сведения об авторах, научно-популярное резюме и перевод интерфейса сайта.</p>
         """,
     ),
 ]
@@ -873,7 +875,7 @@ add(
     "",
     """
     <section class="prose-block">
-      <p>Используя сайт, вы соглашаетесь соблюдать редакционные политики и не загружать вредоносные или незаконные материалы. Контент политик и интерфейса может обновляться; актуальная версия публикуется на соответствующих страницах.</p>
+      <p>Используя сайт, вы соглашаетесь соблюдать редакционные политики и не загружать вредоносные или незаконные материалы. Контент политик и страниц сайта может обновляться; актуальная версия публикуется на соответствующих страницах.</p>
     </section>
     """,
 )
@@ -888,7 +890,7 @@ add(
     "",
     """
     <section class="prose-block">
-      <p>Сайт может использовать локальное хранилище браузера для языка интерфейса и черновиков форм. Сторонние рекламные трекеры не используются.</p>
+      <p>Сайт может использовать локальное хранилище браузера для языка сайта и черновиков форм. Сторонние рекламные трекеры не используются.</p>
     </section>
     """,
 )

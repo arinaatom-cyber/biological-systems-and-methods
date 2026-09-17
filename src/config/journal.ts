@@ -89,8 +89,8 @@ export type JournalConfig = {
   ojsEnabled: boolean;
   submissionsEnabled: boolean;
   doiInfrastructureActive: boolean;
-  languages: readonly ["en", "ru", "zh"];
-  defaultLanguage: "ru" | "en" | "zh";
+  languages: readonly ["en", "ru", "zh", "ar"];
+  defaultLanguage: "ru" | "en" | "zh" | "ar";
   recordLanguage: "en";
   formSubmitEnabled: boolean;
   auth: {
@@ -168,7 +168,7 @@ export const journal: JournalConfig = {
   conferenceEnabled: false,
   submissionsEnabled: true,
   doiInfrastructureActive: false,
-  languages: ["en", "ru", "zh"],
+  languages: ["en", "ru", "zh", "ar"],
   defaultLanguage: "ru",
   recordLanguage: "en",
   formSubmitEnabled: true,

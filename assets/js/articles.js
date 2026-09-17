@@ -24,6 +24,7 @@
 
   init();
   window.addEventListener("bs:langchange", () => {
+    syncPageTitle();
     if (filtersEl) buildFilters();
     paint();
   });
@@ -43,7 +44,14 @@
     }
     if (listEl) buildFilters();
     bindSearch();
+    syncPageTitle();
     paint();
+  }
+
+  function syncPageTitle() {
+    if (document.body?.dataset?.page !== "articles") return;
+    const name = window.BS_CONFIG?.journalName || "Biological Systems and Methods";
+    document.title = `${t("articles.title")} — ${name}`;
   }
 
   function t(key) {
@@ -99,11 +107,6 @@
               <div class="cta-row">
                 <a class="btn btn-primary" href="${escapeHtml(window.BS?.submitHref?.() || "submit.html")}">${escapeHtml(t("nav.submit"))}</a>
                 <a class="btn btn-ghost" href="article-types.html">${escapeHtml(t("home.articles.types"))}</a>
-              </div>
-              <div class="skeleton-grid" aria-hidden="true">
-                <div class="skeleton-card"></div>
-                <div class="skeleton-card"></div>
-                <div class="skeleton-card"></div>
               </div>
             </div>`;
         } else {
@@ -171,7 +174,7 @@
       return;
     }
 
-    const locale = lang() === "zh" ? "zh-CN" : lang() === "ru" ? "ru-RU" : "en-GB";
+    const locale = lang() === "zh" ? "zh-CN" : lang() === "ru" ? "ru-RU" : lang() === "ar" ? "ar" : "en-GB";
 
     target.innerHTML = items
       .map((article) => {

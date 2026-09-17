@@ -106,18 +106,16 @@
       if (btn.dataset.q) sendMessage(btn.dataset.q);
     });
 
-    window.addEventListener("bs:langchange", () => {
-      const el = document.querySelector(".chat-launcher-label");
-      if (el) el.textContent = label();
-    });
+    window.addEventListener("bs:langchange", applyChatLang);
+    applyChatLang();
 
     probeServer().then((online) => {
       state.serverOnline = online;
       const mode = document.getElementById("chat-mode-line");
       if (mode) {
         mode.textContent = online
-          ? "Полный режим · сервер онлайн"
-          : "Витринный режим · FAQ и текстовая проверка";
+          ? window.BSi18n?.t("chat.mode.online") || "Полный режим · сервер онлайн"
+          : window.BSi18n?.t("chat.mode.offline") || "Витринный режим · FAQ и текстовая проверка";
       }
       appendBubble("bot", Agent()?.welcome?.(online) || defaultWelcome(online));
     });
@@ -132,6 +130,23 @@
     } catch {
       return false;
     }
+  }
+
+  function applyChatLang() {
+    const el = document.querySelector(".chat-launcher-label");
+    if (el) el.textContent = label();
+    const mode = document.getElementById("chat-mode-line");
+    if (mode && state.serverOnline != null) {
+      mode.textContent = state.serverOnline
+        ? window.BSi18n?.t("chat.mode.online") || mode.textContent
+        : window.BSi18n?.t("chat.mode.offline") || mode.textContent;
+    }
+    const input = document.getElementById("chat-input");
+    if (input) input.placeholder = window.BSi18n?.t("chat.placeholder") || input.placeholder;
+    const send = document.getElementById("chat-send");
+    if (send) send.textContent = window.BSi18n?.t("chat.send") || send.textContent;
+    const msg = document.querySelector("label[for='chat-input']");
+    if (msg) msg.textContent = window.BSi18n?.t("chat.message") || msg.textContent;
   }
 
   function defaultWelcome(online) {
