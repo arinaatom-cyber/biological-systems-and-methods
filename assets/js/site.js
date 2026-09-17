@@ -142,49 +142,43 @@
           <div class="mf-formula">C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></div>
           <figcaption data-i18n="margin.glucose">глюкоза</figcaption>
         </figure>
+        <p class="mf-note mf-topic" data-i18n="margin.cell">клетка</p>
+        <p class="mf-note mf-method">LC–MS</p>
         <figure class="mf-item">
           <div class="mf-formula">H<sub>2</sub>N–CHR–COOH</div>
           <figcaption data-i18n="margin.aa">аминокислота</figcaption>
         </figure>
+        <p class="mf-note mf-topic" data-i18n="margin.genome">геном</p>
+        <p class="mf-note mf-method" data-i18n="margin.nmr">ЯМР</p>
         <figure class="mf-item">
           <div class="mf-formula">ATP</div>
-          <div class="mf-sub">C<sub>10</sub>H<sub>16</sub>N<sub>5</sub>O<sub>13</sub>P<sub>3</sub></div>
           <figcaption data-i18n="margin.atp">аденозинтрифосфат</figcaption>
         </figure>
-        <figure class="mf-item">
-          <div class="mf-formula">A=T · G≡C</div>
-          <figcaption data-i18n="margin.bases">пары оснований</figcaption>
-        </figure>
-        <figure class="mf-item">
-          <div class="mf-formula mf-formula-sm">v = V<sub>max</sub>[S]/(K<sub>m</sub>+[S])</div>
-          <figcaption data-i18n="margin.mm">Михаэлис–Ментен</figcaption>
-        </figure>
+        <p class="mf-note mf-method">ANOVA</p>
+        <p class="mf-note mf-topic" data-i18n="margin.protein">белок</p>
+        <p class="mf-note mf-method" data-i18n="margin.pcr">ПЦР</p>
       </div>
       <div class="page-margin-field-col is-right">
         <figure class="mf-item">
           <div class="mf-formula">ΔG = ΔH − TΔS</div>
           <figcaption data-i18n="margin.gibbs">энергия Гиббса</figcaption>
         </figure>
+        <p class="mf-note mf-topic" data-i18n="margin.membrane">мембрана</p>
+        <p class="mf-note mf-method">RNA-seq</p>
         <figure class="mf-item">
           <div class="mf-formula">R–CO–NH–R′</div>
           <figcaption data-i18n="margin.peptide">пептидная связь</figcaption>
         </figure>
+        <p class="mf-note mf-topic" data-i18n="margin.immunity">иммунитет</p>
+        <p class="mf-note mf-method">PCA</p>
         <figure class="mf-item">
           <div class="mf-formula">pH = −log<sub>10</sub>[H<sup>+</sup>]</div>
           <figcaption data-i18n="margin.ph">кислотность</figcaption>
         </figure>
-        <figure class="mf-item mf-item-icon">
-          <svg class="mf-svg" viewBox="0 0 40 36" width="38" height="34" fill="none" aria-hidden="true">
-            <polygon points="20,2 35,11 35,25 20,34 5,25 5,11" stroke="currentColor" stroke-width="1.15"/>
-            <polygon points="20,9 28.5,14 28.5,22 20,27 11.5,22 11.5,14" stroke="currentColor" stroke-width="1"/>
-          </svg>
-          <div class="mf-formula">C<sub>6</sub>H<sub>6</sub></div>
-          <figcaption data-i18n="margin.benzene">бензол</figcaption>
-        </figure>
-        <figure class="mf-item">
-          <div class="mf-formula">PO<sub>4</sub><sup>3−</sup></div>
-          <figcaption data-i18n="margin.phosphate">фосфат</figcaption>
-        </figure>
+        <p class="mf-note mf-method">t-test</p>
+        <p class="mf-note mf-topic" data-i18n="margin.metabolism">метаболизм</p>
+        <p class="mf-note mf-method">FDR</p>
+        <p class="mf-note mf-method">ELISA</p>
       </div>`;
       document.body.prepend(host);
     } catch (err) {
