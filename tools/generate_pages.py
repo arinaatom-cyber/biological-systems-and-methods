@@ -32,8 +32,8 @@ SHELL = """<!DOCTYPE html>
   <link rel="alternate" hreflang="zh" href="{canonical}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=m21" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Noto+Naskh+Arabic:wght@500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=m23" />
 </head>
 <body data-page="{page}">
   <a class="skip-link" href="#main" data-i18n="a11y.skip">Перейти к содержанию</a>
@@ -51,10 +51,11 @@ SHELL = """<!DOCTYPE html>
   </main>
   <footer class="site-footer" id="site-footer"></footer>
   <script src="assets/js/config.js"></script>
-  <script src="assets/js/i18n.js?v=m21"></script>
-  <script src="assets/js/pages-i18n.js?v=m21"></script>
-  <script src="assets/js/i18n-ar.js?v=m21"></script>
-  <script src="assets/js/site.js?v=m21"></script>
+  <script src="assets/js/i18n.js?v=m23"></script>
+  <script src="assets/js/pages-i18n.js?v=m23"></script>
+  <script src="assets/js/i18n-ar.js?v=m23"></script>
+  <script src="assets/js/i18n-prose.js?v=m23"></script>
+  <script src="assets/js/site.js?v=m23"></script>
   <script src="assets/js/chatbot.js?v=m18"></script>
   {extra_scripts}
 </body>
@@ -346,7 +347,7 @@ add(
     """
     <section id="article-types-root" class="types-grid"></section>
     """,
-    '<script src="assets/js/pages/article-types.js"></script>',
+    '<script src="assets/js/pages/article-types.js?v=m23"></script>',
 )
 
 add(
@@ -855,7 +856,7 @@ add(
     """
     <ol class="steps-list publication-steps" id="publication-steps"></ol>
     """,
-    '<script src="assets/js/pages/process.js"></script>',
+    '<script src="assets/js/pages/process.js?v=m23"></script>',
 )
 
 add(

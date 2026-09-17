@@ -6,7 +6,7 @@
   const ACRONYM = CFG.journalNameShort || CFG.journalAcronym || "BSM";
   window.BS = window.BS || {};
   window.BS.NAME = NAME;
-  const ASSET_V = "m21";
+  const ASSET_V = "m23";
   const t = (key) => window.BSi18n?.t(key) || key;
 
   function contactEmail() {
@@ -575,6 +575,35 @@
     };
   }
 
+  function hydrateProse() {
+    if (!PAGE || PAGE === "home") return;
+    const lang = window.BSi18n?.getLanguage?.() || "ru";
+    const root = window.BSPageI18n || {};
+    const block = root.prose?.[lang]?.[PAGE] || root.prose?.en?.[PAGE] || {};
+    const bodies = root.bodies?.[lang]?.[PAGE] || root.bodies?.en?.[PAGE] || [];
+    (block.h2 || []).forEach((text, i) => {
+      const el = document.querySelectorAll(".prose-block h2")[i];
+      if (el && text) el.textContent = text;
+    });
+    const listItems = document.querySelectorAll(".prose-block li");
+    (block.li || []).forEach((text, i) => {
+      const el = listItems[i];
+      if (!el || !text || el.querySelector("a, input, textarea, select, button")) return;
+      el.textContent = text;
+    });
+    const paras = [];
+    document.querySelectorAll(".prose-block p").forEach((p) => {
+      if (p.classList.contains("form-note") || p.classList.contains("apc-figure")) return;
+      if (p.closest("li, .policy-card, .apc-panel")) return;
+      if (p.querySelector("a, input, textarea, select, button, [data-apc]")) return;
+      paras.push(p);
+    });
+    paras.forEach((p, i) => {
+      const text = (block.p && block.p[i]) || bodies[i];
+      if (text) p.textContent = text;
+    });
+  }
+
   function hydratePageChrome() {
     const { headers, cards, extras } = pagePack();
     const meta = headers[PAGE];
@@ -596,14 +625,16 @@
     }
 
     document.querySelectorAll(".link-list a[href]").forEach((a) => {
-      const href = (a.getAttribute("href") || "").split("#")[0];
-      const copy = cards[href];
+      const raw = a.getAttribute("href") || "";
+      const href = raw.split("#")[0];
+      const copy = cards[raw] || cards[href];
       if (copy?.title) a.textContent = copy.title;
     });
 
     document.querySelectorAll("a.policy-card[href]").forEach((card) => {
-      const href = (card.getAttribute("href") || "").split("#")[0];
-      const copy = cards[href];
+      const raw = card.getAttribute("href") || "";
+      const href = raw.split("#")[0];
+      const copy = cards[raw] || cards[href];
       if (!copy) return;
       const h2 = card.querySelector("h2");
       const p = card.querySelector("p");
@@ -746,11 +777,27 @@
         if (meta.title) i18n[lang][`page.${page}.title`] = meta.title;
       }
     }
-    if (!root.bodies) return;
-    for (const lang of Object.keys(root.bodies)) {
+    if (root.bodies) {
+      for (const lang of Object.keys(root.bodies)) {
+        i18n[lang] = i18n[lang] || {};
+        for (const [page, paras] of Object.entries(root.bodies[lang] || {})) {
+          (paras || []).forEach((text, i) => {
+            if (text) i18n[lang][`page.${page}.p${i}`] = text;
+          });
+        }
+      }
+    }
+    if (!root.prose) return;
+    for (const lang of Object.keys(root.prose)) {
       i18n[lang] = i18n[lang] || {};
-      for (const [page, paras] of Object.entries(root.bodies[lang] || {})) {
-        (paras || []).forEach((text, i) => {
+      for (const [page, block] of Object.entries(root.prose[lang] || {})) {
+        (block.h2 || []).forEach((text, i) => {
+          if (text) i18n[lang][`page.${page}.h2.${i}`] = text;
+        });
+        (block.li || []).forEach((text, i) => {
+          if (text) i18n[lang][`page.${page}.li.${i}`] = text;
+        });
+        (block.p || []).forEach((text, i) => {
           if (text) i18n[lang][`page.${page}.p${i}`] = text;
         });
       }
@@ -765,9 +812,23 @@
     if (h1) h1.setAttribute("data-i18n", `page.${PAGE}.h1`);
     const lede = document.querySelector(".page-header .page-lede");
     if (lede) lede.setAttribute("data-i18n", `page.${PAGE}.lede`);
-    document.querySelectorAll(".prose-block > p").forEach((p, i) => {
-      if (p.children.length) return;
-      p.setAttribute("data-i18n", `page.${PAGE}.p${i}`);
+    document.querySelectorAll(".prose-block h2").forEach((el, i) => {
+      if (el.hasAttribute("data-i18n")) return;
+      el.setAttribute("data-i18n", `page.${PAGE}.h2.${i}`);
+    });
+    let pIndex = 0;
+    document.querySelectorAll(".prose-block > p, .prose-block p").forEach((p) => {
+      if (p.hasAttribute("data-i18n")) return;
+      if (p.classList.contains("form-note") || p.classList.contains("apc-figure")) return;
+      if (p.closest("li, .policy-card, .type-card, .scope-card, .apc-panel")) return;
+      if (p.querySelector("a, input, textarea, select, button, svg, img, [data-apc]")) return;
+      p.setAttribute("data-i18n", `page.${PAGE}.p${pIndex}`);
+      pIndex += 1;
+    });
+    document.querySelectorAll(".prose-block li").forEach((el, i) => {
+      if (el.hasAttribute("data-i18n")) return;
+      if (el.querySelector("a, input, textarea, select, button, svg, img")) return;
+      el.setAttribute("data-i18n", `page.${PAGE}.li.${i}`);
     });
   }
 
@@ -792,6 +853,7 @@
   function applyLanguage(lang, persist) {
     flattenPageI18n();
     const packs = window.BSi18n?.STRINGS || {};
+    if (lang === "ar") packs.ar = packs.ar || {};
     if (lang && !packs[lang]) {
       lang = packs[CFG.defaultLanguage] ? CFG.defaultLanguage : packs.en ? "en" : "ru";
     }
@@ -813,6 +875,7 @@
     tagPageChrome();
     window.BSi18n.setLanguage(lang);
     hydratePageChrome();
+    hydrateProse();
     markLangSwitcher();
     window.dispatchEvent(new CustomEvent("bs:langchange", { detail: { lang } }));
   }

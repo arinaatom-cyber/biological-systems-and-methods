@@ -822,17 +822,24 @@
   }
 
   function pageLookup(lng, key) {
-    const m = /^page\.([^.]+)\.(kicker|h1|lede|title|p)(\d*)$/.exec(key || "");
+    const m = /^page\.([^.]+)\.(kicker|h1|lede|title|p|h2|li)(?:\.(\d+)|(\d+))?$/.exec(key || "");
     if (!m) return undefined;
     const page = m[1];
     const field = m[2];
-    const idx = m[3];
+    const idx = m[3] != null && m[3] !== "" ? m[3] : m[4];
     const root = window.BSPageI18n;
     if (!root) return undefined;
-    if (field === "p") {
-      const paras = root.bodies?.[lng]?.[page] || root.bodies?.en?.[page];
-      if (!paras || idx === "") return undefined;
-      return paras[Number(idx)];
+    if (field === "p" || field === "h2" || field === "li") {
+      if (idx == null || idx === "") return undefined;
+      const n = Number(idx);
+      if (field === "p") {
+        const fromProse = root.prose?.[lng]?.[page]?.p || root.prose?.en?.[page]?.p;
+        if (fromProse?.[n] != null) return fromProse[n];
+        const paras = root.bodies?.[lng]?.[page] || root.bodies?.en?.[page];
+        return paras?.[n];
+      }
+      const list = root.prose?.[lng]?.[page]?.[field] || root.prose?.en?.[page]?.[field];
+      return list?.[n];
     }
     const header = root.headers?.[lng]?.[page] || root.headers?.en?.[page];
     return header?.[field];
