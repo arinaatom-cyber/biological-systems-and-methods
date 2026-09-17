@@ -30,13 +30,15 @@
         const name = data.user.name || data.user.email || data.user.orcid || "Аккаунт";
         slot.innerHTML = `
           <a href="account.html" class="nav-link-auth" title="${escapeHtml(name)}">${escapeHtml(shortName(name))}</a>
-          <button type="button" class="nav-link-auth nav-link-quiet" id="auth-logout-btn">Выйти</button>`;
+          <button type="button" class="nav-link-auth nav-link-quiet" id="auth-logout-btn">${window.BSi18n?.t("nav.logout") || "Sign out"}</button>`;
         document.getElementById("auth-logout-btn")?.addEventListener("click", logout);
       } else {
-        slot.innerHTML = `<a href="login.html" class="nav-link-auth">Войти</a>`;
+        const label = window.BSi18n?.t("nav.login") || "Sign in";
+        slot.innerHTML = `<a href="login.html" class="nav-link-auth" data-i18n="nav.login">${label}</a>`;
       }
     } catch {
-      slot.innerHTML = `<a href="login.html" class="nav-link-auth">Войти</a>`;
+      const label = window.BSi18n?.t("nav.login") || "Sign in";
+      slot.innerHTML = `<a href="login.html" class="nav-link-auth" data-i18n="nav.login">${label}</a>`;
     }
   }
 

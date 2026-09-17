@@ -16,6 +16,7 @@
       "type.volume.note":
         "Рекомендуемый объём определяется содержанием работы и требованиями выбранного типа публикации.",
       "nav.login": "Войти",
+      "nav.logout": "Выйти",
       "submit.ojs.banner": "Подача рукописей ведётся в системе OJS. Локальная форма — временный контур до полного запуска.",
       "submit.ojs.cta": "Перейти к подаче в OJS",
       "nav.submit": "Подать рукопись",
@@ -281,6 +282,7 @@
       "type.volume.note":
         "Recommended length is determined by the content and the requirements of the selected article type.",
       "nav.login": "Sign in",
+      "nav.logout": "Sign out",
       "submit.ojs.banner": "Manuscript submission is handled in OJS. The local form is a temporary pathway until OJS is fully live.",
       "submit.ojs.cta": "Continue to OJS submission",
       "nav.submit": "Submit manuscript",
@@ -545,6 +547,7 @@
       "type.field.review": "同行评议",
       "type.volume.note": "建议篇幅取决于研究内容与所选文章类型的要求。",
       "nav.login": "登录",
+      "nav.logout": "退出",
       "submit.ojs.banner": "稿件提交通过 OJS 系统进行。本地表单为上线前的临时通道。",
       "submit.ojs.cta": "前往 OJS 投稿",
       "nav.submit": "投稿",
@@ -801,6 +804,12 @@
   };
 
   let lang = "ru";
+  try {
+    const saved = localStorage.getItem("bs_lang");
+    if (saved && /^(ru|en|zh|ar)$/.test(saved)) lang = saved;
+  } catch {
+    /* ignore */
+  }
 
   function getLanguage() {
     return lang;
@@ -812,31 +821,63 @@
     return val.replaceAll("{license}", license);
   }
 
+  function pageLookup(lng, key) {
+    const m = /^page\.([^.]+)\.(kicker|h1|lede|title|p)(\d*)$/.exec(key || "");
+    if (!m) return undefined;
+    const page = m[1];
+    const field = m[2];
+    const idx = m[3];
+    const root = window.BSPageI18n;
+    if (!root) return undefined;
+    if (field === "p") {
+      const paras = root.bodies?.[lng]?.[page] || root.bodies?.en?.[page];
+      if (!paras || idx === "") return undefined;
+      return paras[Number(idx)];
+    }
+    const header = root.headers?.[lng]?.[page] || root.headers?.en?.[page];
+    return header?.[field];
+  }
+
+  function lookup(key) {
+    const direct = STRINGS[lang]?.[key];
+    if (direct != null) return direct;
+    const fromPage = pageLookup(lang, key);
+    if (fromPage != null) return fromPage;
+    if (STRINGS.en?.[key] != null) return STRINGS.en[key];
+    return pageLookup("en", key);
+  }
+
   function setLanguage(next) {
-    if (!STRINGS[next]) return;
-    lang = next;
-    document.documentElement.lang = next === "zh" ? "zh-CN" : next;
-    document.documentElement.dir = next === "ar" ? "rtl" : "ltr";
+    if (next && !STRINGS[next] && next !== "ar") return;
+    if (next && STRINGS[next]) lang = next;
+    else if (next === "ar" && (STRINGS.ar || window.BSPageI18n?.headers?.ar)) {
+      if (!STRINGS.ar) STRINGS.ar = {};
+      lang = "ar";
+    } else if (!STRINGS[lang]) {
+      lang = STRINGS.ru ? "ru" : "en";
+    }
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       if (el.querySelector("input, textarea, select, button, svg, img")) return;
       const key = el.getAttribute("data-i18n");
-      const val = STRINGS[lang]?.[key];
+      const val = lookup(key);
       if (val != null) el.textContent = interpolate(val);
     });
     document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
       const key = el.getAttribute("data-i18n-placeholder");
-      const val = STRINGS[lang]?.[key];
+      const val = lookup(key);
       if (val != null) el.setAttribute("placeholder", interpolate(val));
     });
     document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
       const key = el.getAttribute("data-i18n-aria");
-      const val = STRINGS[lang]?.[key];
+      const val = lookup(key);
       if (val != null) el.setAttribute("aria-label", interpolate(val));
     });
   }
 
   function t(key) {
-    return interpolate(STRINGS[lang]?.[key] ?? STRINGS.en?.[key] ?? key);
+    return interpolate(lookup(key) ?? key);
   }
 
   window.BSi18n = { t, setLanguage, getLanguage, STRINGS };

@@ -8,6 +8,14 @@ SHELL = """<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    try {
+      var __bsLang = localStorage.getItem("bs_lang") || "ru";
+      if (!/^(ru|en|zh|ar)$/.test(__bsLang)) __bsLang = "ru";
+      document.documentElement.lang = __bsLang === "zh" ? "zh-CN" : __bsLang;
+      document.documentElement.dir = __bsLang === "ar" ? "rtl" : "ltr";
+    } catch (e) {}
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content="{description}" />
@@ -25,7 +33,7 @@ SHELL = """<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=m20" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=m21" />
 </head>
 <body data-page="{page}">
   <a class="skip-link" href="#main" data-i18n="a11y.skip">Перейти к содержанию</a>
@@ -43,10 +51,10 @@ SHELL = """<!DOCTYPE html>
   </main>
   <footer class="site-footer" id="site-footer"></footer>
   <script src="assets/js/config.js"></script>
-  <script src="assets/js/i18n.js?v=m20"></script>
-  <script src="assets/js/pages-i18n.js?v=m20"></script>
-  <script src="assets/js/i18n-ar.js?v=m20"></script>
-  <script src="assets/js/site.js?v=m20"></script>
+  <script src="assets/js/i18n.js?v=m21"></script>
+  <script src="assets/js/pages-i18n.js?v=m21"></script>
+  <script src="assets/js/i18n-ar.js?v=m21"></script>
+  <script src="assets/js/site.js?v=m21"></script>
   <script src="assets/js/chatbot.js?v=m18"></script>
   {extra_scripts}
 </body>

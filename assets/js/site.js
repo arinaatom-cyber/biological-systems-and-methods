@@ -6,6 +6,7 @@
   const ACRONYM = CFG.journalNameShort || CFG.journalAcronym || "BSM";
   window.BS = window.BS || {};
   window.BS.NAME = NAME;
+  const ASSET_V = "m21";
   const t = (key) => window.BSi18n?.t(key) || key;
 
   function contactEmail() {
@@ -107,6 +108,7 @@
       }
     })();
     bindLanguage();
+    bindInternalLinks();
     applyLanguage(saved, false);
     mountMarginField();
     mountPageBanner();
@@ -115,7 +117,7 @@
     // Auth header slot (login.html / account.html load auth.js themselves)
     if (!document.querySelector('script[src*="auth.js"]')) {
       const s = document.createElement("script");
-      s.src = "assets/js/auth.js";
+      s.src = "assets/js/auth.js?v=m21";
       s.defer = true;
       document.body.appendChild(s);
     } else {
@@ -229,7 +231,7 @@
       .map((item) => {
         const ext = item.external || /^https?:\/\//i.test(item.href || "");
         const target = ext ? ' target="_blank" rel="noopener"' : "";
-        return `<a href="${item.href}" class="${!ext && item.id === PAGE ? "is-active" : ""}" data-i18n="${item.labelKey}"${target}>${t(item.labelKey)}</a>`;
+        return `<a href="${pageHref(item.href)}" class="${!ext && item.id === PAGE ? "is-active" : ""}" data-i18n="${item.labelKey}"${target}>${t(item.labelKey)}</a>`;
       })
       .join("");
     return `
@@ -284,7 +286,7 @@
     ];
 
     const confLink = CFG.conferenceEnabled
-      ? `<a href="conferences.html" class="${PAGE === "conferences" ? "is-active" : ""}" data-i18n="nav.conferences">${t("nav.conferences")}</a>`
+      ? `<a href="${pageHref("conferences.html")}" class="${PAGE === "conferences" ? "is-active" : ""}" data-i18n="nav.conferences">${t("nav.conferences")}</a>`
       : "";
     const sub = submitTargetAttrs();
 
@@ -583,9 +585,9 @@
       const kicker = document.querySelector(".page-kicker");
       const h1 = document.querySelector(".page-header h1");
       const lede = document.querySelector(".page-header .page-lede");
-      if (kicker && !kicker.hasAttribute("data-i18n") && meta.kicker) kicker.textContent = meta.kicker;
-      if (h1 && !h1.hasAttribute("data-i18n") && meta.h1) h1.textContent = meta.h1;
-      if (lede && !lede.hasAttribute("data-i18n") && meta.lede) lede.textContent = meta.lede;
+      if (kicker && meta.kicker) kicker.textContent = meta.kicker;
+      if (h1 && meta.h1) h1.textContent = meta.h1;
+      if (lede && meta.lede) lede.textContent = meta.lede;
       if (meta.title && PAGE !== "home") {
         document.title = `${meta.title} — ${NAME}`;
       }
@@ -725,8 +727,75 @@
     }
   }
 
+  function pageHref(href) {
+    if (!href || /^(https?:|mailto:|tel:|#|javascript:)/i.test(href)) return href;
+    if (/[?&]v=/.test(href)) return href;
+    return href.includes("?") ? `${href}&v=${ASSET_V}` : `${href}?v=${ASSET_V}`;
+  }
+
+  function flattenPageI18n() {
+    const i18n = window.BSi18n?.STRINGS;
+    const root = window.BSPageI18n;
+    if (!i18n || !root?.headers) return;
+    for (const lang of Object.keys(root.headers)) {
+      i18n[lang] = i18n[lang] || {};
+      for (const [page, meta] of Object.entries(root.headers[lang] || {})) {
+        if (meta.kicker) i18n[lang][`page.${page}.kicker`] = meta.kicker;
+        if (meta.h1) i18n[lang][`page.${page}.h1`] = meta.h1;
+        if (meta.lede) i18n[lang][`page.${page}.lede`] = meta.lede;
+        if (meta.title) i18n[lang][`page.${page}.title`] = meta.title;
+      }
+    }
+    if (!root.bodies) return;
+    for (const lang of Object.keys(root.bodies)) {
+      i18n[lang] = i18n[lang] || {};
+      for (const [page, paras] of Object.entries(root.bodies[lang] || {})) {
+        (paras || []).forEach((text, i) => {
+          if (text) i18n[lang][`page.${page}.p${i}`] = text;
+        });
+      }
+    }
+  }
+
+  function tagPageChrome() {
+    if (!PAGE || PAGE === "home") return;
+    const kicker = document.querySelector(".page-kicker");
+    if (kicker) kicker.setAttribute("data-i18n", `page.${PAGE}.kicker`);
+    const h1 = document.querySelector(".page-header h1");
+    if (h1) h1.setAttribute("data-i18n", `page.${PAGE}.h1`);
+    const lede = document.querySelector(".page-header .page-lede");
+    if (lede) lede.setAttribute("data-i18n", `page.${PAGE}.lede`);
+    document.querySelectorAll(".prose-block > p").forEach((p, i) => {
+      if (p.children.length) return;
+      p.setAttribute("data-i18n", `page.${PAGE}.p${i}`);
+    });
+  }
+
+  function bindInternalLinks() {
+    if (bindInternalLinks.bound) return;
+    bindInternalLinks.bound = true;
+    document.addEventListener("click", (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target.closest("a[href]");
+      if (!a || a.getAttribute("target") === "_blank" || a.hasAttribute("download")) return;
+      if (a.closest("[data-lang]")) return;
+      const href = a.getAttribute("href");
+      if (!href || /^(https?:|mailto:|tel:|#|javascript:)/i.test(href)) return;
+      if (!/\.html(\?|#|$)/.test(href)) return;
+      const next = pageHref(href);
+      if (next === href) return;
+      e.preventDefault();
+      location.href = next;
+    });
+  }
+
   function applyLanguage(lang, persist) {
-    if (!lang || !window.BSi18n?.STRINGS?.[lang]) return;
+    flattenPageI18n();
+    const packs = window.BSi18n?.STRINGS || {};
+    if (lang && !packs[lang]) {
+      lang = packs[CFG.defaultLanguage] ? CFG.defaultLanguage : packs.en ? "en" : "ru";
+    }
+    if (!lang || !packs[lang]) return;
     window.BSi18n.setLanguage(lang);
     if (persist) {
       try {
@@ -737,9 +806,11 @@
     }
     document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    tagPageChrome();
     mountShell();
     hydrateConfig();
     hydrateApc();
+    tagPageChrome();
     window.BSi18n.setLanguage(lang);
     hydratePageChrome();
     markLangSwitcher();

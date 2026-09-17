@@ -447,5 +447,227 @@
     },
   };
 
-  window.BSPageI18n = { headers, cards, extras };
+  const bodies = {
+    ru: {
+      "about": [
+        "Biological Systems and Methods публикует оригинальные исследования, методы, обзоры, отрицательные, нулевые и неожиданные результаты в области наук о жизни. Редакционные решения принимаются научными редакторами. Автоматизированные инструменты используются только для технической и языковой поддержки."
+      ],
+      "accessibility": [
+        "Если страница недоступна, напишите координатору — мы исправим проблему."
+      ],
+      "advertising": [
+        "Любые будущие партнёрские материалы будут явно отделены от редакционного контента. Спонсорство не влияет на принятие или отклонение рукописей."
+      ],
+      "aims": [
+        "Журнал объединяет экспериментальные, вычислительные и методологические работы и поддерживает публикацию как положительных, так и методологически обоснованных отрицательных результатов."
+      ],
+      "apc": [
+        "или",
+        "Единый APC применяется независимо от академического статуса автора. Политика полного и частичного освобождения от оплаты будет опубликована отдельно.",
+        "Планируемая структура:",
+        "Заявки на освобождение от оплаты начнут рассматриваться после утверждения соответствующей политики."
+      ],
+      "confidentiality": [
+        "Редакторы и рецензенты не передают рукописи третьим лицам и не используют их содержание в собственных интересах. Загрузка в открытые ИИ-сервисы без гарантий конфиденциальности запрещена."
+      ],
+      "conflicts": [
+        "Авторы, редакторы и рецензенты декларируют финансовые, институциональные, персональные и иные отношения, которые могут повлиять на оценку рукописи. При конфликте редактор или рецензент отстраняется от работы с материалом."
+      ],
+      "cookies": [
+        "Сайт может использовать локальное хранилище браузера для языка сайта и черновиков форм. Сторонние рекламные трекеры не используются."
+      ],
+      "corrections": [
+        "Каждая новая версия связывается с исходной статьёй. В структуре статьи предусмотрены поля: version, correctionHistory, retractionStatus, expressionOfConcern, publicationHistory."
+      ],
+      "duplicate-publication": [
+        "Предыдущие публикации (включая препринты) должны быть раскрыты. Переводы и вторичные публикации допускаются только при прозрачной связи с исходной записью и согласии правообладателей."
+      ],
+      "editorial-independence": [
+        "Издатель и спонсоры не вмешиваются в оценку рукописей. APC и коммерческие отношения не определяют исход рецензирования."
+      ],
+      "editors-guide": [
+        "APC не влияет на редакционное решение."
+      ],
+      "image-integrity": [
+        "Допустимы минимальные корректировки яркости/контраста, применяемые ко всему изображению и описанные в методах. Недопустимы выборочное усиление, клонирование, сокрытие и необоснованная сборка панелей."
+      ],
+      "language-policy": [
+        "Английская версия полного текста является основной версией научной публикации, если для конкретной статьи не указано иное. Переводы должны быть связаны с той же записью статьи и содержать указание на основной текст.",
+        "Русская, китайская и арабская версии могут содержать название, аннотацию, ключевые слова, сведения об авторах, научно-популярное резюме и перевод интерфейса сайта."
+      ],
+      "misconduct": [
+        "К нарушениям относятся фабрикация и фальсификация данных, плагиат, манипуляции с изображениями, недобросовестное авторство и сокрытие существенных конфликтов интересов. При подтверждении нарушения возможны отклонение, исправление, отзыв статьи и уведомление учреждения."
+      ],
+      "negative-results": [
+        "Само по себе отсутствие статистической значимости не является достаточным основанием для публикации."
+      ],
+      "open-access": [
+        "Biological Systems and Methods публикует материалы в модели открытого доступа. После публикации статьи читатели получают свободный доступ к полному тексту без подписки.",
+        "Подача и рецензирование бесплатны. Статья Processing Charge (APC) взимается только после принятия рукописи."
+      ],
+      "plagiarism": [
+        "Заимствования должны быть корректно процитированы. Существенное повторное использование собственного текста без указания источника может рассматриваться как нарушение."
+      ],
+      "preprint": [
+        "Авторы могут размещать рукопись на препринт-сервере до или во время рассмотрения. Ссылка на препринт указывается при подаче и связывается со статьёй после публикации."
+      ],
+      "privacy": [
+        "Данные форм подачи и заявок используются для рассмотрения рукописей и обращений. Рукописи не размещаются в публичных каталогах сайта до публикации. Запросы об удалении черновиков и персональных данных направляйте на email координатора."
+      ],
+      "publication-ethics": [
+        "Журнал ожидает от авторов, редакторов и рецензентов честности, прозрачности и уважения к правам участников исследований. Подробные разделы:"
+      ],
+      "terms": [
+        "Используя сайт, вы соглашаетесь соблюдать редакционные политики и не загружать вредоносные или незаконные материалы. Контент политик и страниц сайта может обновляться; актуальная версия публикуется на соответствующих страницах."
+      ],
+    },
+    en: {
+      "about": [
+        "Biological Systems and Methods publishes original research, methods, reviews, and negative, null and unexpected results in the life sciences. Editorial decisions are made by scientific editors. Automated tools are used only for technical and language support."
+      ],
+      "accessibility": [
+        "The site uses semantic markup, keyboard navigation and a visible focus state."
+      ],
+      "advertising": [
+        "Advertising copy, if introduced later, will be kept separate from editorial decisions. Sponsorship does not influence the evaluation of manuscripts."
+      ],
+      "aims": [
+        "The journal brings together experimental, computational and methodological work and supports publication of both positive results and methodologically sound negative results."
+      ],
+      "apc": [
+        "or",
+        "The APC rate is the same regardless of the author’s academic status. Ability to pay is not considered in the scientific evaluation of a manuscript.",
+        "Waiver policy:",
+        "A waiver policy will be published only after the full editorial and legal model of the journal is confirmed."
+      ],
+      "confidentiality": [
+        "Manuscripts and reviewer reports are confidential and must not be used for personal or competing purposes. Sharing materials with AI systems without editorial permission is not allowed."
+      ],
+      "conflicts": [
+        "Authors, editors and reviewers must disclose financial, institutional, personal and other relationships that could influence the work. All relevant conflicts are published with the article."
+      ],
+      "cookies": [
+        "The site may use essential technical cookies for language choice and form drafts. Tracking cookies are not used."
+      ],
+      "corrections": [
+        "The journal issues corrections and retractions when required. The record includes version, correctionHistory, retractionStatus, expressionOfConcern and publicationHistory."
+      ],
+      "duplicate-publication": [
+        "Duplicate publication of the same results is not allowed. Overlap with previous work must be disclosed and cited, with a clear statement of what is new."
+      ],
+      "editorial-independence": [
+        "Acceptance and rejection do not depend on the ability to pay. APC and commercial interests do not determine editorial decisions."
+      ],
+      "editors-guide": [
+        "APC does not influence the editorial decision."
+      ],
+      "image-integrity": [
+        "Figures must remain an accurate record of the original data. Cropping, contrast and labelling must not mislead. Splicing, duplication and inappropriate manipulation are not allowed."
+      ],
+      "language-policy": [
+        "The English full text is the version of record unless a specific article states otherwise. Translations must be linked to the same article record and point to the primary text.",
+        "Russian, Chinese and Arabic versions may include the title, abstract, keywords, author details, a plain-language summary and the website interface translation."
+      ],
+      "misconduct": [
+        "The journal investigates fabrication and falsification of data, plagiarism, citation manipulation, undisclosed conflicts and other breaches of publication ethics."
+      ],
+      "negative-results": [
+        "Absence of a statistically significant effect is not, by itself, a reason to accept or reject a manuscript."
+      ],
+      "open-access": [
+        "Biological Systems and Methods publishes in an open-access model. After publication, readers have free access to the full text without a subscription.",
+        "Submission and peer review are free of charge. The article processing charge (APC) is collected only after acceptance."
+      ],
+      "plagiarism": [
+        "Submitted texts are checked for originality. Inappropriate reuse of text, including uncited self-plagiarism, is not allowed."
+      ],
+      "preprint": [
+        "Authors may post a preprint before or during review. The preprint link must be disclosed at submission and in the article metadata."
+      ],
+      "privacy": [
+        "Account and submission data are used for editorial work and support. They are not sold or transferred to third parties for advertising. Forms do not fake a successful send."
+      ],
+      "publication-ethics": [
+        "The journal follows internationally recognised principles of authorship, originality, research ethics and correction of the published record. Main rules:"
+      ],
+      "terms": [
+        "Site materials, unless an article licence states otherwise, must not be presented as official journal decisions. Authors retain rights to their manuscripts; published articles follow the stated licence."
+      ],
+    },
+    zh: {
+      "about": [
+        "Biological Systems and Methods 发表生命科学领域的原创研究、方法、综述以及阴性、零结果与意外结果。编辑决定由科学编辑作出。自动化工具仅用于技术与语言支持。"
+      ],
+      "accessibility": [
+        "网站采用语义标记、键盘导航与可见焦点。"
+      ],
+      "advertising": [
+        "若日后引入广告，将与编辑决定分开。赞助不影响稿件评价。"
+      ],
+      "aims": [
+        "本刊汇集实验、计算与方法学研究，并支持发表阳性结果以及方法学上可靠的阴性结果。"
+      ],
+      "apc": [
+        "或",
+        "APC 费率与作者学术身份无关。支付能力不纳入稿件的科学评价。",
+        "减免政策：",
+        "减免政策将在期刊完整的编辑与法律模式确认后公布。"
+      ],
+      "confidentiality": [
+        "稿件与审稿意见保密，不得用于个人或竞争目的。未经编辑许可，不得将材料提供给人工智能系统。"
+      ],
+      "conflicts": [
+        "作者、编辑与审稿人须披露可能影响工作的财务、机构、个人及其他关系。相关利益冲突将随文章公布。"
+      ],
+      "cookies": [
+        "网站可能使用必要的技术性 cookie 以保存语言选择与表单草稿。不使用跟踪 cookie。"
+      ],
+      "corrections": [
+        "必要时期刊发布更正与撤稿。记录包括 version、correctionHistory、retractionStatus、expressionOfConcern 与 publicationHistory。"
+      ],
+      "duplicate-publication": [
+        "同一结果不得重复发表。与既有工作的重叠必须披露并引用，并说明新贡献。"
+      ],
+      "editorial-independence": [
+        "录用与拒稿不取决于支付能力。APC 与商业利益不决定编辑决定。"
+      ],
+      "editors-guide": [
+        "APC 不影响编辑决定。"
+      ],
+      "image-integrity": [
+        "图件必须如实反映原始数据。裁剪、对比度与标注不得误导。不允许拼接、重复使用与不当处理。"
+      ],
+      "language-policy": [
+        "除非某篇文章另有说明，英文全文为正式版本。译文须链接至同一文章记录并指向正文。",
+        "俄文、中文与阿拉伯文版本可包含题名、摘要、关键词、作者信息、科普摘要及网站界面译文。"
+      ],
+      "misconduct": [
+        "本刊调查数据伪造与篡改、剽窃、引用操纵、未披露的利益冲突及其他出版伦理违规。"
+      ],
+      "negative-results": [
+        "缺乏统计学显著效应本身不是录用或拒稿的理由。"
+      ],
+      "open-access": [
+        "Biological Systems and Methods 采用开放获取模式。发表后读者可免费阅读全文，无需订阅。",
+        "投稿与审稿免费。文章处理费（APC）仅在录用后收取。"
+      ],
+      "plagiarism": [
+        "来稿将检查原创性。不允许不当重复使用文本，包括未注明的自我剽窃。"
+      ],
+      "preprint": [
+        "作者可在审稿前或审稿期间发布预印本。投稿时及文章元数据中须披露预印本链接。"
+      ],
+      "privacy": [
+        "账户与投稿数据用于编辑工作与支持，不出售或转让给第三方用于广告。表单不会伪造提交成功。"
+      ],
+      "publication-ethics": [
+        "本刊遵循国际公认的作者贡献、原创性、研究伦理与更正已发表记录的原则。主要规则："
+      ],
+      "terms": [
+        "除非文章许可另有规定，网站材料不得被表述为期刊的正式决定。作者保留稿件权利；已发表文章遵循所载许可。"
+      ],
+    },
+  };
+
+  window.BSPageI18n = { headers, cards, extras, bodies };
 })();

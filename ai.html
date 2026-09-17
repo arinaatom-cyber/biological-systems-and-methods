@@ -2,6 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    try {
+      var __bsLang = localStorage.getItem("bs_lang") || "ru";
+      if (!/^(ru|en|zh|ar)$/.test(__bsLang)) __bsLang = "ru";
+      document.documentElement.lang = __bsLang === "zh" ? "zh-CN" : __bsLang;
+      document.documentElement.dir = __bsLang === "ar" ? "rtl" : "ltr";
+    } catch (e) {}
+  </script>
   <meta http-equiv="refresh" content="0; url=ai-policy.html" />
   <link rel="canonical" href="ai-policy.html" />
   <title>Перенаправление — Политика ИИ</title>
