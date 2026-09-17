@@ -104,6 +104,7 @@
     })();
     if (window.BSi18n) window.BSi18n.setLanguage(saved);
     mountShell();
+    mountMarginField();
     hydrateConfig();
     hydrateApc();
     bindLanguage();
@@ -127,6 +128,68 @@
     if (headerHost) headerHost.innerHTML = renderHeader();
     if (footerHost) footerHost.innerHTML = renderFooter();
     bindHeader();
+  }
+
+  function mountMarginField() {
+    try {
+      if (document.querySelector(".page-margin-field")) return;
+      const host = document.createElement("div");
+      host.className = "page-margin-field";
+      host.setAttribute("aria-hidden", "true");
+    host.innerHTML = `
+      <div class="page-margin-field-col is-left">
+        <figure class="mf-item">
+          <div class="mf-formula">C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></div>
+          <figcaption data-i18n="margin.glucose">глюкоза</figcaption>
+        </figure>
+        <figure class="mf-item">
+          <div class="mf-formula">H<sub>2</sub>N–CHR–COOH</div>
+          <figcaption data-i18n="margin.aa">аминокислота</figcaption>
+        </figure>
+        <figure class="mf-item">
+          <div class="mf-formula">ATP</div>
+          <div class="mf-sub">C<sub>10</sub>H<sub>16</sub>N<sub>5</sub>O<sub>13</sub>P<sub>3</sub></div>
+          <figcaption data-i18n="margin.atp">аденозинтрифосфат</figcaption>
+        </figure>
+        <figure class="mf-item">
+          <div class="mf-formula">A=T · G≡C</div>
+          <figcaption data-i18n="margin.bases">пары оснований</figcaption>
+        </figure>
+        <figure class="mf-item">
+          <div class="mf-formula mf-formula-sm">v = V<sub>max</sub>[S]/(K<sub>m</sub>+[S])</div>
+          <figcaption data-i18n="margin.mm">Михаэлис–Ментен</figcaption>
+        </figure>
+      </div>
+      <div class="page-margin-field-col is-right">
+        <figure class="mf-item">
+          <div class="mf-formula">ΔG = ΔH − TΔS</div>
+          <figcaption data-i18n="margin.gibbs">энергия Гиббса</figcaption>
+        </figure>
+        <figure class="mf-item">
+          <div class="mf-formula">R–CO–NH–R′</div>
+          <figcaption data-i18n="margin.peptide">пептидная связь</figcaption>
+        </figure>
+        <figure class="mf-item">
+          <div class="mf-formula">pH = −log<sub>10</sub>[H<sup>+</sup>]</div>
+          <figcaption data-i18n="margin.ph">кислотность</figcaption>
+        </figure>
+        <figure class="mf-item mf-item-icon">
+          <svg class="mf-svg" viewBox="0 0 40 36" width="38" height="34" fill="none" aria-hidden="true">
+            <polygon points="20,2 35,11 35,25 20,34 5,25 5,11" stroke="currentColor" stroke-width="1.15"/>
+            <polygon points="20,9 28.5,14 28.5,22 20,27 11.5,22 11.5,14" stroke="currentColor" stroke-width="1"/>
+          </svg>
+          <div class="mf-formula">C<sub>6</sub>H<sub>6</sub></div>
+          <figcaption data-i18n="margin.benzene">бензол</figcaption>
+        </figure>
+        <figure class="mf-item">
+          <div class="mf-formula">PO<sub>4</sub><sup>3−</sup></div>
+          <figcaption data-i18n="margin.phosphate">фосфат</figcaption>
+        </figure>
+      </div>`;
+      document.body.prepend(host);
+    } catch (err) {
+      console.warn("margin field", err);
+    }
   }
 
   function dropdown(id, labelKey, items) {

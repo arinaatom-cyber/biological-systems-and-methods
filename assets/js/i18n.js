@@ -89,13 +89,29 @@
       "home.nr.c5": "доступность данных и аналитического кода;",
       "home.nr.c6": "прозрачное обсуждение ограничений исследования.",
       "a11y.skip": "Перейти к содержанию",
+      "margin.glucose": "глюкоза",
+      "margin.aa": "аминокислота",
+      "margin.atp": "аденозинтрифосфат",
+      "margin.bases": "пары оснований",
+      "margin.mm": "Михаэлис–Ментен",
+      "margin.gibbs": "энергия Гиббса",
+      "margin.peptide": "пептидная связь",
+      "margin.ph": "кислотность",
+      "margin.benzene": "бензол",
+      "margin.phosphate": "фосфат",
       "home.hero.kicker": "BSM · БИОЛОГИЧЕСКИЕ СИСТЕМЫ И МЕТОДЫ · ОТКРЫТЫЙ ДОСТУП",
-      "home.hero.title": "Экспериментальные и вычислительные исследования биологических систем с акцентом на воспроизводимость, развитие методов и открытость научных данных.",
+      "home.hero.title": "Экспериментальные и вычислительные исследования биологических систем",
       "home.hero.lede": "Biological Systems and Methods — рецензируемый журнал открытого доступа, публикующий оригинальные исследования, методологические работы и обзоры в области экспериментальной биологии, биоинформатики, биохимии, биофизики, протеомики и других омиксных дисциплин. Журнал рассматривает исследования с положительными, отрицательными, нулевыми и неожиданными результатами при условии корректного исследовательского дизайна, статистического анализа и научной интерпретации.",
       "home.hero.note": "Редакционные решения принимаются научными редакторами. Автоматизированные инструменты применяются только для технической проверки и языковой поддержки и не используются для самостоятельного принятия решений по рукописям.",
       "home.hero.cta.submit": "Подать рукопись",
       "home.hero.cta.guide": "Инструкции авторам",
       "home.hero.aside": "Рецензируемый журнал · открытый доступ · мультиязычный интерфейс",
+      "home.hero.overview.title": "Кратко о журнале",
+      "home.hero.overview.i1": "Рецензирование и открытый доступ",
+      "home.hero.overview.i2": "Эксперимент, вычисления и методы",
+      "home.hero.overview.i3": "Положительные, отрицательные и нулевые результаты при корректном дизайне",
+      "home.hero.overview.i4": "Воспроизводимость, данные и аналитический код",
+      "home.hero.overview.i5": "Решения принимают научные редакторы, не автоматика",
       "home.metric.decision": "Целевой срок до первого решения",
       "home.metric.decision.val": "21 день",
       "home.metric.freq": "Периодичность",
@@ -308,13 +324,29 @@
       "home.nr.c5": "availability of data and analysis code;",
       "home.nr.c6": "transparent discussion of study limitations.",
       "a11y.skip": "Skip to content",
+      "margin.glucose": "glucose",
+      "margin.aa": "amino acid",
+      "margin.atp": "adenosine triphosphate",
+      "margin.bases": "base pairs",
+      "margin.mm": "Michaelis–Menten",
+      "margin.gibbs": "Gibbs energy",
+      "margin.peptide": "peptide bond",
+      "margin.ph": "acidity",
+      "margin.benzene": "benzene",
+      "margin.phosphate": "phosphate",
       "home.hero.kicker": "BSM · BIOLOGICAL SYSTEMS AND METHODS · OPEN ACCESS",
-      "home.hero.title": "Experimental and computational research on biological systems with a focus on reproducibility, methods development and open scientific data.",
+      "home.hero.title": "Experimental and computational research on biological systems",
       "home.hero.lede": "Biological Systems and Methods is a peer-reviewed open access journal publishing original research, methodological papers and reviews in experimental biology, bioinformatics, biochemistry, biophysics, proteomics and other omics disciplines. The journal considers studies with positive, negative, null and unexpected results when the research design, statistical analysis and scientific interpretation are sound.",
       "home.hero.note": "Editorial decisions are made by scientific editors. Automated tools are used only for technical checks and language support and are not used to make manuscript decisions.",
       "home.hero.cta.submit": "Submit manuscript",
       "home.hero.cta.guide": "Author guidelines",
       "home.hero.aside": "Peer-reviewed journal · open access · multilingual interface",
+      "home.hero.overview.title": "At a glance",
+      "home.hero.overview.i1": "Peer review and open access",
+      "home.hero.overview.i2": "Experimental, computational and methods papers",
+      "home.hero.overview.i3": "Positive, negative and null results when the design is sound",
+      "home.hero.overview.i4": "Reproducibility, data and analysis code",
+      "home.hero.overview.i5": "Decisions by scientific editors, not automated tools",
       "home.metric.decision": "Target time to first decision",
       "home.metric.decision.val": "21 days",
       "home.metric.freq": "Frequency",
@@ -526,14 +558,30 @@
       "home.nr.c5": "数据与分析代码可用性；",
       "home.nr.c6": "透明讨论研究局限。",
       "a11y.skip": "跳到正文",
+      "margin.glucose": "葡萄糖",
+      "margin.aa": "氨基酸",
+      "margin.atp": "三磷酸腺苷",
+      "margin.bases": "碱基对",
+      "margin.mm": "米氏方程",
+      "margin.gibbs": "吉布斯自由能",
+      "margin.peptide": "肽键",
+      "margin.ph": "酸碱度",
+      "margin.benzene": "苯",
+      "margin.phosphate": "磷酸根",
       "home.hero.kicker": "BSM · 生物系统与方法 · 开放获取",
-      "home.hero.title": "以可重复性为重点的实验与计算生物科学",
+      "home.hero.title": "实验与计算生物系统研究",
       "home.hero.lede":
         "Biological Systems and Methods 发表生物学、生物信息学、生物化学、生物物理学与组学研究的论文、方法与综述，包括阳性、阴性与零结果。",
       "home.hero.note": "编辑决定由科学编辑作出。自动化工具仅用于技术与语言支持。",
       "home.hero.cta.submit": "投稿",
       "home.hero.cta.guide": "作者指南",
       "home.hero.aside": "同行评议期刊 · 开放获取 · 多语言界面",
+      "home.hero.overview.title": "期刊速览",
+      "home.hero.overview.i1": "同行评议与开放获取",
+      "home.hero.overview.i2": "实验、计算与方法学研究",
+      "home.hero.overview.i3": "阳性、阴性与零结果（研究设计须严谨）",
+      "home.hero.overview.i4": "可重复性、数据与分析代码",
+      "home.hero.overview.i5": "由科学编辑作出决定，而非自动化工具",
       "home.metric.decision": "首次决定目标周期",
       "home.metric.decision.val": "21 天",
       "home.metric.freq": "出版频率",
@@ -668,6 +716,12 @@
     return lang;
   }
 
+  function interpolate(val) {
+    if (typeof val !== "string") return val;
+    const license = window.BS_CONFIG?.license || "CC BY 4.0";
+    return val.replaceAll("{license}", license);
+  }
+
   function setLanguage(next) {
     if (!STRINGS[next]) return;
     lang = next;
@@ -675,17 +729,17 @@
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
       const val = STRINGS[lang]?.[key];
-      if (val != null) el.textContent = val;
+      if (val != null) el.textContent = interpolate(val);
     });
     document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
       const key = el.getAttribute("data-i18n-placeholder");
       const val = STRINGS[lang]?.[key];
-      if (val != null) el.setAttribute("placeholder", val);
+      if (val != null) el.setAttribute("placeholder", interpolate(val));
     });
   }
 
   function t(key) {
-    return STRINGS[lang]?.[key] ?? STRINGS.en?.[key] ?? key;
+    return interpolate(STRINGS[lang]?.[key] ?? STRINGS.en?.[key] ?? key);
   }
 
   window.BSi18n = { t, setLanguage, getLanguage, STRINGS };

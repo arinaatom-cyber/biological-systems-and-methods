@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=m3" />
   <script type="application/ld+json" id="schema-periodical">
   {
     "@context": "https://schema.org",
@@ -29,7 +29,58 @@
   </script>
 </head>
 <body data-page="home">
-  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Перейти к содержанию</a>
+  <div class="page-margin-field" aria-hidden="true">
+    <div class="page-margin-field-col is-left">
+      <figure class="mf-item">
+        <div class="mf-formula">C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></div>
+        <figcaption data-i18n="margin.glucose">глюкоза</figcaption>
+      </figure>
+      <figure class="mf-item">
+        <div class="mf-formula">H<sub>2</sub>N–CHR–COOH</div>
+        <figcaption data-i18n="margin.aa">аминокислота</figcaption>
+      </figure>
+      <figure class="mf-item">
+        <div class="mf-formula">ATP</div>
+        <div class="mf-sub">C<sub>10</sub>H<sub>16</sub>N<sub>5</sub>O<sub>13</sub>P<sub>3</sub></div>
+        <figcaption data-i18n="margin.atp">аденозинтрифосфат</figcaption>
+      </figure>
+      <figure class="mf-item">
+        <div class="mf-formula">A=T · G≡C</div>
+        <figcaption data-i18n="margin.bases">пары оснований</figcaption>
+      </figure>
+      <figure class="mf-item">
+          <div class="mf-formula mf-formula-sm">v = V<sub>max</sub>[S]/(K<sub>m</sub>+[S])</div>
+        <figcaption data-i18n="margin.mm">Михаэлис–Ментен</figcaption>
+      </figure>
+    </div>
+    <div class="page-margin-field-col is-right">
+      <figure class="mf-item">
+        <div class="mf-formula">ΔG = ΔH − TΔS</div>
+        <figcaption data-i18n="margin.gibbs">энергия Гиббса</figcaption>
+      </figure>
+      <figure class="mf-item">
+        <div class="mf-formula">R–CO–NH–R′</div>
+        <figcaption data-i18n="margin.peptide">пептидная связь</figcaption>
+      </figure>
+      <figure class="mf-item">
+        <div class="mf-formula">pH = −log<sub>10</sub>[H<sup>+</sup>]</div>
+        <figcaption data-i18n="margin.ph">кислотность</figcaption>
+      </figure>
+      <figure class="mf-item mf-item-icon">
+        <svg class="mf-svg" viewBox="0 0 40 36" width="38" height="34" fill="none" aria-hidden="true">
+          <polygon points="20,2 35,11 35,25 20,34 5,25 5,11" stroke="currentColor" stroke-width="1.15"/>
+          <polygon points="20,9 28.5,14 28.5,22 20,27 11.5,22 11.5,14" stroke="currentColor" stroke-width="1"/>
+        </svg>
+        <div class="mf-formula">C<sub>6</sub>H<sub>6</sub></div>
+        <figcaption data-i18n="margin.benzene">бензол</figcaption>
+      </figure>
+      <figure class="mf-item">
+        <div class="mf-formula">PO<sub>4</sub><sup>3−</sup></div>
+        <figcaption data-i18n="margin.phosphate">фосфат</figcaption>
+      </figure>
+    </div>
+  </div>
   <header class="site-header" id="site-header"></header>
 
   <main id="main">
@@ -45,7 +96,7 @@
       <div class="container hero-intro-inner">
         <div class="hero-intro-copy">
           <p class="hero-kicker" data-i18n="home.hero.kicker">BSM · БИОЛОГИЧЕСКИЕ СИСТЕМЫ И МЕТОДЫ · ОТКРЫТЫЙ ДОСТУП</p>
-          <h2 id="hero-title" data-i18n="home.hero.title">Экспериментальные и вычислительные исследования биологических систем с акцентом на воспроизводимость, развитие методов и открытость научных данных.</h2>
+          <h2 id="hero-title" data-i18n="home.hero.title">Экспериментальные и вычислительные исследования биологических систем</h2>
           <p class="hero-lede" data-i18n="home.hero.lede">Biological Systems and Methods — рецензируемый журнал открытого доступа, публикующий оригинальные исследования, методологические работы и обзоры в области экспериментальной биологии, биоинформатики, биохимии, биофизики, протеомики и других омиксных дисциплин. Журнал рассматривает исследования с положительными, отрицательными, нулевыми и неожиданными результатами при условии корректного исследовательского дизайна, статистического анализа и научной интерпретации.</p>
           <p class="hero-note" data-i18n="home.hero.note">Редакционные решения принимаются научными редакторами. Автоматизированные инструменты применяются только для технической проверки и языковой поддержки и не используются для самостоятельного принятия решений по рукописям.</p>
           <div class="cta-row">
@@ -53,6 +104,16 @@
             <a class="btn btn-ghost" href="authors-guidelines.html" data-i18n="home.hero.cta.guide">Инструкции авторам</a>
           </div>
         </div>
+        <aside class="hero-overview" aria-labelledby="hero-overview-title">
+          <h3 id="hero-overview-title" data-i18n="home.hero.overview.title">Кратко о журнале</h3>
+          <ul class="hero-overview-list">
+            <li data-i18n="home.hero.overview.i1">Рецензирование и открытый доступ</li>
+            <li data-i18n="home.hero.overview.i2">Эксперимент, вычисления и методы</li>
+            <li data-i18n="home.hero.overview.i3">Положительные, отрицательные и нулевые результаты при корректном дизайне</li>
+            <li data-i18n="home.hero.overview.i4">Воспроизводимость, данные и аналитический код</li>
+            <li data-i18n="home.hero.overview.i5">Решения принимают научные редакторы, не автоматика</li>
+          </ul>
+        </aside>
       </div>
     </section>
 
