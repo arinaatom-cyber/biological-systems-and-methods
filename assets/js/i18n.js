@@ -528,7 +528,7 @@
       "home.articles.empty": "No published materials yet. The first articles will appear in this section after editorial and peer review are complete.",
       "home.articles.types": "View manuscript types",
       "home.issues.title": "Special issue · 2026",
-      "home.issues.sub": "One issue, four thematic sections. The issue editors are not the journal board.",
+      "home.issues.sub": "One issue in four thematic sections within the 2026 special issue.",
       "home.nr.title": "Negative results — same scientific standard",
       "home.nr.body": "Biomedical Chemistry evaluates negative, null and unexpected results on the basis of study design quality, sample adequacy, statistical correctness, reproducibility and the scientific importance of the question. Lack of a statistically significant effect alone is not sufficient for publication.",
       "home.nr.cta": "Requirements for negative and null results",
@@ -826,7 +826,7 @@
       "home.articles.empty": "暂无已发表材料。完成编辑与审稿流程后，首批文章将显示在此。",
       "home.articles.types": "查看稿件类型",
       "home.issues.title": "专刊 · 2026",
-      "home.issues.sub": "一期专刊，四个主题。专刊编辑部与期刊编委会不是同一组成。",
+      "home.issues.sub": "2026 年专刊，四个主题板块。",
       "home.nr.title": "阴性结果——同一科学标准",
       "home.nr.body":
         "本刊依据研究设计质量、统计分析正确性、可重复性与科学问题的重要性评估阴性、零结果与意外结果。仅缺乏统计显著性不足以构成发表依据。",
