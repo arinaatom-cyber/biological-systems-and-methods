@@ -7,7 +7,7 @@
   const lightboxBody = document.getElementById("art-lightbox-body");
   const lightboxClose = document.getElementById("art-lightbox-close");
   const CFG = () => window.BS_CONFIG || {};
-  const journalName = () => CFG().journalName || "Biological Systems and Methods";
+  const journalName = () => CFG().journalName || "Biomedical Chemistry";
 
   init();
 

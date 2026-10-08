@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Site revision checklist for Biological Systems and Methods."""
+"""Site revision checklist for Biomedical Chemistry."""
 from __future__ import annotations
 
 import re
@@ -28,7 +28,7 @@ def main() -> int:
     index = (ROOT / "index.html").read_text(encoding="utf-8")
 
     check(
-        'journalName: "Biological Systems and Methods"' in cfg,
+        'journalName: "Biomedical Chemistry"' in cfg,
         "Brand EN casing OK",
         "Wrong EN journal name in config.js",
     )
@@ -40,7 +40,7 @@ def main() -> int:
         "Found 'Biological Systems And Methods'",
     )
     check(
-        "Биологические системы и методы" in cfg,
+        "Биомедицинская химия" in cfg,
         "Brand RU OK",
         "Missing RU brand in config",
     )
@@ -49,7 +49,7 @@ def main() -> int:
         "No Title-Case RU brand in i18n",
         "Found Title-Case RU brand",
     )
-    check('journalNameShort: "BSM"' in cfg, "Acronym BSM", "Missing BSM short name")
+    check('journalNameShort: "БМХ"' in cfg, "Acronym BSM", "Missing BSM short name")
     check(
         "An International Journal of Biological Research and Methodology" in cfg,
         "Preferred subtitle present",

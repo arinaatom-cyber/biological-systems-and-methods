@@ -44,7 +44,7 @@
       _template: "table",
       _captcha: "false",
       _replyto: payload.correspondingEmail || payload.email || "",
-      journal: window.BS_CONFIG.journalName || "Biological Systems and Methods",
+      journal: window.BS_CONFIG.journalName || "Biomedical Chemistry",
       to_editorial: email,
       message: JSON.stringify(payload, null, 2),
     };

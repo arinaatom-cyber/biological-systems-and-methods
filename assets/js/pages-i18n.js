@@ -1,26 +1,26 @@
 (() => {
-  const NAME = "Biological Systems and Methods";
+  const NAME = "Биомедицинская химия";
   const headers = {
     ru: {
-      about: { kicker: "О журнале", h1: NAME, lede: "Рецензируемый журнал открытого доступа по биологии, биоинформатике, биохимии и биофизике.", title: "О журнале" },
-      aims: { kicker: "О журнале", h1: "Цели и тематика", lede: "Журнал публикует исследования, направленные на получение воспроизводимых и интерпретируемых результатов в науках о жизни.", title: "Цели и тематика" },
-      publisher: { kicker: "О журнале", h1: "Издатель", lede: "Юридические и издательские сведения заполняются после регистрации организации.", title: "Издатель" },
-      "open-access": { kicker: "О журнале", h1: "Модель открытого доступа", lede: "Планируемая лицензия публикации: CC BY 4.0.", title: "Открытый доступ" },
+      about: { kicker: "О журнале", h1: NAME, lede: "Специальный выпуск журнала «Биомедицинская химия». Приглашённые редакторы, свой сайт.", title: "О журнале" },
+      aims: { kicker: "О журнале", h1: "Цели и тематика", lede: "Вычислительная биомедицинская химия: протеомика, метаболомика, масс-спектрометрия, хемоинформатика, данные и код.", title: "Цели и тематика" },
+      publisher: { kicker: "О журнале", h1: "Издатель", lede: "Учредитель журнала — институт биомедицинской химии имени В.Н. Ореховича.", title: "Издатель" },
+      "open-access": { kicker: "О журнале", h1: "Модель открытого доступа", lede: "По правилам журнала лицензия CC BY включается через 12 месяцев после публикации.", title: "Открытый доступ" },
       history: { kicker: "О журнале", h1: "История журнала", title: "История журнала" },
       news: { kicker: "О журнале", h1: "Новости", title: "Новости" },
       contact: { kicker: "Контакты", h1: "Контакты", lede: "Редакционный офис", title: "Контакты" },
-      authors: { kicker: "Авторам", h1: "Авторам", lede: "Подача и рецензирование бесплатны. APC взимается только после принятия статьи.", title: "Авторам" },
+      authors: { kicker: "Авторам", h1: "Авторам", lede: "Публикация бесплатная, кроме цветных иллюстраций в печатной версии.", title: "Авторам" },
       "authors-guidelines": { kicker: "Авторам", h1: "Инструкции авторам", lede: "Обязательные разделы рукописи и требования к данным.", title: "Инструкции авторам" },
       "authors-files": { kicker: "Авторам", h1: "Подготовка файлов", title: "Подготовка файлов" },
       "article-types": { kicker: "Авторам", h1: "Типы публикаций", lede: "Для каждого типа указаны назначение, структура, данные, код и формат рецензирования.", title: "Типы публикаций" },
-      apc: { kicker: "Авторам", h1: "Стоимость публикации", lede: "Подача и рецензирование бесплатны. APC взимается только после принятия рукописи.", title: "APC" },
+      apc: { kicker: "Авторам", h1: "Стоимость публикации", lede: "Публикация бесплатная, кроме цветных иллюстраций в печатной версии.", title: "Стоимость публикации" },
       "data-policy": { kicker: "Авторам", h1: "Политика данных и кода", lede: "Данные и код должны быть доступны в объёме, достаточном для проверки основных результатов, кроме ограничений конфиденциальности, биоэтики или закона.", title: "Данные и код" },
       "negative-results": { kicker: "Материалы", h1: "Отрицательные результаты — с тем же стандартом научной оценки", lede: "Журнал рассматривает отрицательные, нулевые и неожиданные результаты по качеству дизайна, статистике, воспроизводимости и научной значимости вопроса.", title: "Отрицательные результаты" },
       editors: { kicker: "Редакторам и рецензентам", h1: "Редакторам", title: "Редакторам" },
       reviewers: { kicker: "Редакторам и рецензентам", h1: "Рецензентам", title: "Рецензентам" },
       "editors-guide": { kicker: "Редакторам", h1: "Руководство для редакторов", lede: "Ответственный редактор оценивает соответствие тематике, качество дизайна и полноту деклараций, подбирает рецензентов и принимает решение.", title: "Руководство для редакторов" },
       "reviewers-guide": { kicker: "Рецензентам", h1: "Руководство для рецензентов", lede: "Рецензент оценивает дизайн, статистику, воспроизводимость, интерпретацию и соответствие типу статьи.", title: "Руководство для рецензентов" },
-      editorial: { kicker: "О журнале", h1: "Редакционная коллегия", lede: "Коллегия формируется по направлениям Biology, Bioinformatics, Biochemistry, Biophysics, Reproducibility and Methodology.", title: "Редакционная коллегия" },
+      editorial: { kicker: "О журнале", h1: "Редакционная коллегия", lede: "Специальный выпуск ведут приглашённые редакторы. Это не редколлегия журнала.", title: "Редакционная коллегия" },
       policies: { kicker: "Редакционные политики", h1: "Редакционные политики журнала", lede: "Процедуры разработаны с учётом международно признанных принципов публикационной этики.", title: "Редакционные политики" },
       "peer-review": { kicker: "Редакционные политики", h1: "Рецензирование", lede: "Редакционная предварительная оценка и независимое научное рецензирование.", title: "Рецензирование" },
       "publication-ethics": { kicker: "Редакционные политики", h1: "Публикационная этика", lede: "Процедуры разработаны с учётом международно признанных принципов публикационной этики.", title: "Публикационная этика" },
@@ -45,33 +45,63 @@
       cookies: { kicker: "Правовая информация", h1: "Политика cookie", title: "Cookie" },
       accessibility: { kicker: "Правовая информация", h1: "Доступность", lede: "Семантическая разметка, клавиатурная навигация, видимый фокус и достаточный контраст.", title: "Доступность" },
       conferences: { kicker: "Конференции", h1: "Конференции", title: "Конференции" },
-      issues: { kicker: "Выпуски", title: "Выпуски" },
-      submit: { kicker: "Авторам", h1: "Подать рукопись", lede: "Подача и рецензирование бесплатны. APC взимается только после принятия рукописи и не влияет на редакционное решение.", title: "Подать рукопись" },
+      issues: {
+        kicker: "Выпуски",
+        h1: "Специальный выпуск · 2026",
+        lede: "Один выпуск и четыре тематических раздела. Редакция выпуска отдельная от редколлегии журнала.",
+        title: "Выпуски",
+      },
+      submit: { kicker: "Авторам", h1: "Подать рукопись", lede: "Подача идёт на этот сайт. Публикация в журнале бесплатная, кроме цветных иллюстраций в печати.", title: "Подать рукопись" },
       join: { kicker: "Редакторам и рецензентам", h1: "Стать редактором или рецензентом", title: "Стать редактором или рецензентом" },
       login: { kicker: "Аккаунт", h1: "Вход", lede: "Войдите через Яндекс, Mail.ru, Gmail или ORCID, чтобы подавать рукописи и сохранять черновики.", title: "Вход" },
       account: { kicker: "Аккаунт", h1: "Аккаунт", title: "Аккаунт" },
       article: { kicker: "Материалы", title: "Статья" },
     },
     en: {
-      about: { kicker: "About", h1: NAME, lede: "A peer-reviewed open access journal in biology, bioinformatics, biochemistry and biophysics.", title: "About" },
-      aims: { kicker: "About", h1: "Aims & scope", lede: "The journal publishes research aimed at reproducible, interpretable results in the life sciences.", title: "Aims & scope" },
+      about: {
+        kicker: "About",
+        h1: "Biomedical Chemistry",
+        lede: "Special issue of Biomeditsinskaya Khimiya. Invited editors, dedicated site.",
+        title: "About",
+      },
+      aims: {
+        kicker: "About",
+        h1: "Aims & scope",
+        lede: "Computational biomedical chemistry: proteomics, metabolomics, mass spectrometry, cheminformatics, data and code.",
+        title: "Aims & scope",
+      },
       publisher: { kicker: "About", h1: "Publisher", lede: "Legal and publisher details will be added after the organisation is registered.", title: "Publisher" },
-      "open-access": { kicker: "About", h1: "Open access model", lede: "Planned publication licence: CC BY 4.0.", title: "Open access" },
+      "open-access": {
+        kicker: "About",
+        h1: "Open access model",
+        lede: "Under the parent journal rules, CC BY applies twelve months after publication.",
+        title: "Open access",
+      },
       history: { kicker: "About", h1: "Journal history", title: "Journal history" },
       news: { kicker: "About", h1: "News", title: "News" },
       contact: { kicker: "Contact", h1: "Contact", lede: "Editorial office", title: "Contact" },
-      authors: { kicker: "Authors", h1: "Authors", lede: "Submission and peer review are free of charge. APC is charged only after acceptance.", title: "Authors" },
+      authors: {
+        kicker: "Authors",
+        h1: "Authors",
+        lede: "Submission and peer review are free. Publication is free except colour figures in the print edition.",
+        title: "Authors",
+      },
       "authors-guidelines": { kicker: "Authors", h1: "Author guidelines", lede: "Required manuscript sections and data reporting.", title: "Author guidelines" },
       "authors-files": { kicker: "Authors", h1: "File preparation", title: "File preparation" },
       "article-types": { kicker: "Authors", h1: "Article types", lede: "Each type lists purpose, structure, data, code and peer-review format.", title: "Article types" },
-      apc: { kicker: "Authors", h1: "Publication fees", lede: "Submission and peer review are free. APC is charged only after acceptance.", title: "APC" },
+      apc: {
+        kicker: "Authors",
+        h1: "Publication fees",
+        lede: "Publication is free. Colour illustrations in the print edition are charged separately.",
+        title: "Publication fees",
+      },
       "data-policy": { kicker: "Authors", h1: "Data & code policy", lede: "Data and code should be available to the extent needed to verify the main results, except where confidentiality, research ethics or law restrict access.", title: "Data & code" },
       "negative-results": { kicker: "Materials", h1: "Negative results — the same scientific standard", lede: "The journal considers negative, null and unexpected results on study design, statistics, reproducibility and the scientific importance of the question.", title: "Negative results" },
       editors: { kicker: "Editors & reviewers", h1: "Editors", title: "Editors" },
       reviewers: { kicker: "Editors & reviewers", h1: "Reviewers", title: "Reviewers" },
       "editors-guide": { kicker: "Editors", h1: "Editor guide", lede: "The handling editor assesses scope, design quality and declarations, selects reviewers and makes the decision.", title: "Editor guide" },
       "reviewers-guide": { kicker: "Reviewers", h1: "Reviewer guide", lede: "Reviewers assess design, statistics, reproducibility, interpretation and fit to the article type.", title: "Reviewer guide" },
-      editorial: { kicker: "About", h1: "Editorial board", lede: "The board is being formed across Biology, Bioinformatics, Biochemistry, Biophysics, and Reproducibility and Methodology.", title: "Editorial board" },
+      editorial: { kicker: "About", h1: "Editorial board", lede: "The special-issue editors are not the journal board. Names are published only after they are confirmed.", title: "Editorial board" },
       policies: { kicker: "Editorial policies", h1: "Editorial policies", lede: "Procedures follow internationally recognised publication-ethics principles.", title: "Editorial policies" },
       "peer-review": { kicker: "Editorial policies", h1: "Peer review", lede: "Editorial screening and independent scientific peer review.", title: "Peer review" },
       "publication-ethics": { kicker: "Editorial policies", h1: "Publication ethics", lede: "Procedures follow internationally recognised publication-ethics principles.", title: "Publication ethics" },
@@ -96,8 +126,18 @@
       cookies: { kicker: "Legal", h1: "Cookie policy", title: "Cookies" },
       accessibility: { kicker: "Legal", h1: "Accessibility", lede: "Semantic markup, keyboard navigation, visible focus and sufficient contrast.", title: "Accessibility" },
       conferences: { kicker: "Conferences", h1: "Conferences", title: "Conferences" },
-      issues: { kicker: "Issues", title: "Issues" },
-      submit: { kicker: "Authors", h1: "Submit manuscript", lede: "Submission and peer review are free. APC is charged only after acceptance and does not affect the editorial decision.", title: "Submit manuscript" },
+      issues: {
+        kicker: "Issues",
+        h1: "Special issue · 2026",
+        lede: "One issue in four thematic sections. This issue’s editors are separate from the journal board.",
+        title: "Issues",
+      },
+      submit: {
+        kicker: "Authors",
+        h1: "Submit manuscript",
+        lede: "Submit on this site. Publication is free except colour figures in the print edition.",
+        title: "Submit manuscript",
+      },
       join: { kicker: "Editors & reviewers", h1: "Become an editor or reviewer", title: "Become an editor or reviewer" },
       login: { kicker: "Account", h1: "Sign in", lede: "Sign in with Yandex, Mail.ru, Gmail or ORCID to submit manuscripts and save drafts.", title: "Sign in" },
       account: { kicker: "Account", h1: "Account", title: "Account" },
@@ -111,18 +151,23 @@
       history: { kicker: "关于期刊", h1: "期刊历史", title: "期刊历史" },
       news: { kicker: "关于期刊", h1: "新闻", title: "新闻" },
       contact: { kicker: "联系", h1: "联系", lede: "编辑部", title: "联系" },
-      authors: { kicker: "作者指南", h1: "作者指南", lede: "投稿与审稿免费。APC 仅在录用后收取。", title: "作者指南" },
+      authors: { kicker: "作者指南", h1: "作者指南", lede: "投稿与审稿免费。发表免费，纸质版彩色插图除外。", title: "作者指南" },
       "authors-guidelines": { kicker: "作者指南", h1: "投稿须知", lede: "稿件必备章节与数据报告要求。", title: "投稿须知" },
       "authors-files": { kicker: "作者指南", h1: "文件准备", title: "文件准备" },
       "article-types": { kicker: "作者指南", h1: "文章类型", lede: "各类型列出目的、结构、数据、代码与审稿方式。", title: "文章类型" },
-      apc: { kicker: "作者指南", h1: "出版费用", lede: "投稿与审稿免费。APC 仅在录用后收取。", title: "APC" },
+      apc: { kicker: "作者指南", h1: "出版费用", lede: "发表免费。纸质版彩色插图另行收费。", title: "出版费用" },
       "data-policy": { kicker: "作者指南", h1: "数据与代码政策", lede: "数据和代码应在足以核验主要结果的范围内开放，保密、伦理或法律限制除外。", title: "数据与代码" },
       "negative-results": { kicker: "内容", h1: "阴性结果——同一科学标准", lede: "本刊依据研究设计、统计分析、可重复性与科学问题的重要性评估阴性、零结果与意外结果。", title: "阴性结果" },
       editors: { kicker: "编辑与审稿人", h1: "编辑", title: "编辑" },
       reviewers: { kicker: "编辑与审稿人", h1: "审稿人", title: "审稿人" },
       "editors-guide": { kicker: "编辑", h1: "编辑指南", lede: "责任编辑评估范围、设计质量与声明，邀请审稿人并作出决定。", title: "编辑指南" },
       "reviewers-guide": { kicker: "审稿人", h1: "审稿指南", lede: "审稿人评估设计、统计、可重复性、解释及与文章类型的匹配。", title: "审稿指南" },
-      editorial: { kicker: "关于期刊", h1: "编委会", lede: "编委会按生物学、生物信息学、生物化学、生物物理学以及可重复性与方法论组建。", title: "编委会" },
+      editorial: {
+        kicker: "关于期刊",
+        h1: "编委会",
+        lede: "本专刊由特邀编辑负责，与主刊编委会不同。名单确认后公布。",
+        title: "编委会",
+      },
       policies: { kicker: "编辑政策", h1: "编辑政策", lede: "程序遵循国际公认的出版伦理原则。", title: "编辑政策" },
       "peer-review": { kicker: "编辑政策", h1: "同行评议", lede: "编辑初审与独立科学审稿。", title: "同行评议" },
       "publication-ethics": { kicker: "编辑政策", h1: "出版伦理", lede: "程序遵循国际公认的出版伦理原则。", title: "出版伦理" },
@@ -148,7 +193,7 @@
       accessibility: { kicker: "法律信息", h1: "无障碍", lede: "语义标记、键盘导航、可见焦点与足够对比度。", title: "无障碍" },
       conferences: { kicker: "会议", h1: "会议", title: "会议" },
       issues: { kicker: "卷期", title: "卷期" },
-      submit: { kicker: "作者指南", h1: "投稿", lede: "投稿与审稿免费。APC 仅在录用后收取，且不影响编辑决定。", title: "投稿" },
+      submit: { kicker: "作者指南", h1: "投稿", lede: "在本站投稿。发表免费，纸质版彩色插图除外。", title: "投稿" },
       join: { kicker: "编辑与审稿人", h1: "成为编辑或审稿人", title: "成为编辑或审稿人" },
       login: { kicker: "账户", h1: "登录", lede: "通过 Yandex、Mail.ru、Gmail 或 ORCID 登录以投稿并保存草稿。", title: "登录" },
       account: { kicker: "账户", h1: "账户", title: "账户" },
@@ -160,16 +205,16 @@
     ru: {
       "aims.html": { title: "Цели и тематика", blurb: "Направления журнала и критерии рассмотрения." },
       "editorial.html": { title: "Редакционная коллегия", blurb: "Состав формируется; вымышленные профили не публикуются." },
-      "publisher.html": { title: "Издатель", blurb: "Юридические сведения после регистрации организации." },
-      "open-access.html": { title: "Модель открытого доступа", blurb: "Планируемая лицензия CC BY 4.0." },
-      "history.html": { title: "История журнала", blurb: "Хронология редакции." },
+      "publisher.html": { title: "Издатель", blurb: "Учредитель — ИБМХ имени В.Н. Ореховича. ISSN 2310-6972." },
+      "open-access.html": { title: "Модель открытого доступа", blurb: "CC BY через 12 месяцев после публикации." },
+      "history.html": { title: "История журнала", blurb: "С 1955 года. Этот сайт — спецвыпуск 2026." },
       "news.html": { title: "Новости", blurb: "Сообщения редакции." },
       "contact.html": { title: "Контакты", blurb: "Редакционный офис." },
       "authors-guidelines.html": { title: "Инструкции авторам", blurb: "Структура рукописи и требования к материалам." },
       "article-types.html": { title: "Типы рукописей", blurb: "Исследования, методы, обзоры, отрицательные результаты и др." },
       "authors-files.html": { title: "Подготовка файлов", blurb: "Форматы изображений, таблиц и приложений." },
       "process.html": { title: "Процесс публикации", blurb: "Этапы от подачи до публикации." },
-      "apc.html": { title: "APC", blurb: "Сбор только после принятия рукописи." },
+      "apc.html": { title: "Стоимость публикации", blurb: "Бесплатно, кроме цвета в печатной версии." },
       "publication-ethics.html": { title: "Публикационная этика", blurb: "Авторство, оригинальность, этика исследований." },
       "submit.html": { title: "Подать рукопись", blurb: "Форма подачи рукописи." },
       "editors-guide.html": { title: "Руководство для редакторов", blurb: "Этапы оценки и принятия решений." },
@@ -205,7 +250,7 @@
       "article-types.html": { title: "Article types", blurb: "Research, methods, reviews, negative results and more." },
       "authors-files.html": { title: "File preparation", blurb: "Figures, tables and supplements." },
       "process.html": { title: "Publication process", blurb: "Steps from submission to publication." },
-      "apc.html": { title: "APC", blurb: "Charged only after acceptance." },
+      "apc.html": { title: "Publication fees", blurb: "Free except colour figures in print." },
       "publication-ethics.html": { title: "Publication ethics", blurb: "Authorship, originality and research ethics." },
       "submit.html": { title: "Submit manuscript", blurb: "Manuscript submission form." },
       "editors-guide.html": { title: "Editor guide", blurb: "Assessment and decision steps." },
@@ -241,7 +286,7 @@
       "article-types.html": { title: "文章类型", blurb: "研究、方法、综述、阴性结果等。" },
       "authors-files.html": { title: "文件准备", blurb: "图、表与附件格式。" },
       "process.html": { title: "出版流程", blurb: "从投稿到发表的步骤。" },
-      "apc.html": { title: "APC", blurb: "仅在录用后收取。" },
+      "apc.html": { title: "出版费用", blurb: "发表免费，纸质彩色图除外。" },
       "publication-ethics.html": { title: "出版伦理", blurb: "作者贡献、原创性与研究伦理。" },
       "submit.html": { title: "投稿", blurb: "稿件提交表单。" },
       "editors-guide.html": { title: "编辑指南", blurb: "评估与决策步骤。" },
@@ -274,7 +319,7 @@
       confOffBody: "Раздел конференций сейчас не ведётся.",
       historyEmpty: "Хронология и ключевые этапы развития редакции будут опубликованы в этом разделе.",
       newsEmpty: "Новости редакции будут опубликованы в этом разделе.",
-      boardEmpty: "Состав редакционной коллегии формируется. Карточки редакторов появятся после подтверждения состава. Вымышленные профили не публикуются.",
+      boardEmpty: "Имена приглашённых редакторов появятся здесь после подтверждения. Вымышленные профили не добавляются.",
       contactCoord: "Email координатора",
       contactSupport: "Техническая поддержка",
       contactSub: "Вопросы о рукописях",
@@ -324,7 +369,7 @@
       submitFunding: "Номер гранта / финансирование (Grant Number / Funding) *",
       submitDataIds: "Идентификаторы данных (Data identifiers) *",
       submitDataHint: "Ссылка на Zenodo, GitHub, GEO, SRA и т.п. Если данных нет — укажите обоснование в Data availability и вставьте «None».",
-      submitApcNote: " · только после принятия · единый тариф независимо от академического статуса",
+      submitApcNote: "Публикация бесплатная. Исключение — цветные иллюстрации в печатной версии.",
       submitFair: "Мои данные соответствуют стандартам FAIR (Findable, Accessible, Interoperable, Reusable), либо я явно обосновал исключения в заявлении о доступности данных.",
     },
     en: {
@@ -383,7 +428,7 @@
       submitFunding: "Grant number / funding *",
       submitDataIds: "Data identifiers *",
       submitDataHint: "Link to Zenodo, GitHub, GEO, SRA or similar. If there are no data, state the reason under Data availability and enter “None”.",
-      submitApcNote: " · after acceptance · one rate regardless of academic status",
+      submitApcNote: "Publication is free. Colour figures in the print edition are charged separately.",
       submitFair: "My data meet FAIR standards (Findable, Accessible, Interoperable, Reusable), or I have clearly justified exceptions in the data-availability statement.",
     },
     zh: {
@@ -442,7 +487,7 @@
       submitFunding: "资助编号 / 经费来源 *",
       submitDataIds: "数据标识符 *",
       submitDataHint: "Zenodo、GitHub、GEO、SRA 等链接。若无数据，请在 Data availability 中说明并填写 “None”。",
-      submitApcNote: " · 仅在录用后收取 · 同一费率，与学术身份无关",
+      submitApcNote: "发表免费。纸质版彩色插图另行收费。",
       submitFair: "我的数据符合 FAIR（可发现、可访问、可互操作、可重用）标准，或我已在数据可用性声明中明确说明例外。",
     },
   };
@@ -450,7 +495,8 @@
   const bodies = {
     ru: {
       "about": [
-        "Biological Systems and Methods публикует оригинальные исследования, методы, обзоры, отрицательные, нулевые и неожиданные результаты в области наук о жизни. Редакционные решения принимаются научными редакторами. Автоматизированные инструменты используются только для технической и языковой поддержки."
+        "Это специальный выпуск того же журнала. Его ведут приглашённые редакторы, не редколлегия «Биомедицинской химии».",
+        "Главный редактор журнала — А.И. Арчаков. Приглашённые редакторы выпуска на сайте появятся, когда состав будет подтверждён."
       ],
       "accessibility": [
         "Если страница недоступна, напишите координатору — мы исправим проблему."
@@ -459,16 +505,13 @@
         "Любые будущие партнёрские материалы будут явно отделены от редакционного контента. Спонсорство не влияет на принятие или отклонение рукописей."
       ],
       "aims": [
-        "Журнал объединяет экспериментальные, вычислительные и методологические работы и поддерживает публикацию как положительных, так и методологически обоснованных отрицательных результатов."
+        "Спецвыпуск принимает работы по вычислительной биомедицинской химии: белки, метаболиты, спектры и код. Положительные, отрицательные и нулевые результаты рассматриваются одинаково строго."
       ],
       "apc": [
-        "или",
-        "Единый APC применяется независимо от академического статуса автора. Политика полного и частичного освобождения от оплаты будет опубликована отдельно.",
-        "Планируемая структура:",
-        "Заявки на освобождение от оплаты начнут рассматриваться после утверждения соответствующей политики."
+        "Отдельная политика освобождения от платы за цветные иллюстрации на этом сайте пока не опубликована."
       ],
       "confidentiality": [
-        "Редакторы и рецензенты не передают рукописи третьим лицам и не используют их содержание в собственных интересах. Загрузка в открытые ИИ-сервисы без гарантий конфиденциальности запрещена."
+        "Редакторы и рецензенты не передают рукописи третьим лицам и не используют их содержание в собственных интересах. Передача неопубликованных материалов на сторонние платформы без гарантий конфиденциальности запрещена."
       ],
       "conflicts": [
         "Авторы, редакторы и рецензенты декларируют финансовые, институциональные, персональные и иные отношения, которые могут повлиять на оценку рукописи. При конфликте редактор или рецензент отстраняется от работы с материалом."
@@ -483,10 +526,10 @@
         "Предыдущие публикации (включая препринты) должны быть раскрыты. Переводы и вторичные публикации допускаются только при прозрачной связи с исходной записью и согласии правообладателей."
       ],
       "editorial-independence": [
-        "Издатель и спонсоры не вмешиваются в оценку рукописей. APC и коммерческие отношения не определяют исход рецензирования."
+        "Издатель и спонсоры не вмешиваются в оценку рукописей. Плата за публикацию и коммерческие отношения не определяют исход рецензирования."
       ],
       "editors-guide": [
-        "APC не влияет на редакционное решение."
+        "Плата за публикацию не влияет на редакционное решение."
       ],
       "image-integrity": [
         "Допустимы минимальные корректировки яркости/контраста, применяемые ко всему изображению и описанные в методах. Недопустимы выборочное усиление, клонирование, сокрытие и необоснованная сборка панелей."
@@ -502,8 +545,8 @@
         "Само по себе отсутствие статистической значимости не является достаточным основанием для публикации."
       ],
       "open-access": [
-        "Biological Systems and Methods публикует материалы в модели открытого доступа. После публикации статьи читатели получают свободный доступ к полному тексту без подписки.",
-        "Подача и рецензирование бесплатны. Статья Processing Charge (APC) взимается только после принятия рукописи."
+        "По правилам журнала «Биомедицинская химия» через двенадцать месяцев после публикации к статье применяется лицензия Creative Commons Attribution (CC BY).",
+        "Подача, рецензирование и публикация текста бесплатны. Исключение — цветные иллюстрации в печатной версии."
       ],
       "plagiarism": [
         "Заимствования должны быть корректно процитированы. Существенное повторное использование собственного текста без указания источника может рассматриваться как нарушение."
@@ -523,7 +566,7 @@
     },
     en: {
       "about": [
-        "Biological Systems and Methods publishes original research, methods, reviews, and negative, null and unexpected results in the life sciences. Editorial decisions are made by scientific editors. Automated tools are used only for technical and language support."
+        "Special issue of Biomeditsinskaya Khimiya under the same ISSNs. Invited editors run this site and this submission flow; the issue board is not the journal board."
       ],
       "accessibility": [
         "The site uses semantic markup, keyboard navigation and a visible focus state."
@@ -532,16 +575,14 @@
         "Advertising copy, if introduced later, will be kept separate from editorial decisions. Sponsorship does not influence the evaluation of manuscripts."
       ],
       "aims": [
-        "The journal brings together experimental, computational and methodological work and supports publication of both positive results and methodologically sound negative results."
+        "Computational biomedical chemistry: proteomics, metabolomics, mass spectrometry, cheminformatics, data and code. Positive, negative and null results are held to one standard."
       ],
       "apc": [
-        "or",
-        "The APC rate is the same regardless of the author’s academic status. Ability to pay is not considered in the scientific evaluation of a manuscript.",
-        "Waiver policy:",
-        "A waiver policy will be published only after the full editorial and legal model of the journal is confirmed."
+        "Publication is free. Colour figures in the print edition are charged separately.",
+        "A separate waiver policy for colour print charges on this site has not been published yet."
       ],
       "confidentiality": [
-        "Manuscripts and reviewer reports are confidential and must not be used for personal or competing purposes. Sharing materials with AI systems without editorial permission is not allowed."
+        "Manuscripts and reviewer reports are confidential and must not be used for personal or competing purposes. Sharing unpublished materials on third-party platforms without confidentiality guarantees is not allowed."
       ],
       "conflicts": [
         "Authors, editors and reviewers must disclose financial, institutional, personal and other relationships that could influence the work. All relevant conflicts are published with the article."
@@ -556,10 +597,10 @@
         "Duplicate publication of the same results is not allowed. Overlap with previous work must be disclosed and cited, with a clear statement of what is new."
       ],
       "editorial-independence": [
-        "Acceptance and rejection do not depend on the ability to pay. APC and commercial interests do not determine editorial decisions."
+        "Acceptance and rejection do not depend on the ability to pay. Publication fees and commercial interests do not determine editorial decisions."
       ],
       "editors-guide": [
-        "APC does not influence the editorial decision."
+        "Publication fees do not influence the editorial decision."
       ],
       "image-integrity": [
         "Figures must remain an accurate record of the original data. Cropping, contrast and labelling must not mislead. Splicing, duplication and inappropriate manipulation are not allowed."
@@ -575,8 +616,8 @@
         "Absence of a statistically significant effect is not, by itself, a reason to accept or reject a manuscript."
       ],
       "open-access": [
-        "Biological Systems and Methods publishes in an open-access model. After publication, readers have free access to the full text without a subscription.",
-        "Submission and peer review are free of charge. The article processing charge (APC) is collected only after acceptance."
+        "Under the parent journal rules, the Creative Commons Attribution (CC BY) licence applies twelve months after publication.",
+        "Submission, peer review and publication of the text are free. Colour figures in the print edition are charged separately."
       ],
       "plagiarism": [
         "Submitted texts are checked for originality. Inappropriate reuse of text, including uncited self-plagiarism, is not allowed."
@@ -596,7 +637,7 @@
     },
     zh: {
       "about": [
-        "Biological Systems and Methods 发表生命科学领域的原创研究、方法、综述以及阴性、零结果与意外结果。编辑决定由科学编辑作出。自动化工具仅用于技术与语言支持。"
+        "Biomedical Chemistry 发表生命科学领域的原创研究、方法、综述以及阴性、零结果与意外结果。编辑决定由科学编辑作出。自动化工具仅用于技术与语言支持。"
       ],
       "accessibility": [
         "网站采用语义标记、键盘导航与可见焦点。"
@@ -608,13 +649,11 @@
         "本刊汇集实验、计算与方法学研究，并支持发表阳性结果以及方法学上可靠的阴性结果。"
       ],
       "apc": [
-        "或",
-        "APC 费率与作者学术身份无关。支付能力不纳入稿件的科学评价。",
-        "减免政策：",
-        "减免政策将在期刊完整的编辑与法律模式确认后公布。"
+        "发表免费。纸质版彩色插图另行收费。",
+        "本站尚未公布纸质彩色插图费用的单独减免政策。"
       ],
       "confidentiality": [
-        "稿件与审稿意见保密，不得用于个人或竞争目的。未经编辑许可，不得将材料提供给人工智能系统。"
+        "稿件与审稿意见保密，不得用于个人或竞争目的。不得在无保密保障的情况下将未发表材料提供给第三方平台。"
       ],
       "conflicts": [
         "作者、编辑与审稿人须披露可能影响工作的财务、机构、个人及其他关系。相关利益冲突将随文章公布。"
@@ -629,10 +668,10 @@
         "同一结果不得重复发表。与既有工作的重叠必须披露并引用，并说明新贡献。"
       ],
       "editorial-independence": [
-        "录用与拒稿不取决于支付能力。APC 与商业利益不决定编辑决定。"
+        "录用与拒稿不取决于支付能力。出版费用与商业利益不决定编辑决定。"
       ],
       "editors-guide": [
-        "APC 不影响编辑决定。"
+        "出版费用不影响编辑决定。"
       ],
       "image-integrity": [
         "图件必须如实反映原始数据。裁剪、对比度与标注不得误导。不允许拼接、重复使用与不当处理。"
@@ -648,8 +687,8 @@
         "缺乏统计学显著效应本身不是录用或拒稿的理由。"
       ],
       "open-access": [
-        "Biological Systems and Methods 采用开放获取模式。发表后读者可免费阅读全文，无需订阅。",
-        "投稿与审稿免费。文章处理费（APC）仅在录用后收取。"
+        "按主刊规则，发表十二个月后适用 CC BY 许可。",
+        "投稿、审稿与正文发表免费。纸质版彩色插图另行收费。"
       ],
       "plagiarism": [
         "来稿将检查原创性。不允许不当重复使用文本，包括未注明的自我剽窃。"

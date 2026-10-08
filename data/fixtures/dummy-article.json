@@ -2,7 +2,7 @@
   "id": "MS-DUMMY-0001",
   "articleNumber": "e0001",
   "doi": "",
-  "title": "Dummy assay validation for JATS deposit testing in Biological Systems and Methods",
+  "title": "Dummy assay validation for JATS deposit testing in Biomedical Chemistry",
   "abstract": "This is a synthetic abstract used only to verify JATS XML generation for Crossref and PMC workflows. It must never appear in the public articles index.",
   "keywords": ["JATS", "Crossref", "molecular sciences", "open access", "reproducibility"],
   "language": "en",
@@ -85,7 +85,7 @@
     }
   ],
   "journal": {
-    "title": "Biological Systems and Methods",
+    "title": "Biomedical Chemistry",
     "issn": null,
     "eissn": null,
     "publisherName": null,

@@ -3,7 +3,10 @@
     const CFG = window.BS_CONFIG || {};
     const stats = CFG.boardStats || {};
     const host = document.getElementById("board-stats");
-    if (host) {
+    const total = ["editorInChief", "scientificEditors", "sectionEditors", "statisticalEditors", "dataEditors"]
+      .reduce((sum, key) => sum + Number(stats[key] || 0), 0);
+    if (host && total === 0) host.hidden = true;
+    if (host && total > 0) {
       host.innerHTML = `
         <div class="stat-cell"><span>Главный редактор</span><strong>${stats.editorInChief ?? 0}</strong></div>
         <div class="stat-cell"><span>Научные редакторы</span><strong>${stats.scientificEditors ?? 0}</strong></div>

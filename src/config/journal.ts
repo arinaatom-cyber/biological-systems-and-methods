@@ -1,5 +1,5 @@
 /**
- * Single source of truth for Biological Systems and Methods (BSM).
+ * Single source of truth for Biomedical Chemistry (БМХ).
  * Replace null / 0 with real values only when confirmed — never invent data.
  */
 
@@ -23,7 +23,7 @@ export type JournalConfig = {
   journalName: string;
   /** Russian display name */
   journalNameRU: string;
-  /** Short code shown in UI (BSM) */
+  /** Short code shown in UI (БМХ) */
   journalNameShort: string;
   journalSubtitle: string;
   journalTaglineRu: string;
@@ -106,34 +106,34 @@ export type JournalConfig = {
 };
 
 export const journal: JournalConfig = {
-  journalName: "Biological Systems and Methods",
-  journalNameRU: "Биологические системы и методы",
-  journalNameShort: "BSM",
-  journalSubtitle: "An International Journal of Biological Research and Methodology",
+  journalName: "Biomedical Chemistry",
+  journalNameRU: "Биомедицинская химия",
+  journalNameShort: "БМХ",
+  journalSubtitle: "Специальный выпуск",
   journalTaglineRu:
-    "Рецензируемый журнал открытого доступа, публикующий экспериментальные, вычислительные и методологические исследования биологических систем.",
+    "Специальный выпуск журнала «Биомедицинская химия». Приглашённые редакторы, свой сайт.",
   journalTaglineEn:
-    "Peer-reviewed open access journal publishing experimental, computational and methodological research on biological systems.",
-  journalAcronym: "BSM",
-  journalNameRu: "Биологические системы и методы",
-  chatEnabled: true,
+    "Special issue of Biomeditsinskaya Khimiya. Invited editors, dedicated site.",
+  journalAcronym: "БМХ",
+  journalNameRu: "Биомедицинская химия",
+  chatEnabled: false,
   submissionMode: "local",
   ojsUrl: null,
   ojsEnabled: false,
   fundingInfo: [],
-  publisherType: "ANO + LLC",
+  publisherType: "Учредитель",
   partners: [],
   currentYear: 2026,
   volumeNumber: 1,
   issueNumber: null,
-  issn: null,
-  eissn: null,
-  publisherName: null,
-  legalEntityName: null,
-  registrationCountry: null,
+  issn: "2310-6972",
+  eissn: "2310-6905",
+  publisherName: "ФГБНУ «Научно-исследовательский институт биомедицинской химии имени В.Н. Ореховича»",
+  legalEntityName: "ФГБНУ «Научно-исследовательский институт биомедицинской химии имени В.Н. Ореховича»",
+  registrationCountry: "Россия",
   legalAddress: null,
   postalAddress: null,
-  registrationDetails: null,
+  registrationDetails: "ПИ № ФС77-82357. Выдано 10 декабря 2021 г.",
   responsiblePublisher: null,
   editorInChief: null,
   officialDomain: null,
@@ -146,12 +146,12 @@ export const journal: JournalConfig = {
     submissions: null,
     ethics: null,
   },
-  apcRUB: 75000,
-  apcCNY: 6000,
-  license: "CC BY 4.0",
+  apcRUB: 0,
+  apcCNY: 0,
+  license: "CC BY",
   licenseAppliedToPublishedContent: false,
   firstDecisionDaysTarget: 21,
-  issuesPerYear: 4,
+  issuesPerYear: 1,
   articlesCount: 0,
   issuesCount: 0,
   authorsCount: 0,

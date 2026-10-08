@@ -1,9 +1,9 @@
 (() => {
   const CFG = window.BS_CONFIG || {};
   const PAGE = document.body?.dataset?.page || "";
-  const NAME = CFG.journalName || "Biological Systems and Methods";
-  const NAME_RU = CFG.journalNameRU || CFG.journalNameRu || "Биологические системы и методы";
-  const ACRONYM = CFG.journalNameShort || CFG.journalAcronym || "BSM";
+  const NAME = CFG.journalName || "Biomedical Chemistry";
+  const NAME_RU = CFG.journalNameRU || CFG.journalNameRu || "Биомедицинская химия";
+  const ACRONYM = CFG.journalNameShort || CFG.journalAcronym || "БМХ";
   window.BS = window.BS || {};
   window.BS.NAME = NAME;
   const ASSET_V = "m23";
@@ -19,8 +19,11 @@
   }
 
   function formatIssn() {
-    const v = CFG.issn || CFG.eissn;
-    return v ? String(v) : "—";
+    return CFG.issn ? String(CFG.issn) : "—";
+  }
+
+  function formatEissn() {
+    return CFG.eissn ? String(CFG.eissn) : "—";
   }
 
   function formatApc(currency = CFG.apc?.defaultCurrency || "RUB") {
@@ -29,21 +32,33 @@
       symbol: currency === "CNY" ? "¥" : "₽",
       code: currency,
     };
-    const amount = meta.amount ?? (currency === "CNY" ? 6000 : 75000);
-    const loc = { ru: "ru-RU", zh: "zh-CN", ar: "ar", en: "en-GB" };
+    const amount = meta.amount ?? (currency === "CNY" ? CFG.apcCNY : CFG.apcRUB);
     const uiLang = window.BSi18n?.getLanguage?.() || "ru";
+    if (Number(amount) === 0) {
+      const free = { ru: "Бесплатно", en: "Free", zh: "免费", ar: "مجاني" };
+      return free[uiLang] || "Free";
+    }
+    const loc = { ru: "ru-RU", zh: "zh-CN", ar: "ar", en: "en-GB" };
     const formatted = Number(amount).toLocaleString(loc[uiLang] || "en-GB");
     return `${formatted} ${meta.code || currency}`;
   }
 
   function formatApcAll() {
-    return `${formatApc("RUB")} / ${formatApc("CNY")}`;
+    const rub = formatApc("RUB");
+    const cny = formatApc("CNY");
+    return rub === cny ? rub : `${rub} / ${cny}`;
   }
 
   function volumeLabel() {
-    const vol = CFG.volumeNumber || 1;
     const year = CFG.currentYear || 2026;
     const lang = window.BSi18n?.getLanguage?.() || CFG.defaultLanguage || "ru";
+    if (CFG.specialIssue) {
+      if (lang === "ru") return `Спецвыпуск · ${year}`;
+      if (lang === "zh") return `专刊 · ${year}`;
+      if (lang === "ar") return `عدد خاص · ${year}`;
+      return `Special issue · ${year}`;
+    }
+    const vol = CFG.volumeNumber || 1;
     if (lang === "ru") return `Том ${vol} · ${year}`;
     if (lang === "zh") return `第 ${vol} 卷 · ${year}`;
     if (lang === "ar") return `المجلد ${vol} · ${year}`;
@@ -63,12 +78,6 @@
       CFG.journalSubtitleEn ||
       "An International Journal of Biological Research and Methodology"
     );
-  }
-
-  function topLicenseLabel() {
-    const license = CFG.license || "CC BY 4.0";
-    if (CFG.licenseAppliedToPublishedContent) return license;
-    return t("top.license.planned").replace("{license}", license);
   }
 
   /** Submit CTA: local form until OJS URL is configured. */
@@ -110,7 +119,7 @@
     bindLanguage();
     bindInternalLinks();
     applyLanguage(saved, false);
-    mountMarginField();
+    /* Margin notes are a technical overlay; the journal layout stays without them. */
     mountPageBanner();
     // Hybrid agent: FAQ + text check on Pages; full file/ticket API when server.py is up.
     if (CFG.chatEnabled && window.BSChat) window.BSChat.mount();
@@ -142,6 +151,17 @@
   function mountMarginField() {
     try {
       const BIO_WORDS = [
+        "peptide", "proteome", "metabolome", "LC–MS", "MS/MS", "MALDI", "ESI", "Orbitrap", "TOF",
+        "m/z", "precursor", "fragment", "ion", "isotope", "adduct", "charge", "FDR", "PSM",
+        "trypsin", "Lys-C", "TMT", "iTRAQ", "SILAC", "label-free", "XIC", "chromatogram",
+        "retention", "gradient", "C18", "HILIC", "SPE", "digest", "alkylation", "reduction",
+        "Cys", "Met", "oxidation", "phosphorylation", "acetylation", "glycosylation", "PTM",
+        "kinase", "enzyme", "Km", "kcat", "IC50", "Ki", "inhibitor", "substrate", "cofactor",
+        "NADH", "ATP", "heme", "metabolite", "lipid", "amino acid", "pathway", "flux",
+        "NMR", "chemical shift", "HPLC", "UV", "FTIR", "Raman", "calibration", "LOD", "LOQ",
+        "SMILES", "InChI", "fingerprint", "docking", "QSAR", "scaffold", "logP", "pKa",
+        "FASTA", "UniProt", "HMDB", "ChEBI", "mzML", "pepXML", "Spectral library", "decoy",
+        "PCA", "PLS-DA", "volcano", "fold change", "imputation", "batch", "QC", "blank",
         "lysosome", "ribosome", "mitochondrion", "Golgi", "nucleus", "nucleolus", "centriole", "peroxisome",
         "vacuole", "cytosol", "cytoplasm", "membrane", "vesicle", "endosome", "chloroplast", "thylakoid",
         "cristae", "flagellum", "cilium", "axoneme", "kinase", "histone", "caspase", "actin", "myosin",
@@ -282,7 +302,6 @@
       { href: "conflicts.html", id: "conflicts", labelKey: "nav.editors.coi" },
       { href: "join.html", id: "join", labelKey: "nav.editors.join" },
       { href: "confidentiality.html", id: "confidentiality", labelKey: "nav.editors.conf" },
-      { href: "ai-policy.html", id: "ai-policy", labelKey: "nav.editors.ai" },
     ];
 
     const confLink = CFG.conferenceEnabled
@@ -294,13 +313,13 @@
       <div class="topbar">
         <div class="container topbar-inner">
           <div class="topbar-left">
-            <span><span data-i18n="top.issn">ISSN</span>: <em data-cfg-issn>${formatIssn()}</em></span>
+            <span class="id-num"><span>ISSN</span> <em data-cfg-issn>${formatIssn()}</em></span>
+            <span class="id-num"><span>eISSN</span> <em data-cfg-eissn>${formatEissn()}</em></span>
+            <span class="id-num"><span>ПИ</span> <em>№ ФС77-82357</em></span>
             <span class="dot" aria-hidden="true"></span>
             <span data-cfg-volume>${volumeLabel()}</span>
             <span class="dot" aria-hidden="true"></span>
             <span data-i18n="top.oa">Open Access</span>
-            <span class="dot" aria-hidden="true"></span>
-            <span data-i18n="${CFG.licenseAppliedToPublishedContent ? "top.license" : "top.license.planned"}">${topLicenseLabel()}</span>
           </div>
           <div class="topbar-right">
             <span class="lang" role="group" aria-label="${t("lang.hint")}">
@@ -348,11 +367,6 @@
 
   function renderFooter() {
     const year = CFG.currentYear || new Date().getFullYear();
-    const license = CFG.license || "CC BY 4.0";
-    const licenseKey = CFG.licenseAppliedToPublishedContent
-      ? "footer.license.applied"
-      : "footer.license.planned";
-    const licenseLine = t(licenseKey).replace("{license}", license);
     const tagline = t("footer.tagline");
 
     return `
@@ -384,13 +398,12 @@
           <a href="publication-ethics.html">${t("footer.ethics")}</a>
           <a href="authorship.html">${t("footer.authorship")}</a>
           <a href="conflicts.html">${t("footer.coi")}</a>
-          <a href="ai-policy.html">${t("footer.ai")}</a>
           <a href="corrections.html">${t("footer.corrections")}</a>
           <a href="complaints.html">${t("footer.complaints")}</a>
         </div>
       </div>
       <div class="container footer-bottom">
-        <p>© ${year} ${NAME} Editorial Office. ${licenseLine}</p>
+        <p>© ${year} ${NAME}</p>
         <p class="footer-legal">
           <a href="privacy.html" data-i18n="footer.privacy">${t("footer.privacy")}</a>
           <a href="terms.html" data-i18n="footer.terms">${t("footer.terms")}</a>
@@ -453,6 +466,9 @@
     document.querySelectorAll("[data-cfg-issn]").forEach((el) => {
       el.textContent = formatIssn();
     });
+    document.querySelectorAll("[data-cfg-eissn]").forEach((el) => {
+      el.textContent = formatEissn();
+    });
     document.querySelectorAll("[data-cfg-volume]").forEach((el) => {
       el.textContent = volumeLabel();
     });
@@ -503,7 +519,35 @@
       if (key) el.title = t(key);
     });
 
+    hydrateCommunityChannels();
     hydratePartnersAndFunding();
+  }
+
+  function hydrateCommunityChannels() {
+    const wrap = document.getElementById("home-call-channels");
+    const channels = CFG.communityChannels || {};
+    if (!wrap) return;
+
+    const links = {
+      max: channels.maxUrl,
+      telegram: channels.telegramUrl,
+    };
+
+    let visible = 0;
+    wrap.querySelectorAll("[data-channel]").forEach((el) => {
+      const key = el.getAttribute("data-channel");
+      const url = key ? links[key] : null;
+      if (url) {
+        el.setAttribute("href", url);
+        el.hidden = false;
+        visible += 1;
+      } else {
+        el.hidden = true;
+        el.removeAttribute("href");
+      }
+    });
+
+    wrap.hidden = visible === 0;
   }
 
   function hydratePartnersAndFunding() {
@@ -737,8 +781,7 @@
       if (dataHint && extras.submitDataHint) dataHint.textContent = extras.submitDataHint;
       const apcNote = document.querySelector("#form-section > .form-note");
       if (apcNote && extras.submitApcNote) {
-        const strong = apcNote.querySelector("[data-apc]");
-        apcNote.replaceChildren("APC ", strong || document.createTextNode(""), extras.submitApcNote);
+        apcNote.textContent = extras.submitApcNote;
       }
       const fair = document.querySelector("#fairData")?.closest("label")?.querySelector("span");
       if (fair && extras.submitFair) fair.textContent = extras.submitFair;

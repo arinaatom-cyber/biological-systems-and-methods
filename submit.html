@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <script>
@@ -11,8 +11,8 @@
     } catch (e) {}
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Подать рукопись — Biological Systems and Methods</title>
-  <meta name="description" content="Submit a manuscript to Biological Systems and Methods. Publisher-style upload aligned with MDPI / FEBS / Nature initial submission practice." />
+  <title>Подать рукопись — Biomedical Chemistry</title>
+  <meta name="description" content="Подать рукопись в специальный выпуск журнала «Биомедицинская химия». Подача и публикация бесплатны." />
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,7 +27,7 @@
     <section class="page-header">
       <p class="page-kicker">Авторам</p>
       <h1>Подать рукопись</h1>
-      <p class="page-lede">Подача и рецензирование бесплатны. APC взимается только после принятия рукописи. Способность автора оплатить APC не учитывается при научной и редакционной оценке рукописи.</p>
+      <p class="page-lede">Подача идёт на этот сайт. Публикация в журнале бесплатная, кроме цветных иллюстраций в печати.</p>
       <div id="ojs-submit-banner" class="notice-banner" hidden>
         <p data-i18n="submit.ojs.banner">Подача рукописей ведётся в системе OJS. Локальная форма — временный контур до полного запуска.</p>
         <p class="cta-row">
@@ -43,13 +43,13 @@
     <div class="submit-layout">
       <section class="panel" id="form-section">
         <h2 style="margin-top: 0">Новая подача</h2>
-        <p class="form-note">APC <strong data-apc="all"></strong> · только после принятия · единый тариф независимо от академического статуса</p>
+        <p class="form-note">Публикация бесплатная. Исключение — цветные иллюстрации в печатной версии.</p>
 
         <div class="wizard-steps" aria-label="Submission steps">
-          <div class="wizard-step is-active" data-step-label="1">1 · Metadata</div>
-          <div class="wizard-step" data-step-label="2">2 · Authors</div>
-          <div class="wizard-step" data-step-label="3">3 · Files</div>
-          <div class="wizard-step" data-step-label="4">4 · Declarations</div>
+          <div class="wizard-step is-active" data-step-label="1">1 · О рукописи</div>
+          <div class="wizard-step" data-step-label="2">2 · Авторы</div>
+          <div class="wizard-step" data-step-label="3">3 · Файлы</div>
+          <div class="wizard-step" data-step-label="4">4 · Декларации</div>
         </div>
 
         <form id="submit-form" novalidate>
@@ -167,7 +167,7 @@
               </div>
 
               <label>Cover letter * <span class="hint">why this journal; novelty; prior submissions</span>
-                <textarea id="coverLetter" required placeholder="Please explain significance and fit to Biological Systems and Methods…"></textarea>
+                <textarea id="coverLetter" required placeholder="Please explain significance and fit to Biomedical Chemistry…"></textarea>
                 <span class="field-error"></span>
               </label>
 
@@ -217,9 +217,6 @@
                 <input type="text" id="dataAvailability" required placeholder="Upon reasonable request / repository accession…" />
                 <span class="field-error"></span>
               </label>
-              <label>Use of generative AI <span class="hint">Nature/FEBS disclosure</span>
-                <input type="text" id="aiUse" placeholder="None / ChatGPT used for language editing only…" />
-              </label>
               <label class="check-row">
                 <input type="checkbox" id="fairData" required />
                 <span>Мои данные соответствуют стандартам FAIR (Findable, Accessible, Interoperable, Reusable), либо я явно обосновал исключения в заявлении о доступности данных.</span>
@@ -238,7 +235,7 @@
               </label>
               <label class="check-row">
                 <input type="checkbox" id="apcAck" required />
-                <span>I understand APC is <strong data-apc="all"></strong>, payable only after acceptance (no free waiver for early-career authors).</span>
+                <span>Подтверждаю: публикация бесплатная; цветные иллюстрации в печатной версии оплачиваются отдельно.</span>
               </label>
             </div>
           </div>
@@ -262,13 +259,13 @@
             <li>Single PDF/DOCX preferred (FEBS/Nature).</li>
             <li>Title, authors, affiliations, abstract, keywords.</li>
             <li>Cover letter with originality statements.</li>
-            <li>Declarations: COI, data, ethics, AI use.</li>
+            <li>Declarations: COI, data, ethics.</li>
           </ol>
         </div>
         <div class="panel aside-panel">
-          <h3>APC</h3>
-          <p><strong data-apc="all"></strong></p>
-          <p>RUB or CNY · after accept · all authors</p>
+          <h3>Публикация</h3>
+          <p><strong data-apc="all">Бесплатно</strong></p>
+          <p>Исключение — цвет в печатной версии</p>
         </div>
         <div class="panel aside-panel">
           <h3>Editorial stages</h3>
@@ -290,7 +287,6 @@
           <button type="button" class="btn btn-primary" id="download-package">Download ZIP package</button>
           <button type="button" class="btn btn-secondary" id="download-file">Download manuscript file</button>
           <a class="btn btn-ghost" id="mailto-link" href="#">Open email draft</a>
-          <button type="button" class="btn btn-ghost" id="open-ack-chat">Submission receipt letter (chat)</button>
           <button type="button" class="btn btn-ghost" id="new-submission">New submission</button>
         </div>
       </section>
@@ -306,8 +302,6 @@
   <script src="assets/js/i18n-prose.js?v=m23"></script>
   <script src="assets/js/email.js"></script>
   <script src="assets/js/site.js?v=m23"></script>
-  <script src="assets/js/editorial-agent.js?v=m18"></script>
-  <script src="assets/js/chatbot.js?v=m18"></script>
   <script src="assets/js/submit.js"></script>
 </body>
 </html>

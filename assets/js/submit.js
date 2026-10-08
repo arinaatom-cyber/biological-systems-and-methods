@@ -18,7 +18,7 @@
     ".tiff",
   ];
 
-  const journalName = () => window.BS_CONFIG?.journalName || "Biological Systems and Methods";
+  const journalName = () => window.BS_CONFIG?.journalName || "Biomedical Chemistry";
   const editorialEmail = () =>
     window.BS_CONFIG?.editorialEmail || "arina.atom@gmail.com";
   const apcAll = () => window.BS?.formatApcAll?.() || "₽75,000 RUB · ¥6,000 CNY";
@@ -70,7 +70,6 @@
   const mailtoLink = document.getElementById("mailto-link");
   const newSubmissionBtn = document.getElementById("new-submission");
   const formError = document.getElementById("form-error");
-  const openAckChat = document.getElementById("open-ack-chat");
   const abstractEl = document.getElementById("abstract");
   const abstractCount = document.getElementById("abstract-count");
 
@@ -90,7 +89,6 @@
     bindDraft();
     abstractEl?.addEventListener("input", updateAbstractCount);
     updateAbstractCount();
-    openAckChat?.addEventListener("click", () => window.BSChat?.openAck?.());
     const restored = restoreDraft();
     applyQueryDefaults();
     if (!restored) goTo(1);
@@ -360,7 +358,7 @@
         ok = false;
       }
       if (!document.getElementById("apcAck")?.checked) {
-        showError(`Confirm APC (${apcAll()}).`);
+        showError("Подтвердите условия публикации.");
         ok = false;
       }
     }
@@ -455,7 +453,6 @@
       fairData: Boolean(document.getElementById("fairData")?.checked),
       competingInterests: document.getElementById("coi").value.trim() || "None declared",
       dataAvailability: document.getElementById("dataAvailability").value.trim(),
-      aiUse: document.getElementById("aiUse")?.value.trim() || "None declared",
       apc: apcAll(),
       earlyCareerFreePublication: false,
     };
@@ -481,7 +478,7 @@
       <div><strong>Funding:</strong> ${escapeHtml(p.funding || "—")}</div>
       <div><strong>Data IDs:</strong> ${escapeHtml(p.dataIdentifiers || "—")}</div>
       <div><strong>FAIR:</strong> ${p.fairData ? "confirmed" : "—"}</div>
-      <div><strong>APC:</strong> ${escapeHtml(p.apc)} (after acceptance; standard APC)</div>
+      <div><strong>Публикация:</strong> ${escapeHtml(p.apc)}</div>
     `;
   }
 
@@ -654,7 +651,6 @@
       if (fair) fair.checked = Boolean(draft.fairData);
       setValue("coi", draft.competingInterests || "");
       setValue("dataAvailability", draft.dataAvailability || "");
-      setValue("aiUse", draft.aiUse || "");
       if (Array.isArray(draft.authors) && draft.authors.length) {
         authorsBox.innerHTML = "";
         draft.authors.forEach((author, i) => authorsBox.appendChild(createAuthorRow(author, i)));
@@ -762,7 +758,7 @@
       `Submission ID: ${payload.submissionId}`,
       `Submitted at:  ${payload.submittedAt}`,
       `Status:        ${payload.status}`,
-      `APC:           ${payload.apc} (after acceptance; standard APC)`,
+      `Publication:   ${payload.apc}`,
       "",
       `Title:         ${payload.title}`,
       `Article type:  ${payload.articleType}`,
@@ -804,7 +800,7 @@
       `Type / Section / Issue: ${payload.articleType} / ${payload.section} / ${payload.targetIssue}`,
       `Keywords: ${payload.keywords.join("; ")}`,
       `Abstract words: ${payload.abstractWordCount}`,
-      `APC acknowledged: ${payload.apc} (after acceptance; standard APC)`,
+      `Publication terms acknowledged: ${payload.apc}`,
       "",
       "Authors:",
       authors,
@@ -815,7 +811,6 @@
       `FAIR confirmation: ${payload.fairData ? "yes" : "no"}`,
       `Competing interests: ${payload.competingInterests}`,
       `Data availability: ${payload.dataAvailability}`,
-      `AI use: ${payload.aiUse}`,
       "",
       "Main manuscript and any supplementary files are attached / in the ZIP package.",
       "",
@@ -827,7 +822,7 @@
   function makeSubmissionId() {
     const d = new Date();
     const stamp = `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, "0")}${String(d.getDate()).padStart(2, "0")}`;
-    return `BS-${stamp}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
+    return `BMH-${stamp}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
   }
 
   function wordCount(text) {

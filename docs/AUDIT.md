@@ -1,4 +1,4 @@
-# Аудит Biological Systems and Methods (BSM)
+# Аудит Biomedical Chemistry (БМХ)
 
 Дата: 2026-07-23 (обновление агента)  
 Сайт: https://arinaatom-cyber.github.io/biological-systems-and-methods/  

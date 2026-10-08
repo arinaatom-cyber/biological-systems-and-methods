@@ -92,14 +92,14 @@ def add(filename, page, title, description, kicker, h1, lede_text, body, extra="
 add(
     "about.html",
     "about",
-    "О журнале — Biological Systems and Methods",
-    "О рецензируемом журнале открытого доступа Biological Systems and Methods.",
+    "О журнале — Biomedical Chemistry",
+    "О рецензируемом журнале открытого доступа Biomedical Chemistry.",
     "О журнале",
-    "Biological Systems and Methods",
+    "Biomedical Chemistry",
     "Рецензируемый журнал открытого доступа по биологии, биоинформатике, биохимии и биофизике.",
     """
     <section class="prose-block">
-      <p>Biological Systems and Methods публикует оригинальные исследования, методы, обзоры, отрицательные, нулевые и неожиданные результаты в области наук о жизни. Редакционные решения принимаются научными редакторами. Автоматизированные инструменты используются только для технической и языковой поддержки.</p>
+      <p>Biomedical Chemistry публикует оригинальные исследования, методы, обзоры, отрицательные, нулевые и неожиданные результаты в области наук о жизни. Редакционные решения принимаются научными редакторами. Автоматизированные инструменты используются только для технической и языковой поддержки.</p>
       <ul class="link-list">
         <li><a href="aims.html">Цели и тематика</a></li>
         <li><a href="editorial.html">Редакционная коллегия</a></li>
@@ -116,11 +116,11 @@ add(
 add(
     "aims.html",
     "aims",
-    "Цели и тематика — Biological Systems and Methods",
-    "Aims and scope журнала Biological Systems and Methods.",
+    "Цели и тематика — Biomedical Chemistry",
+    "Aims and scope журнала Biomedical Chemistry.",
     "О журнале",
     "Цели и тематика",
-    "Biological Systems and Methods публикует исследования, направленные на получение воспроизводимых и интерпретируемых результатов в науках о жизни.",
+    "Biomedical Chemistry публикует исследования, направленные на получение воспроизводимых и интерпретируемых результатов в науках о жизни.",
     """
     <section class="prose-block">
       <p>Журнал объединяет экспериментальные, вычислительные и методологические работы и поддерживает публикацию как положительных, так и методологически обоснованных отрицательных результатов.</p>
@@ -133,8 +133,8 @@ add(
 add(
     "publisher.html",
     "publisher",
-    "Издатель — Biological Systems and Methods",
-    "Сведения об издателе и юридическом лице Biological Systems and Methods.",
+    "Издатель — Biomedical Chemistry",
+    "Сведения об издателе и юридическом лице Biomedical Chemistry.",
     "О журнале",
     "Издатель",
     "Юридические и издательские сведения заполняются после регистрации организации.",
@@ -157,14 +157,14 @@ add(
 add(
     "open-access.html",
     "open-access",
-    "Модель открытого доступа — Biological Systems and Methods",
-    "Open Access и лицензия CC BY 4.0 журнала Biological Systems and Methods.",
+    "Модель открытого доступа — Biomedical Chemistry",
+    "Open Access и лицензия CC BY 4.0 журнала Biomedical Chemistry.",
     "О журнале",
     "Модель открытого доступа",
     "Планируемая лицензия публикации: CC BY 4.0.",
     """
     <section class="prose-block">
-      <p>Biological Systems and Methods публикует материалы в модели открытого доступа. После публикации статьи читатели получают свободный доступ к полному тексту без подписки.</p>
+      <p>Biomedical Chemistry публикует материалы в модели открытого доступа. После публикации статьи читатели получают свободный доступ к полному тексту без подписки.</p>
       <p>Планируемая лицензия для опубликованных статей — <strong>CC BY 4.0</strong>. Пока статьи не опубликованы, лицензия описывает будущую модель, а не уже выпущенный контент.</p>
       <p>Подача и рецензирование бесплатны. Статья Processing Charge (APC) взимается только после принятия рукописи.</p>
       <p><a class="btn btn-ghost" href="apc.html">Стоимость публикации</a></p>
@@ -175,8 +175,8 @@ add(
 add(
     "history.html",
     "history",
-    "История журнала — Biological Systems and Methods",
-    "История журнала Biological Systems and Methods.",
+    "История журнала — Biomedical Chemistry",
+    "История журнала Biomedical Chemistry.",
     "О журнале",
     "История журнала",
     "",
@@ -191,8 +191,8 @@ add(
 add(
     "news.html",
     "news",
-    "Новости — Biological Systems and Methods",
-    "Новости редакции Biological Systems and Methods.",
+    "Новости — Biomedical Chemistry",
+    "Новости редакции Biomedical Chemistry.",
     "О журнале",
     "Новости",
     "",
@@ -207,8 +207,8 @@ add(
 add(
     "contact.html",
     "contact",
-    "Контакты — Biological Systems and Methods",
-    "Контакты редакционного офиса Biological Systems and Methods.",
+    "Контакты — Biomedical Chemistry",
+    "Контакты редакционного офиса Biomedical Chemistry.",
     "Контакты",
     "Контакты",
     "Редакционный офис",
@@ -238,8 +238,8 @@ add(
 add(
     "authors.html",
     "authors",
-    "Авторам — Biological Systems and Methods",
-    "Инструкции и ресурсы для авторов Biological Systems and Methods.",
+    "Авторам — Biomedical Chemistry",
+    "Инструкции и ресурсы для авторов Biomedical Chemistry.",
     "Авторам",
     "Авторам",
     "Подача и рецензирование бесплатны. APC взимается только после принятия статьи.",
@@ -260,8 +260,8 @@ add(
 add(
     "authors-guidelines.html",
     "authors-guidelines",
-    "Инструкции авторам — Biological Systems and Methods",
-    "Требования к рукописям Biological Systems and Methods.",
+    "Инструкции авторам — Biomedical Chemistry",
+    "Требования к рукописям Biomedical Chemistry.",
     "Авторам",
     "Инструкции авторам",
     "Ниже перечислены обязательные разделы рукописи и общие требования к представлению данных.",
@@ -317,8 +317,8 @@ add(
 add(
     "authors-files.html",
     "authors-files",
-    "Подготовка файлов — Biological Systems and Methods",
-    "Требования к файлам рукописи Biological Systems and Methods.",
+    "Подготовка файлов — Biomedical Chemistry",
+    "Требования к файлам рукописи Biomedical Chemistry.",
     "Авторам",
     "Подготовка файлов",
     "",
@@ -339,8 +339,8 @@ add(
 add(
     "article-types.html",
     "article-types",
-    "Типы публикаций — Biological Systems and Methods",
-    "Типы статей, принимаемых журналом Biological Systems and Methods.",
+    "Типы публикаций — Biomedical Chemistry",
+    "Типы статей, принимаемых журналом Biomedical Chemistry.",
     "Авторам",
     "Типы публикаций",
     "Для каждого типа указаны назначение, структура, данные, код и формат рецензирования. Жёсткие лимиты слов не задаются без утверждённой редакционной политики.",
@@ -353,8 +353,8 @@ add(
 add(
     "apc.html",
     "apc",
-    "Стоимость публикации (APC) — Biological Systems and Methods",
-    "APC журнала Biological Systems and Methods: 75 000 RUB или 6 000 CNY после принятия.",
+    "Стоимость публикации (APC) — Biomedical Chemistry",
+    "APC журнала Biomedical Chemistry: 75 000 RUB или 6 000 CNY после принятия.",
     "Авторам",
     "Стоимость публикации",
     "Подача рукописи и её рецензирование бесплатны. Сбор за обработку статьи взимается только после принятия рукописи к публикации.",
@@ -391,8 +391,8 @@ add(
 add(
     "data-policy.html",
     "data-policy",
-    "Политика данных и кода — Biological Systems and Methods",
-    "Требования к данным и коду в Biological Systems and Methods.",
+    "Политика данных и кода — Biomedical Chemistry",
+    "Требования к данным и коду в Biomedical Chemistry.",
     "Авторам",
     "Политика данных и кода",
     "Данные, код и аналитические материалы должны быть доступны в объёме, достаточном для проверки и воспроизведения основных результатов статьи, кроме случаев, когда доступ ограничен требованиями конфиденциальности, биоэтики или законодательства.",
@@ -425,11 +425,11 @@ add(
 add(
     "negative-results.html",
     "negative-results",
-    "Negative Results — Biological Systems and Methods",
+    "Negative Results — Biomedical Chemistry",
     "Политика публикации отрицательных и нулевых результатов.",
     "Материалы",
     "Отрицательные результаты — с тем же стандартом научной оценки",
-    "Biological Systems and Methods рассматривает отрицательные, нулевые и неожиданные результаты на основании качества исследовательского дизайна, корректности статистического анализа, воспроизводимости и научной значимости поставленного вопроса.",
+    "Biomedical Chemistry рассматривает отрицательные, нулевые и неожиданные результаты на основании качества исследовательского дизайна, корректности статистического анализа, воспроизводимости и научной значимости поставленного вопроса.",
     """
     <section class="prose-block">
       <p>Само по себе отсутствие статистической значимости не является достаточным основанием для публикации.</p>
@@ -454,8 +454,8 @@ add(
 add(
     "editors.html",
     "editors",
-    "Редакторам — Biological Systems and Methods",
-    "Руководства и ресурсы для редакторов Biological Systems and Methods.",
+    "Редакторам — Biomedical Chemistry",
+    "Руководства и ресурсы для редакторов Biomedical Chemistry.",
     "Редакторам и рецензентам",
     "Редакторам",
     "",
@@ -473,8 +473,8 @@ add(
 add(
     "reviewers.html",
     "reviewers",
-    "Рецензентам — Biological Systems and Methods",
-    "Руководства для рецензентов Biological Systems and Methods.",
+    "Рецензентам — Biomedical Chemistry",
+    "Руководства для рецензентов Biomedical Chemistry.",
     "Редакторам и рецензентам",
     "Рецензентам",
     "",
@@ -490,8 +490,8 @@ add(
 add(
     "editors-guide.html",
     "editors-guide",
-    "Руководство для редакторов — Biological Systems and Methods",
-    "Руководство научного редактора Biological Systems and Methods.",
+    "Руководство для редакторов — Biomedical Chemistry",
+    "Руководство научного редактора Biomedical Chemistry.",
     "Редакторам",
     "Руководство для редакторов",
     "Ответственный редактор оценивает соответствие тематике, качество дизайна и полноту деклараций, подбирает рецензентов и принимает окончательное решение.",
@@ -512,8 +512,8 @@ add(
 add(
     "reviewers-guide.html",
     "reviewers-guide",
-    "Руководство для рецензентов — Biological Systems and Methods",
-    "Руководство рецензента Biological Systems and Methods.",
+    "Руководство для рецензентов — Biomedical Chemistry",
+    "Руководство рецензента Biomedical Chemistry.",
     "Рецензентам",
     "Руководство для рецензентов",
     "Рецензент оценивает дизайн, статистику, воспроизводимость, интерпретацию и соответствие заявленному типу статьи.",
@@ -533,8 +533,8 @@ add(
 add(
     "editorial.html",
     "editorial",
-    "Редакционная коллегия — Biological Systems and Methods",
-    "Состав редакционной коллегии Biological Systems and Methods формируется.",
+    "Редакционная коллегия — Biomedical Chemistry",
+    "Состав редакционной коллегии Biomedical Chemistry формируется.",
     "О журнале",
     "Редакционная коллегия",
     "Редакционная коллегия формируется по направлениям Biology, Bioinformatics, Biochemistry, Biophysics, Reproducibility and Methodology.",
@@ -567,8 +567,8 @@ add(
 add(
     "policies.html",
     "policies",
-    "Правила — Biological Systems and Methods",
-    "Редакционные правила и этика Biological Systems and Methods.",
+    "Правила — Biomedical Chemistry",
+    "Редакционные правила и этика Biomedical Chemistry.",
     "Правила",
     "Правила журнала",
     "Редакционные процедуры разработаны с учётом международно признанных принципов публикационной этики.",
@@ -605,8 +605,8 @@ POLICY_PAGES = [
         "peer-review.html",
         "peer-review",
         "Peer Review Policy",
-        "Политика рецензирования Biological Systems and Methods.",
-        "Biological Systems and Methods использует редакционную предварительную оценку и независимое научное рецензирование.",
+        "Политика рецензирования Biomedical Chemistry.",
+        "Biomedical Chemistry использует редакционную предварительную оценку и независимое научное рецензирование.",
         """
         <ol class="steps-list">
           <li>Проверка комплектности файлов.</li>
@@ -637,7 +637,7 @@ POLICY_PAGES = [
         "publication-ethics.html",
         "publication-ethics",
         "Publication Ethics",
-        "Публикационная этика Biological Systems and Methods.",
+        "Публикационная этика Biomedical Chemistry.",
         "Редакционные процедуры разработаны с учётом международно признанных принципов публикационной этики.",
         """
         <p>Журнал ожидает от авторов, редакторов и рецензентов честности, прозрачности и уважения к правам участников исследований. Подробные разделы:</p>
@@ -655,7 +655,7 @@ POLICY_PAGES = [
         "authorship.html",
         "authorship",
         "Authorship",
-        "Критерии авторства Biological Systems and Methods.",
+        "Критерии авторства Biomedical Chemistry.",
         "Авторство определяется существенным вкладом в исследование и ответственностью за содержание работы.",
         """
         <ul class="checklist">
@@ -671,7 +671,7 @@ POLICY_PAGES = [
         "conflicts.html",
         "conflicts",
         "Conflicts of Interest",
-        "Политика конфликтов интересов Biological Systems and Methods.",
+        "Политика конфликтов интересов Biomedical Chemistry.",
         "Все потенциальные конфликты интересов должны быть раскрыты.",
         """
         <p>Авторы, редакторы и рецензенты декларируют финансовые, институциональные, персональные и иные отношения, которые могут повлиять на оценку рукописи. При конфликте редактор или рецензент отстраняется от работы с материалом.</p>
@@ -681,7 +681,7 @@ POLICY_PAGES = [
         "research-ethics.html",
         "research-ethics",
         "Research Ethics",
-        "Этика исследований Biological Systems and Methods.",
+        "Этика исследований Biomedical Chemistry.",
         "Исследования с участием людей или животных должны сопровождаться необходимыми одобрениями.",
         """
         <ul class="checklist">
@@ -696,7 +696,7 @@ POLICY_PAGES = [
         "corrections.html",
         "corrections",
         "Corrections and Retractions",
-        "Исправления и отзывы статей Biological Systems and Methods.",
+        "Исправления и отзывы статей Biomedical Chemistry.",
         "Журнал поддерживает целостность научной записи после публикации.",
         """
         <ul>
@@ -714,7 +714,7 @@ POLICY_PAGES = [
         "complaints.html",
         "complaints",
         "Complaints and Appeals",
-        "Жалобы и апелляции Biological Systems and Methods.",
+        "Жалобы и апелляции Biomedical Chemistry.",
         "Авторы могут подать мотивированную апелляцию на редакционное решение.",
         """
         <p>Жалобы по этике и апелляции направляются на контакт этики (см. <a href="contact.html">Контакты</a>). Обращения рассматриваются ответственным редактором или координатором, не участвовавшим в исходном решении, когда это необходимо.</p>
@@ -724,7 +724,7 @@ POLICY_PAGES = [
         "misconduct.html",
         "misconduct",
         "Misconduct",
-        "Политика в отношении нарушений Biological Systems and Methods.",
+        "Политика в отношении нарушений Biomedical Chemistry.",
         "Подозрения в нарушении публикационной этики рассматриваются по установленной процедуре.",
         """
         <p>К нарушениям относятся фабрикация и фальсификация данных, плагиат, манипуляции с изображениями, недобросовестное авторство и сокрытие существенных конфликтов интересов. При подтверждении нарушения возможны отклонение, исправление, отзыв статьи и уведомление учреждения.</p>
@@ -734,7 +734,7 @@ POLICY_PAGES = [
         "image-integrity.html",
         "image-integrity",
         "Image Integrity",
-        "Целостность изображений Biological Systems and Methods.",
+        "Целостность изображений Biomedical Chemistry.",
         "Обработка изображений не должна искажать исходные данные.",
         """
         <p>Допустимы минимальные корректировки яркости/контраста, применяемые ко всему изображению и описанные в методах. Недопустимы выборочное усиление, клонирование, сокрытие и необоснованная сборка панелей.</p>
@@ -744,7 +744,7 @@ POLICY_PAGES = [
         "duplicate-publication.html",
         "duplicate-publication",
         "Duplicate Publication",
-        "Политика повторных публикаций Biological Systems and Methods.",
+        "Политика повторных публикаций Biomedical Chemistry.",
         "Рукопись должна быть оригинальной и не рассматриваться параллельно в другом издании.",
         """
         <p>Предыдущие публикации (включая препринты) должны быть раскрыты. Переводы и вторичные публикации допускаются только при прозрачной связи с исходной записью и согласии правообладателей.</p>
@@ -754,7 +754,7 @@ POLICY_PAGES = [
         "plagiarism.html",
         "plagiarism",
         "Plagiarism and Text Recycling",
-        "Плагиат и переработка текста Biological Systems and Methods.",
+        "Плагиат и переработка текста Biomedical Chemistry.",
         "Плагиат и недобросовестный text recycling недопустимы.",
         """
         <p>Заимствования должны быть корректно процитированы. Существенное повторное использование собственного текста без указания источника может рассматриваться как нарушение.</p>
@@ -764,7 +764,7 @@ POLICY_PAGES = [
         "preprint.html",
         "preprint",
         "Preprint Policy",
-        "Политика препринтов Biological Systems and Methods.",
+        "Политика препринтов Biomedical Chemistry.",
         "Препринты допускаются при раскрытии ссылки.",
         """
         <p>Авторы могут размещать рукопись на препринт-сервере до или во время рассмотрения. Ссылка на препринт указывается при подаче и связывается со статьёй после публикации.</p>
@@ -774,7 +774,7 @@ POLICY_PAGES = [
         "confidentiality.html",
         "confidentiality",
         "Confidentiality",
-        "Конфиденциальность Biological Systems and Methods.",
+        "Конфиденциальность Biomedical Chemistry.",
         "Неопубликованные рукописи являются конфиденциальными.",
         """
         <p>Редакторы и рецензенты не передают рукописи третьим лицам и не используют их содержание в собственных интересах. Загрузка в открытые ИИ-сервисы без гарантий конфиденциальности запрещена.</p>
@@ -784,7 +784,7 @@ POLICY_PAGES = [
         "advertising.html",
         "advertising",
         "Advertising and Sponsorship",
-        "Реклама и спонсорство Biological Systems and Methods.",
+        "Реклама и спонсорство Biomedical Chemistry.",
         "Редакционные решения независимы от рекламы и спонсорства.",
         """
         <p>Любые будущие партнёрские материалы будут явно отделены от редакционного контента. Спонсорство не влияет на принятие или отклонение рукописей.</p>
@@ -794,7 +794,7 @@ POLICY_PAGES = [
         "editorial-independence.html",
         "editorial-independence",
         "Editorial Independence",
-        "Редакционная независимость Biological Systems and Methods.",
+        "Редакционная независимость Biomedical Chemistry.",
         "Научные решения принимает редакция.",
         """
         <p>Издатель и спонсоры не вмешиваются в оценку рукописей. APC и коммерческие отношения не определяют исход рецензирования.</p>
@@ -804,7 +804,7 @@ POLICY_PAGES = [
         "ai-policy.html",
         "ai-policy",
         "Политика использования ИИ",
-        "Политика использования ИИ в Biological Systems and Methods.",
+        "Политика использования ИИ в Biomedical Chemistry.",
         "Автоматизированные инструменты могут применяться редакцией для проверки комплектности, формата, ссылок, языка и технических параметров файлов. Они не принимают решения о принятии или отклонении рукописи.",
         """
         <ul class="checklist">
@@ -824,7 +824,7 @@ POLICY_PAGES = [
         "language-policy.html",
         "language-policy",
         "Языковая политика",
-        "Языковая политика Biological Systems and Methods.",
+        "Языковая политика Biomedical Chemistry.",
         "Основной язык version of record — English.",
         """
         <p>Английская версия полного текста является основной версией научной публикации, если для конкретной статьи не указано иное. Переводы должны быть связаны с той же записью статьи и содержать указание на основной текст.</p>
@@ -837,7 +837,7 @@ for fn, page, h1, desc, lede_t, body in POLICY_PAGES:
     add(
         fn,
         page,
-        f"{h1} — Biological Systems and Methods",
+        f"{h1} — Biomedical Chemistry",
         desc,
         "Правила",
         h1,
@@ -848,8 +848,8 @@ for fn, page, h1, desc, lede_t, body in POLICY_PAGES:
 add(
     "process.html",
     "process",
-    "Процесс публикации — Biological Systems and Methods",
-    "14 шагов публикации в Biological Systems and Methods.",
+    "Процесс публикации — Biomedical Chemistry",
+    "14 шагов публикации в Biomedical Chemistry.",
     "Авторам",
     "Процесс публикации",
     "От создания учётной записи до публикации и подготовки метаданных.",
@@ -862,8 +862,8 @@ add(
 add(
     "privacy.html",
     "privacy",
-    "Privacy Policy — Biological Systems and Methods",
-    "Политика конфиденциальности Biological Systems and Methods.",
+    "Privacy Policy — Biomedical Chemistry",
+    "Политика конфиденциальности Biomedical Chemistry.",
     "Правовая информация",
     "Privacy Policy",
     "Мы обрабатываем персональные данные только в объёме, необходимом для редакционной работы и поддержки сайта.",
@@ -877,8 +877,8 @@ add(
 add(
     "terms.html",
     "terms",
-    "Terms of Use — Biological Systems and Methods",
-    "Условия использования сайта Biological Systems and Methods.",
+    "Terms of Use — Biomedical Chemistry",
+    "Условия использования сайта Biomedical Chemistry.",
     "Правовая информация",
     "Terms of Use",
     "",
@@ -892,8 +892,8 @@ add(
 add(
     "cookies.html",
     "cookies",
-    "Cookie Policy — Biological Systems and Methods",
-    "Политика cookie Biological Systems and Methods.",
+    "Cookie Policy — Biomedical Chemistry",
+    "Политика cookie Biomedical Chemistry.",
     "Правовая информация",
     "Cookie Policy",
     "",
@@ -907,8 +907,8 @@ add(
 add(
     "accessibility.html",
     "accessibility",
-    "Accessibility — Biological Systems and Methods",
-    "Доступность сайта Biological Systems and Methods.",
+    "Accessibility — Biomedical Chemistry",
+    "Доступность сайта Biomedical Chemistry.",
     "Правовая информация",
     "Accessibility",
     "Мы стремимся к соответствию базовым практикам доступности: семантическая разметка, клавиатурная навигация, видимый focus и достаточный контраст.",
@@ -922,8 +922,8 @@ add(
 add(
     "conferences.html",
     "conferences",
-    "Конференции — Biological Systems and Methods",
-    "Мероприятия Biological Systems and Methods.",
+    "Конференции — Biomedical Chemistry",
+    "Мероприятия Biomedical Chemistry.",
     "Конференции",
     "Конференции",
     "",

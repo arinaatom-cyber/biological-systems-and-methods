@@ -36,8 +36,8 @@ BODY_SIZE = 14
 HINT_SIZE = 12
 GOST_LINE = 1.5
 GOST_FIRST_INDENT = Cm(1.25)
-JOURNAL_EN = "Biological Systems and Methods"
-JOURNAL_RU = "Биологические системы и методы"
+JOURNAL_EN = "Biomedical Chemistry"
+JOURNAL_RU = "Биомедицинская химия"
 JOURNAL_SUB = "An International Journal of Biological Research and Methodology"
 JOURNAL_SHORT = "BSM"
 
@@ -181,7 +181,7 @@ def make_figure_png(path: Path, label: str, subtitle: str):
         except OSError:
             font_lg = ImageFont.load_default()
             font_sm = font_lg
-    draw.text((160, 55), "Biological Systems and Methods", fill=(13, 43, 40), font=font_lg)
+    draw.text((160, 55), "Biomedical Chemistry", fill=(13, 43, 40), font=font_lg)
     draw.text((160, 105), "Manuscript figure placeholder · GOST template", fill=(90, 104, 112), font=font_sm)
     draw.text((240, 340), label, fill=(13, 43, 40), font=font_lg)
     draw.text((240, 400), subtitle, fill=(90, 104, 112), font=font_sm)

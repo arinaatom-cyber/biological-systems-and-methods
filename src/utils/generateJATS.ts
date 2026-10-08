@@ -136,8 +136,8 @@ export function generateJATS(article: JatsArticleInput, journalFallback?: JatsAr
   }
 
   const j = { ...(journalFallback || {}), ...(article.journal || {}) };
-  const journalTitle = j.title || "Biological Systems and Methods";
-  const publisherName = j.publisherName || "Biological Systems and Methods Editorial Office";
+  const journalTitle = j.title || "Biomedical Chemistry";
+  const publisherName = j.publisherName || "Biomedical Chemistry Editorial Office";
   const license = article.license || "CC BY 4.0";
   const licenseUrl =
     article.licenseUrl || "https://creativecommons.org/licenses/by/4.0/";
@@ -369,7 +369,7 @@ export const DUMMY_JATS_ARTICLE: JatsArticleInput = {
   articleNumber: "e0001",
   doi: "",
   title:
-    "Dummy molecular assay validation for JATS deposit testing in Biological Systems and Methods",
+    "Dummy molecular assay validation for JATS deposit testing in Biomedical Chemistry",
   abstract:
     "This is a synthetic abstract used only to verify JATS XML generation for Crossref and PMC workflows. It must never appear in the public articles index.",
   keywords: ["JATS", "Crossref", "molecular sciences", "open access", "reproducibility"],
@@ -455,7 +455,7 @@ export const DUMMY_JATS_ARTICLE: JatsArticleInput = {
     },
   ],
   journal: {
-    title: "Biological Systems and Methods",
+    title: "Biomedical Chemistry",
     issn: null,
     eissn: null,
     publisherName: null,

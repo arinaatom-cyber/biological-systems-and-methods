@@ -1,5 +1,5 @@
 (() => {
-  const SCOPE_KEYS = ["biology", "bioinformatics", "biochemistry", "biophysics", "reproducibility"];
+  const SCOPE_KEYS = ["bioinformatics", "biology", "biochemistry", "biophysics", "reproducibility"];
 
   function t(key) {
     return window.BSi18n?.t(key) || key;

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Editorial support agent for Biological Systems and Methods (BSM).
+"""Editorial support agent for Biomedical Chemistry (БМХ).
 
 Answers standard author questions from journal facts, runs a technical
 pre-screen of manuscript text (character/word counts, section heuristics),
@@ -27,8 +27,8 @@ from urllib import request as urlrequest
 from xml.etree import ElementTree as ET
 
 JOURNAL = {
-    "name": "Biological Systems and Methods",
-    "name_ru": "Биологические системы и методы",
+    "name": "Biomedical Chemistry",
+    "name_ru": "Биомедицинская химия",
     "short": "BSM",
     "apc_rub": 75_000,
     "apc_cny": 6_000,

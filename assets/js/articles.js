@@ -50,7 +50,7 @@
 
   function syncPageTitle() {
     if (document.body?.dataset?.page !== "articles") return;
-    const name = window.BS_CONFIG?.journalName || "Biological Systems and Methods";
+    const name = window.BS_CONFIG?.journalName || "Biomedical Chemistry";
     document.title = `${t("articles.title")} — ${name}`;
   }
 

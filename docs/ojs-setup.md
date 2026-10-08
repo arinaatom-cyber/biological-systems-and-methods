@@ -1,11 +1,11 @@
-# OJS setup for Biological Systems and Methods (BSM)
+# OJS setup for Biomedical Chemistry (БМХ)
 
 Public site = showcase. **OJS** = submission, peer review, editorial workflow.
 
 ## 1. Install
 
 - Host OJS 3.4+ (or current LTS) on HTTPS.
-- Create journal: **Biological Systems and Methods** / RU title **Биологические системы и методы** / acronym **BSM**.
+- Create journal: **Biomedical Chemistry** / RU title **Биомедицинская химия** / acronym **BSM**.
 - Match APC, licence (planned CC BY 4.0), and section list with the public site.
 
 ## 2. Wire the showcase site

@@ -44,7 +44,7 @@
       .toUpperCase()}`;
 
     const payload = {
-      journal: window.BS_CONFIG?.journalName || "Biological Systems and Methods",
+      journal: window.BS_CONFIG?.journalName || "Biomedical Chemistry",
       type: "editor-reviewer-application",
       applicationId,
       submittedAt: new Date().toISOString(),
@@ -59,7 +59,7 @@
       if (!window.BSEmail?.deliverPackage) {
         throw new Error("email helper missing");
       }
-      const jName = window.BS_CONFIG?.journalName || "Biological Systems and Methods";
+      const jName = window.BS_CONFIG?.journalName || "Biomedical Chemistry";
       const delivery = await window.BSEmail.deliverPackage({
         endpoint: "/api/apply",
         payload,

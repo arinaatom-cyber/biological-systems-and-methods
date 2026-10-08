@@ -1,6 +1,6 @@
-# Biological Systems and Methods (BSM)
+# Biomedical Chemistry (БМХ)
 
-**Биологические системы и методы**  
+**Биомедицинская химия**  
 *An International Journal of Biological Research and Methodology*
 
 Папка проекта: `C:\Users\Arina1996\Projects\bioscientia`
@@ -32,7 +32,7 @@ python server.py
 - Канон: `src/config/journal.ts`
 - Runtime: `assets/js/config.js`
 - Подача: `submissionMode: "local"` → форма на сайте; `"ojs"` + `ojsUrl` → Open Journal Systems
-- Сокращение: `journalNameShort: "BSM"`
+- Сокращение: `journalNameShort: "БМХ"`
 
 ## Редакционный агент
 

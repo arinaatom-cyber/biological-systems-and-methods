@@ -62,8 +62,8 @@
     }
 
     const j = Object.assign({}, journalFallback || {}, article.journal || {});
-    const journalTitle = j.title || "Biological Systems and Methods";
-    const publisherName = j.publisherName || "Biological Systems and Methods Editorial Office";
+    const journalTitle = j.title || "Biomedical Chemistry";
+    const publisherName = j.publisherName || "Biomedical Chemistry Editorial Office";
     const license = article.license || "CC BY 4.0";
     const licenseUrl = article.licenseUrl || "https://creativecommons.org/licenses/by/4.0/";
     const lang = (article.language || "en").slice(0, 2);
@@ -283,7 +283,7 @@ ${supp}
     id: "MS-DUMMY-0001",
     articleNumber: "e0001",
     doi: "",
-    title: "Dummy molecular assay validation for JATS deposit testing in Biological Systems and Methods",
+    title: "Dummy molecular assay validation for JATS deposit testing in Biomedical Chemistry",
     abstract:
       "This is a synthetic abstract used only to verify JATS XML generation for Crossref and PMC workflows. It must never appear in the public articles index.",
     keywords: ["JATS", "Crossref", "molecular sciences", "open access", "reproducibility"],
@@ -368,7 +368,7 @@ ${supp}
       },
     ],
     journal: {
-      title: "Biological Systems and Methods",
+      title: "Biomedical Chemistry",
       issn: null,
       eissn: null,
       publisherName: null,

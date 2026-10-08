@@ -127,12 +127,7 @@ a:hover {
 
 /* Side-margin notes: biology / chemistry, gray-green */
 .page-margin-field {
-  position: fixed;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-  user-select: none;
-  overflow: hidden;
+  display: none;
 }
 .page-margin-field-col {
   position: absolute;
@@ -2330,7 +2325,10 @@ label .hint {
 }
 
 /* —— Journal shell v2 —— */
-.topbar { font-size: 0.8125rem; border-bottom: 1px solid var(--line); background: #f3f6f4; }
+.topbar { font-size: 0.95rem; border-bottom: 1px solid var(--line); background: #f3f6f4; }
+.topbar .id-num { display: inline-flex; align-items: baseline; gap: 0.35rem; letter-spacing: 0.01em; white-space: nowrap; }
+.topbar .id-num em { font-variant-numeric: tabular-nums; letter-spacing: 0.06em; font-size: 1.05rem; font-weight: 700; }
+.topbar-right { margin-left: auto; }
 .topbar-inner { display: flex; justify-content: space-between; gap: 1rem; align-items: center; min-height: 2.1rem; flex-wrap: wrap; padding: 0.35rem 0; }
 .topbar-left, .topbar-right { display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap; }
 .topbar .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--ink-faint); }
@@ -2569,6 +2567,7 @@ label .hint {
 
 .scope-grid, .types-grid, .card-link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
 .scope-card, .policy-card, .type-card { display: block; padding: 1.25rem; border: 1px solid var(--line); background: #fff; text-decoration: none; color: inherit; }
+.scope-card-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
 .policy-card:hover { border-color: var(--line-strong); }
 .scope-card h3, .policy-card h2, .type-card h2 { font-family: var(--font-serif); font-weight: 600; margin: 0 0 0.6rem; font-size: 1.25rem; }
 .type-card dl { margin: 0; display: grid; gap: 0.45rem; }
@@ -2632,9 +2631,8 @@ label .hint {
 
 @media (max-width: 768px) {
   .site-header { z-index: 100; }
-  .topbar { font-size: 0.68rem; }
-  .topbar-left .dot:nth-of-type(n+2),
-  .topbar-left span:nth-child(n+5) { display: none; }
+  .topbar { font-size: 0.9rem; }
+  .topbar .id-num em { font-size: 1rem; }
   .brand-tag, .compact-header .brand-tag { display: none; }
   .brand-name { font-size: 1.12rem; max-width: none; }
   .compact-header .brand-name { white-space: normal; font-size: 1.22rem; line-height: 1.2; }

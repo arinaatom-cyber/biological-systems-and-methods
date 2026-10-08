@@ -1,13 +1,13 @@
 /**
- * Client-side editorial agent for Biological Systems and Methods (BSM).
+ * Client-side editorial agent for Biomedical Chemistry (БМХ).
  * Works on static hosts (GitHub Pages). Server.py adds PDF/DOCX check + tickets + optional LLM.
  */
 (() => {
   const CFG = () => window.BS_CONFIG || {};
-  const NAME = () => CFG().journalName || "Biological Systems and Methods";
+  const NAME = () => CFG().journalName || "Biomedical Chemistry";
   const EMAIL = () =>
     CFG().emails?.coordinator || CFG().temporaryEmail || CFG().editorialEmail || "arina.atom@gmail.com";
-  const APC = () => window.BS?.formatApcAll?.() || "75 000 RUB / 6 000 CNY";
+  const APC = () => window.BS?.formatApcAll?.() || "Бесплатно";
   const SUBMIT = () => window.BS?.submitHref?.() || "submit.html";
 
   const SECTION_HINTS = [
@@ -43,9 +43,9 @@
       id: "apc",
       re: /(apc|стоимост|оплат|плат[её]|fee|charge|публикац.*сбор|сколько.*(стоит|cost)|price)/i,
       answer: () =>
-        `Сбор за обработку статьи (Article Processing Charge, APC): ${APC()}.\n\n` +
-        "Подача и рецензирование бесплатны. APC только после принятия и не влияет на редакционное решение. " +
-        "Способность автора оплатить APC не учитывается при научной оценке.\n\nПодробнее: apc.html",
+        "Публикация в журнале «Биомедицинская химия» бесплатная.\n" +
+        "Исключение — цветные иллюстрации в печатной версии. Эта плата не влияет на решение редакции.\n\n" +
+        "Подробнее: apc.html",
     },
     {
       id: "submit",
@@ -73,16 +73,16 @@
       re: /(открыт.*доступ|open access|cc\s*by|лиценз)/i,
       answer: () => {
         const f = facts();
-        return `${f.planned} ISSN пока: ${f.issn}.\nСтраница: open-access.html`;
+        return `Лицензия журнала: CC BY через 12 месяцев после публикации. ISSN ${f.issn}.\nСтраница: open-access.html`;
       },
     },
     {
       id: "scope",
       re: /(тематик|scope|aims|что публик|подходит ли)/i,
       answer: () =>
-        `${NAME()} публикует экспериментальные, вычислительные и методологические исследования биологических систем ` +
-        "(биология, биоинформатика и омикс, биохимия, биофизика, методы и воспроизводимость), " +
-        "включая методологически обоснованные отрицательные и нулевые результаты.\naims.html",
+        "Спецвыпуск — вычислительная биомедицинская химия, не вся биология журнала: " +
+        "протеомика, метаболомика, масс-спектрометрия, хемоинформатика, методы, данные и код. " +
+        "Отрицательные и нулевые результаты принимаются при том же стандарте.\naims.html",
     },
     {
       id: "negative",
@@ -105,11 +105,12 @@
       answer: () => {
         const f = facts();
         return (
-          `Том 1 · 2026 — ${f.issues} выпуска:\n` +
-          "• № 1 — Биологические системы и экспериментальные методы\n" +
-          "• № 2 — Вычислительная биология и омиксные технологии\n" +
-          "• № 3 — Отрицательные, нулевые и неожиданные результаты\n" +
-          "• № 4 — Обзоры, достижения и перспективы\n\nissues.html"
+          "Специальный выпуск · 2026, четыре раздела:\n" +
+          "• Протеомика и масс-спектрометрия\n" +
+          "• Хемоинформатика и разбор омиксных данных\n" +
+          "• Отрицательные, нулевые и неожиданные результаты\n" +
+          "• Обзоры, достижения и перспективы\n\n" +
+          "Редакция выпуска не совпадает с редколлегией журнала.\nissues.html"
         );
       },
     },
@@ -132,7 +133,7 @@
       ? "Полный режим: FAQ, проверка файлов (DOCX/PDF*), комментарии «что исправить», отчёт редакции."
       : "Витринный режим: FAQ, проверка текста/.txt, комментарии с примерами правок, отправка отчёта на email редакции.";
     return (
-      `Редакционный агент · ${NAME()} (BSM)\n\n${mode}\n\n` +
+      `Редакционный агент · ${NAME()} (БМХ)\n\n${mode}\n\n` +
       "Загрузите файл или напишите «проверь: …» — получите % готовности, список правок и пример ответа автору.\n" +
       "Не принимаю статьи и не выношу решение о публикации."
     );
@@ -293,7 +294,7 @@
 
     const badge = { high: "ВЫСОКИЙ", medium: "СРЕДНИЙ", low: "НИЗКИЙ" };
     const out = [
-      "Предпроверка рукописи BSM (техническая; не рецензирование и не решение редакции)",
+      "Предпроверка рукописи БМХ (техническая; не рецензирование и не решение редакции)",
       "════════════════════════════════════════",
       `Файл: ${filename || "вставленный текст"}`,
       `Объём: ${chars.toLocaleString("ru-RU")} симв. · ${words.toLocaleString("ru-RU")} слов · ${lines} строк`,
@@ -326,7 +327,7 @@
     out.push(
       "Пример итогового ответа автору:",
       "┌─",
-      `│ Уважаемый автор, по файлу «${filename || "manuscript"}» выполнен технический прескрин BSM.`,
+      `│ Уважаемый автор, по файлу «${filename || "manuscript"}» выполнен технический прескрин БМХ.`,
       `│ Оценка готовности: ${readiness}%. ${verdict}`,
       "│ Главное к исправлению:"
     );
@@ -343,7 +344,7 @@
     );
 
     const editorialReport = [
-      `[BSM pre-check] ${filename || "manuscript"}`,
+      `[БМХ pre-check] ${filename || "manuscript"}`,
       `Readiness: ${readiness}%`,
       `Chars/words: ${chars}/${words}`,
       `Language: ${lang}`,
@@ -369,7 +370,7 @@
   }
 
   function operatorMailto(message) {
-    const subject = encodeURIComponent(`[BSM] Обращение из чата · ${NAME()}`);
+    const subject = encodeURIComponent(`[БМХ] Обращение из чата · ${NAME()}`);
     const body = encodeURIComponent(
       `Сообщение:\n${message || "Нужна помощь редакции"}\n\nСтраница: ${location.href}\n`
     );
@@ -377,7 +378,7 @@
   }
 
   function reportMailto(editorialReport) {
-    const subject = encodeURIComponent(`[BSM] Отчёт предпроверки рукописи`);
+    const subject = encodeURIComponent(`[БМХ] Отчёт предпроверки рукописи`);
     const body = encodeURIComponent(editorialReport || "Отчёт пуст");
     return `mailto:${EMAIL()}?subject=${subject}&body=${body}`;
   }
@@ -429,7 +430,7 @@
     return {
       intent: "fallback",
       reply:
-        "Я помощник редакции BSM.\n\n" +
+        "Я помощник редакции БМХ.\n\n" +
         "• Стандартные вопросы: APC, подача, сроки, OA, выпуски, отрицательные результаты\n" +
         "• Предпроверка файла: % готовности + «что исправить» с примерами\n" +
         "• Отправка замечаний редакции: после проверки → «Отправить отчёт редакции»\n\n" +

@@ -1,6 +1,6 @@
-# Biological Systems and Methods — roadmap
+# Biomedical Chemistry — roadmap
 
-Official names: **Biological Systems and Methods** · **Биологические системы и методы** · **BSM**
+Official names: **Biomedical Chemistry** · **Биомедицинская химия** · **BSM**
 
 This file tracks the journal plan. Checkboxes move from `[ ]` to `[x]` only when evidence exists — never invent ISSN, board members, DOI, or articles.
 
@@ -21,7 +21,7 @@ This file tracks the journal plan. Checkboxes move from `[ ]` to `[x]` only when
 
 ## Stage 1 — Public site & design
 
-- [x] Brand: Biological Systems and Methods / Биологические системы и методы / BSM
+- [x] Brand: Biomedical Chemistry / Биомедицинская химия / BSM
 - [x] Subtitle: An International Journal of Biological Research and Methodology
 - [x] Single config: `src/config/journal.ts` + `assets/js/config.js`
 - [x] Stats remain `0` / `—` until real data
@@ -40,7 +40,7 @@ This file tracks the journal plan. Checkboxes move from `[ ]` to `[x]` only when
 - [x] Config hooks: `submissionMode`, `ojsUrl`, `ojsEnabled` in journal config
 - [x] Submit CTA can redirect to OJS when URL is set (see `docs/ojs-setup.md`)
 - [ ] Install / host OJS
-- [ ] Create journal in OJS (BSM), sections, workflows
+- [ ] Create journal in OJS (БМХ), sections, workflows
 - [ ] Author / editor / reviewer roles
 - [ ] Set `ojsUrl` + `submissionMode: "ojs"`
 - [ ] Retire or demote local `submit.html` form to backup only

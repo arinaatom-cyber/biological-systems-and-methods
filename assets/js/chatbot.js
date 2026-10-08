@@ -1,6 +1,6 @@
 (() => {
   const NAME = () =>
-    window.BS?.NAME || window.BS_CONFIG?.journalName || "Biological Systems and Methods";
+    window.BS?.NAME || window.BS_CONFIG?.journalName || "Biomedical Chemistry";
   const API = () => (window.BS_CONFIG?.apiBase || "").replace(/\/$/, "");
   const Agent = () => window.BSEditorialAgent;
 
@@ -289,7 +289,7 @@
     const report =
       state.lastReport.editorialReport ||
       state.lastReport.reply ||
-      "Отчёт предпроверки BSM";
+      "Отчёт предпроверки БМХ";
     appendBubble("user", "Отправить отчёт редакции");
     setBusy(true);
     try {
