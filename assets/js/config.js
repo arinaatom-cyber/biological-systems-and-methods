@@ -41,6 +41,9 @@ window.BS_CONFIG = {
   ojsUrl: null,
   ojsEnabled: false,
   currentYear: 2026,
+  /** ISO dates — special issue timeline (confirmed editorial plan). */
+  specialIssueSubmissionOpens: "2026-10-20",
+  specialIssuePublicationPlanned: "2026-12-20",
   volumeNumber: null,
   issueNumber: null,
   issn: "2310-6972",

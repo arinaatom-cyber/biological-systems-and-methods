@@ -137,6 +137,8 @@
       "home.hero.title": "Вычислительные и экспериментальные методы в биомедицинской химии",
       "home.hero.lede":
         "Протеомика, метаболомика, масс-спектрометрия и хемоинформатика: исследования, методы и воспроизводимый анализ данных.",
+      "home.hero.schedule":
+        "Приём рукописей — с 20 октября 2026 г. Планируемая публикация спецвыпуска — 20 декабря 2026 г. Если статья нужна к отчёту по гранту, подавайте материал заранее с учётом сроков рецензирования.",
       "home.hero.note": "Решения о публикации принимаются с учётом требований журнала и редакционной политики спецвыпуска.",
       "home.hero.cta.submit": "Отправить статью",
       "home.hero.cta.guide": "Требования к рукописям",
@@ -161,7 +163,7 @@
         "Приглашаем исследования с отрицательными и нулевыми результатами. При оценке учитываются обоснованность методов, качество данных и содержательность выводов.",
       "home.call.grant.title": "Результаты проекта",
       "home.call.grant.body":
-        "Авторы могут приложить краткое описание задач проекта, полученных результатов и ограничений.",
+        "К отчёту по гранту можно приложить краткое описание задач, результатов и ограничений. Подача — с 20 октября; для успеть к отчёту рекомендуем не откладывать отправку рукописи.",
       "home.call.plain.title": "Краткое изложение для неспециалистов",
       "home.call.plain.body":
         "В двух абзацах опишите исследовательский вопрос, основные результаты и их значение. Избегайте специальных терминов и укажите существенные ограничения.",
@@ -203,7 +205,9 @@
       "home.articles.types": "Посмотреть типы рукописей",
       "home.issues.title": "Специальный выпуск · 2026",
       "home.issues.sub":
-        "Четыре тематических раздела. Приём материалов и организация рецензирования — у редакторов спецвыпуска. Решения о публикации принимаются с учётом требований журнала «Биомедицинская химия» и редакционной политики спецвыпуска.",
+        "Четыре тематических раздела. Приём — с 20 октября 2026 г., планируемый выход выпуска — 20 декабря 2026 г.",
+      "issues.schedule":
+        "Приём рукописей открыт с 20 октября 2026 г. Планируемая публикация — 20 декабря 2026 г. Для включения в отчёт по гранту учитывайте сроки рецензирования и подавайте материалы заблаговременно.",
       "home.nr.title": "Отрицательные результаты — с тем же стандартом научной оценки",
       "home.nr.body":
         "Спецвыпуск рассматривает отрицательные и нулевые результаты на основании качества исследовательского дизайна, достаточности выборки, корректности статистического анализа, воспроизводимости и научной значимости поставленного вопроса. Отсутствие статистически значимого эффекта само по себе не является достаточным основанием для публикации.",
@@ -464,6 +468,8 @@
       "home.hero.title": "Special issue — Biomedical Chemistry",
       "home.hero.lede":
         "Proteomics, metabolomics, mass spectrometry and cheminformatics: research, methods and reproducible data analysis.",
+      "home.hero.schedule":
+        "Submissions open 20 October 2026. Planned special-issue publication: 20 December 2026. If you need acceptance for a grant report, submit early to allow time for peer review.",
       "home.hero.channels.title": "Our channels",
       "home.hero.channels.body": "Announcements, timelines and a direct line to the issue editors.",
       "home.hero.note":
@@ -528,7 +534,10 @@
       "home.articles.empty": "No published materials yet. The first articles will appear in this section after editorial and peer review are complete.",
       "home.articles.types": "View manuscript types",
       "home.issues.title": "Special issue · 2026",
-      "home.issues.sub": "One issue in four thematic sections within the 2026 special issue.",
+      "home.issues.sub":
+        "Four thematic sections. Submissions from 20 October 2026; planned publication 20 December 2026.",
+      "issues.schedule":
+        "Submissions open 20 October 2026. Planned publication 20 December 2026. For grant reporting, submit early to allow peer-review time.",
       "home.nr.title": "Negative results — same scientific standard",
       "home.nr.body": "Biomedical Chemistry evaluates negative, null and unexpected results on the basis of study design quality, sample adequacy, statistical correctness, reproducibility and the scientific importance of the question. Lack of a statistically significant effect alone is not sufficient for publication.",
       "home.nr.cta": "Requirements for negative and null results",

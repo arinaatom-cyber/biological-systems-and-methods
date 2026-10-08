@@ -55,6 +55,8 @@ export type JournalConfig = {
   /** University / sponsor logos — render when non-empty */
   partners: PartnerOrg[];
   currentYear: number;
+  specialIssueSubmissionOpens: string | null;
+  specialIssuePublicationPlanned: string | null;
   volumeNumber: number;
   issueNumber: number | null;
   issn: string | null;
@@ -141,6 +143,8 @@ export const journal: JournalConfig = {
   publisherType: "Учредитель",
   partners: [],
   currentYear: 2026,
+  specialIssueSubmissionOpens: "2026-10-20",
+  specialIssuePublicationPlanned: "2026-12-20",
   volumeNumber: 1,
   issueNumber: null,
   issn: "2310-6972",
