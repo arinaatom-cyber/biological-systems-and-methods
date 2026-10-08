@@ -19,6 +19,22 @@ export type PartnerOrg = {
   role?: "sponsor" | "affiliate" | "technical" | string;
 };
 
+/** Facts from journalrank.rcsi.science — never invent. */
+export type JournalRcsiCard = {
+  id: string;
+  titleKey: string;
+  issn: string | null;
+  eissn: string | null;
+  legacyIssn: string | null;
+  vakWhiteListLevel: number | null;
+  whiteListIncludedDate: string | null;
+  doiRegistrationAgency: string | null;
+  rcsiCardUrl: string | null;
+  indexing: readonly string[];
+  language?: string | null;
+  countries?: readonly string[] | null;
+};
+
 export type JournalConfig = {
   journalName: string;
   /** Russian display name */
@@ -43,6 +59,7 @@ export type JournalConfig = {
   issueNumber: number | null;
   issn: string | null;
   eissn: string | null;
+  journalRcsiCards: readonly JournalRcsiCard[];
   publisherName: string | null;
   legalEntityName: string | null;
   registrationCountry: string | null;
@@ -111,9 +128,9 @@ export const journal: JournalConfig = {
   journalNameShort: "БМХ",
   journalSubtitle: "Специальный выпуск",
   journalTaglineRu:
-    "Специальный выпуск журнала «Биомедицинская химия». Приглашённые редакторы, свой сайт.",
+    "Спецвыпуск «Биомедицинская химия»: вычислительные и экспериментальные методы, рецензирование, открытый доступ.",
   journalTaglineEn:
-    "Special issue of Biomeditsinskaya Khimiya. Invited editors, dedicated site.",
+    "Biomedical Chemistry special issue: computational and experimental methods, peer review, open access.",
   journalAcronym: "БМХ",
   journalNameRu: "Биомедицинская химия",
   chatEnabled: false,
@@ -128,6 +145,36 @@ export const journal: JournalConfig = {
   issueNumber: null,
   issn: "2310-6972",
   eissn: "2310-6905",
+  journalRcsiCards: [
+    {
+      id: "ru-main",
+      titleKey: "home.rcsi.kicker.ru",
+      issn: "2310-6972",
+      eissn: "2310-6905",
+      legacyIssn: "0042-8809",
+      vakWhiteListLevel: 1,
+      whiteListIncludedDate: "2022-10-20",
+      doiRegistrationAgency: "Crossref",
+      rcsiCardUrl: "https://journalrank.rcsi.science/ru/record-sources/details/22623/",
+      indexing: ["Scopus", "Crossref", "MEDLINE", "Biological Abstracts", "CAS Core"],
+      language: "Русский",
+      countries: ["Россия"],
+    },
+    {
+      id: "en-supplement",
+      titleKey: "home.rcsi.kicker.enSupplement",
+      issn: "1990-7516",
+      eissn: "1990-7508",
+      legacyIssn: null,
+      vakWhiteListLevel: 3,
+      whiteListIncludedDate: "2022-10-20",
+      doiRegistrationAgency: "Crossref",
+      rcsiCardUrl: "https://journalrank.rcsi.science/ru/record-sources/details/2547/",
+      indexing: ["Scopus", "WoS CC", "Crossref", "Embase"],
+      language: "Английский",
+      countries: ["Россия", "США"],
+    },
+  ],
   publisherName: "ФГБНУ «Научно-исследовательский институт биомедицинской химии имени В.Н. Ореховича»",
   legalEntityName: "ФГБНУ «Научно-исследовательский институт биомедицинской химии имени В.Н. Ореховича»",
   registrationCountry: "Россия",

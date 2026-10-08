@@ -1,8 +1,8 @@
 {
   "name": "Биомедицинская химия — специальный выпуск",
   "short_name": "БМХ",
-  "description": "Специальный выпуск журнала «Биомедицинская химия». ISSN 2310-6972, eISSN 2310-6905.",
-  "start_url": "/index.html",
+  "description": "Спецвыпуск «Биомедицинская химия»: вычислительные и экспериментальные методы. ISSN 2310-6972, eISSN 2310-6905.",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#fafbf9",
   "theme_color": "#0d2b28",

@@ -13,9 +13,9 @@ window.BS_CONFIG = {
   journalSubtitleEn: "Special issue",
   journalAcronym: "БМХ",
   journalTaglineRu:
-    "Специальный выпуск журнала «Биомедицинская химия». Приглашённые редакторы, свой сайт.",
+    "Спецвыпуск «Биомедицинская химия»: вычислительные и экспериментальные методы, рецензирование, открытый доступ.",
   journalTaglineEn:
-    "Special issue of Biomeditsinskaya Khimiya. Invited editors, dedicated site.",
+    "Biomedical Chemistry special issue: computational and experimental methods, peer review, open access.",
   specialIssue: true,
   parentJournalUrl: "https://pbmc.ibmc.msk.ru/ru/journal-ru/",
   parentBoardUrl: "https://pbmc.ibmc.msk.ru/ru/editorial-board-ru/",
@@ -24,6 +24,8 @@ window.BS_CONFIG = {
   /** @type {{ id: string, name: string, url?: string|null, logoUrl?: string|null, role?: string }[]} */
   partners: [],
   chatEnabled: false,
+  /** Handwritten margin labels on wide screens (Caveat). */
+  marginNotesEnabled: true,
   /** Community links for the special issue (edit URLs when channels are live). */
   communityChannels: {
     maxUrl: "https://max.ru/id7704084419_biz",
@@ -43,6 +45,37 @@ window.BS_CONFIG = {
   issueNumber: null,
   issn: "2310-6972",
   eissn: "2310-6905",
+  /** Cards at journalrank.rcsi.science — do not invent. */
+  journalRcsiCards: [
+    {
+      id: "ru-main",
+      titleKey: "home.rcsi.kicker.ru",
+      issn: "2310-6972",
+      eissn: "2310-6905",
+      legacyIssn: "0042-8809",
+      vakWhiteListLevel: 1,
+      whiteListIncludedDate: "2022-10-20",
+      doiRegistrationAgency: "Crossref",
+      rcsiCardUrl: "https://journalrank.rcsi.science/ru/record-sources/details/22623/",
+      indexing: ["Scopus", "Crossref", "MEDLINE", "Biological Abstracts", "CAS Core"],
+      language: "Русский",
+      countries: ["Россия"],
+    },
+    {
+      id: "en-supplement",
+      titleKey: "home.rcsi.kicker.enSupplement",
+      issn: "1990-7516",
+      eissn: "1990-7508",
+      legacyIssn: null,
+      vakWhiteListLevel: 3,
+      whiteListIncludedDate: "2022-10-20",
+      doiRegistrationAgency: "Crossref",
+      rcsiCardUrl: "https://journalrank.rcsi.science/ru/record-sources/details/2547/",
+      indexing: ["Scopus", "WoS CC", "Crossref", "Embase"],
+      language: "Английский",
+      countries: ["Россия", "США"],
+    },
+  ],
   publisherName: "ФГБНУ «Научно-исследовательский институт биомедицинской химии имени В.Н. Ореховича»",
   legalEntityName: "ФГБНУ «Научно-исследовательский институт биомедицинской химии имени В.Н. Ореховича»",
   registrationCountry: "Россия",

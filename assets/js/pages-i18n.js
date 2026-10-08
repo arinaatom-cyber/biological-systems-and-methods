@@ -2,8 +2,13 @@
   const NAME = "Биомедицинская химия";
   const headers = {
     ru: {
-      about: { kicker: "О журнале", h1: NAME, lede: "Специальный выпуск журнала «Биомедицинская химия». Приглашённые редакторы, свой сайт.", title: "О журнале" },
-      aims: { kicker: "О журнале", h1: "Цели и тематика", lede: "Вычислительная биомедицинская химия: протеомика, метаболомика, масс-спектрометрия, хемоинформатика, данные и код.", title: "Цели и тематика" },
+      about: {
+        kicker: "О журнале",
+        h1: NAME,
+        lede: "Спецвыпуск по вычислительным и экспериментальным методам в биомедицинской химии. Рецензирование и открытый доступ.",
+        title: "О журнале",
+      },
+      aims: { kicker: "О журнале", h1: "Цели и тематика", lede: "Специальный выпуск по биомедицинской химии: протеомика, метаболомика, масс-спектрометрия, аналитические методы, данные и код.", title: "Цели и тематика" },
       publisher: { kicker: "О журнале", h1: "Издатель", lede: "Учредитель журнала — институт биомедицинской химии имени В.Н. Ореховича.", title: "Издатель" },
       "open-access": { kicker: "О журнале", h1: "Модель открытого доступа", lede: "По правилам журнала лицензия CC BY включается через 12 месяцев после публикации.", title: "Открытый доступ" },
       history: { kicker: "О журнале", h1: "История журнала", title: "История журнала" },
@@ -61,16 +66,21 @@
       about: {
         kicker: "About",
         h1: "Biomedical Chemistry",
-        lede: "Special issue of Biomeditsinskaya Khimiya. Invited editors, dedicated site.",
+        lede: "Biomedical Chemistry special issue. Invited editors. News on MAX and Telegram.",
         title: "About",
       },
       aims: {
         kicker: "About",
         h1: "Aims & scope",
-        lede: "Computational biomedical chemistry: proteomics, metabolomics, mass spectrometry, cheminformatics, data and code.",
+        lede: "Special issue in biomedical chemistry: proteomics, metabolomics, mass spectrometry, analytical methods, data and code.",
         title: "Aims & scope",
       },
-      publisher: { kicker: "About", h1: "Publisher", lede: "Legal and publisher details will be added after the organisation is registered.", title: "Publisher" },
+      publisher: {
+        kicker: "About",
+        h1: "Publisher",
+        lede: "Founder: Orekhovich Institute of Biomedical Chemistry (IBMC).",
+        title: "Publisher",
+      },
       "open-access": {
         kicker: "About",
         h1: "Open access model",
@@ -241,8 +251,8 @@
     en: {
       "aims.html": { title: "Aims & scope", blurb: "Journal scope and assessment criteria." },
       "editorial.html": { title: "Editorial board", blurb: "The board is being formed; invented profiles are not published." },
-      "publisher.html": { title: "Publisher", blurb: "Legal details after organisational registration." },
-      "open-access.html": { title: "Open access model", blurb: "Planned licence: CC BY 4.0." },
+      "publisher.html": { title: "Publisher", blurb: "Founder: IBMC. ISSN 2310-6972." },
+      "open-access.html": { title: "Open access model", blurb: "CC BY twelve months after publication (parent journal rules)." },
       "history.html": { title: "Journal history", blurb: "Editorial timeline." },
       "news.html": { title: "News", blurb: "Editorial announcements." },
       "contact.html": { title: "Contact", blurb: "Editorial office." },

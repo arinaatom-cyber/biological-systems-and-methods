@@ -21,7 +21,7 @@
   const journalName = () => window.BS_CONFIG?.journalName || "Biomedical Chemistry";
   const editorialEmail = () =>
     window.BS_CONFIG?.editorialEmail || "arina.atom@gmail.com";
-  const apcAll = () => window.BS?.formatApcAll?.() || "₽75,000 RUB · ¥6,000 CNY";
+  const apcAll = () => window.BS?.formatApcAll?.() || "Бесплатно";
 
   const form = document.getElementById("submit-form");
   if (!form) return;
@@ -99,10 +99,10 @@
     const type = new URLSearchParams(location.search).get("type");
     if (type === "invited") {
       setValue("articleType", "invited");
-      setValue("targetIssue", "3");
+      setValue("targetIssue", "4");
     } else if (type === "negative") {
       setValue("articleType", "negative");
-      setValue("targetIssue", "4");
+      setValue("targetIssue", "3");
     }
   }
 
@@ -742,7 +742,12 @@
   function updateAbstractCount() {
     const words = wordCount(abstractEl?.value || "");
     if (abstractCount) {
-      abstractCount.textContent = `${words} words${words > 250 ? " · over FEBS 250-word guide" : ""}`;
+      const lang = window.BSi18n?.getLanguage?.() || "ru";
+      if (lang === "ru") {
+        abstractCount.textContent = `${words} слов${words > 250 ? " · больше рекомендуемых 250" : ""}`;
+      } else {
+        abstractCount.textContent = `${words} words${words > 250 ? " · over 250-word guide" : ""}`;
+      }
       abstractCount.style.color = words > 250 ? "var(--warn)" : "var(--ink-faint)";
     }
   }

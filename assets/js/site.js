@@ -6,7 +6,7 @@
   const ACRONYM = CFG.journalNameShort || CFG.journalAcronym || "БМХ";
   window.BS = window.BS || {};
   window.BS.NAME = NAME;
-  const ASSET_V = "m23";
+  const ASSET_V = "m24";
   const t = (key) => window.BSi18n?.t(key) || key;
 
   function contactEmail() {
@@ -119,7 +119,6 @@
     bindLanguage();
     bindInternalLinks();
     applyLanguage(saved, false);
-    /* Margin notes are a technical overlay; the journal layout stays without them. */
     mountPageBanner();
     // Hybrid agent: FAQ + text check on Pages; full file/ticket API when server.py is up.
     if (CFG.chatEnabled && window.BSChat) window.BSChat.mount();
@@ -148,59 +147,68 @@
     bindHeader();
   }
 
+  const MARGIN_NOTE_KEYS = [
+    "margin.special",
+    "margin.glucose",
+    "margin.protein",
+    "margin.peptide",
+    "margin.atp",
+    "margin.metabolite",
+    "margin.enzyme",
+    "margin.spectrum",
+    "margin.lcms",
+    "margin.mz",
+    "margin.nmr",
+    "margin.pcr",
+    "margin.chromatogram",
+    "margin.pipette",
+    "margin.buffer",
+    "margin.lab",
+    "margin.aa",
+    "margin.bases",
+    "margin.ph",
+    "margin.mm",
+    "margin.gibbs",
+    "margin.cell",
+    "margin.membrane",
+    "margin.genome",
+    "margin.metabolism",
+    "margin.immunity",
+    "margin.trypsin",
+    "margin.heme",
+    "margin.lipid",
+    "margin.cofactor",
+    "margin.phosphate",
+    "margin.benzene",
+  ];
+
+  function shuffledMarginLabels() {
+    const keys = MARGIN_NOTE_KEYS.slice();
+    for (let i = keys.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [keys[i], keys[j]] = [keys[j], keys[i]];
+    }
+    return keys.map((key) => {
+      const text = t(key);
+      return text === key ? null : text;
+    }).filter(Boolean);
+  }
+
   function mountMarginField() {
     try {
-      const BIO_WORDS = [
-        "peptide", "proteome", "metabolome", "LC–MS", "MS/MS", "MALDI", "ESI", "Orbitrap", "TOF",
-        "m/z", "precursor", "fragment", "ion", "isotope", "adduct", "charge", "FDR", "PSM",
-        "trypsin", "Lys-C", "TMT", "iTRAQ", "SILAC", "label-free", "XIC", "chromatogram",
-        "retention", "gradient", "C18", "HILIC", "SPE", "digest", "alkylation", "reduction",
-        "Cys", "Met", "oxidation", "phosphorylation", "acetylation", "glycosylation", "PTM",
-        "kinase", "enzyme", "Km", "kcat", "IC50", "Ki", "inhibitor", "substrate", "cofactor",
-        "NADH", "ATP", "heme", "metabolite", "lipid", "amino acid", "pathway", "flux",
-        "NMR", "chemical shift", "HPLC", "UV", "FTIR", "Raman", "calibration", "LOD", "LOQ",
-        "SMILES", "InChI", "fingerprint", "docking", "QSAR", "scaffold", "logP", "pKa",
-        "FASTA", "UniProt", "HMDB", "ChEBI", "mzML", "pepXML", "Spectral library", "decoy",
-        "PCA", "PLS-DA", "volcano", "fold change", "imputation", "batch", "QC", "blank",
-        "lysosome", "ribosome", "mitochondrion", "Golgi", "nucleus", "nucleolus", "centriole", "peroxisome",
-        "vacuole", "cytosol", "cytoplasm", "membrane", "vesicle", "endosome", "chloroplast", "thylakoid",
-        "cristae", "flagellum", "cilium", "axoneme", "kinase", "histone", "caspase", "actin", "myosin",
-        "tubulin", "collagen", "hemoglobin", "insulin", "antibody", "antigen", "enzyme", "ligand",
-        "receptor", "cytokine", "chemokine", "hormone", "peptide", "lipid", "glucose", "glycogen",
-        "ATP", "NADH", "NADPH", "DNA", "RNA", "mRNA", "tRNA", "siRNA", "miRNA", "plasmid", "codon",
-        "intron", "exon", "allele", "genome", "proteome", "transcriptome", "metabolome", "chromatin",
-        "nucleosome", "telomere", "centromere", "promoter", "enhancer", "operon", "ribozyme", "prion",
-        "PCR", "qPCR", "RT-PCR", "FISH", "IHC", "ELISA", "FACS", "HPLC", "NMR", "LC–MS", "MS/MS",
-        "SDS-PAGE", "Western blot", "CRISPR", "RNA-seq", "ChIP", "ChIP-seq", "ATAC-seq", "BLAST",
-        "confocal", "SEM", "TEM", "AFM", "SPR", "MALDI", "ESI", "GC–MS", "FTIR", "Raman", "cryo-EM",
-        "cloning", "sequencing", "microarray", "cytometry", "transfection", "apoptosis", "mitosis",
-        "meiosis", "autophagy", "endocytosis", "exocytosis", "translation", "transcription", "replication",
-        "splicing", "phosphorylation", "methylation", "ubiquitination", "glycolysis", "photosynthesis",
-        "respiration", "chemotaxis", "homeostasis", "differentiation", "senescence", "necrosis",
-        "phenotype", "genotype", "haplotype", "SNP", "GWAS", "PCA", "ANOVA", "t-test", "FDR",
-        "phylogeny", "clade", "taxon", "epitope", "allostery", "synapse", "axon", "dendrite", "myelin",
-        "neuron", "microglia", "astrocyte", "macrophage", "lymphocyte", "fibroblast", "organoid",
-        "biofilm", "microbiome", "quorum", "osmosis", "diffusion", "Km", "Kd", "IC50", "Vmax",
-        "capsid", "envelope", "pilus", "sporulation", "zygote", "embryo", "stomata", "xylem",
-        "phloem", "meristem", "cambium", "cuticle", "pectin", "lignin", "chitin", "cellulose",
-        "starch", "maltose", "fructose", "alanine", "glycine", "serine", "cysteine", "proline",
-        "tryptophan", "heme", "chlorophyll", "carotene", "retinol", "biotin", "folate", "lysozyme",
-        "pepsin", "trypsin", "catalase", "luciferase", "GFP", "DAPI", "scRNA-seq", "Hi-C",
-        "Northern", "Southern", "XRD", "ITC", "neutrophil", "virome", "species", "glycosylation",
-        "morphogenesis", "ferroptosis", "nucleoid", "FASTA", "QTL", "bootstrap", "hapten", "EC50",
-        "spheroid", "p-value"
-      ];
-      const unique = [...new Set(BIO_WORDS)];
-      const copy = unique.slice();
-      for (let i = copy.length - 1; i > 0; i -= 1) {
-        const j = Math.floor(Math.random() * (i + 1));
-        const tmp = copy[i];
-        copy[i] = copy[j];
-        copy[j] = tmp;
+      if (CFG.marginNotesEnabled === false) return;
+      if (window.matchMedia("(max-width: 1399px)").matches) {
+        document.querySelector(".page-margin-field")?.remove();
+        return;
       }
-      const left = copy.slice(0, 16);
-      const right = copy.slice(16, 32);
+
+      const labels = shuffledMarginLabels();
+      if (!labels.length) return;
+
+      const left = labels.slice(0, 16);
+      const right = labels.slice(16, 32);
       const noteHtml = (word) => `<p class="mf-note">${escapeHtml(word)}</p>`;
+
       let host = document.querySelector(".page-margin-field");
       if (!host) {
         host = document.createElement("div");
@@ -315,7 +323,7 @@
           <div class="topbar-left">
             <span class="id-num"><span>ISSN</span> <em data-cfg-issn>${formatIssn()}</em></span>
             <span class="id-num"><span>eISSN</span> <em data-cfg-eissn>${formatEissn()}</em></span>
-            <span class="id-num"><span>ПИ</span> <em>№ ФС77-82357</em></span>
+            <span class="id-num"><span data-i18n="top.regId">${t("top.regId")}</span> <em>№ ФС77-82357</em></span>
             <span class="dot" aria-hidden="true"></span>
             <span data-cfg-volume>${volumeLabel()}</span>
             <span class="dot" aria-hidden="true"></span>
@@ -403,7 +411,7 @@
         </div>
       </div>
       <div class="container footer-bottom">
-        <p>© ${year} ${NAME}</p>
+        <p>© ${year} ${escapeHtml(langBrandName())}</p>
         <p class="footer-legal">
           <a href="privacy.html" data-i18n="footer.privacy">${t("footer.privacy")}</a>
           <a href="terms.html" data-i18n="footer.terms">${t("footer.terms")}</a>
@@ -521,33 +529,225 @@
 
     hydrateCommunityChannels();
     hydratePartnersAndFunding();
+    hydrateJournalRecord();
+  }
+
+  function formatRuDateFromIso(iso) {
+    if (!iso || typeof iso !== "string") return "—";
+    const parts = iso.split("-");
+    if (parts.length !== 3) return iso;
+    const [y, m, d] = parts;
+    return `${d}.${m}.${y}`;
+  }
+
+  function journalRcsiCards() {
+    if (Array.isArray(CFG.journalRcsiCards) && CFG.journalRcsiCards.length) {
+      return CFG.journalRcsiCards;
+    }
+    if (CFG.journalRecord) {
+      return [
+        {
+          id: "legacy",
+          titleKey: "home.rcsi.kicker.ru",
+          issn: CFG.issn,
+          eissn: CFG.eissn,
+          ...CFG.journalRecord,
+        },
+      ];
+    }
+    return [];
+  }
+
+  function issnLineForCard(card) {
+    return [card.issn, card.eissn].filter(Boolean).join(" · ") || "—";
+  }
+
+  function fillIndexingChips(wrap, names, inline) {
+    if (!wrap) return;
+    wrap.textContent = "";
+    if (!names.length) {
+      wrap.textContent = pagePack().extras.emptyTba || t("empty.tba") || "—";
+      return;
+    }
+    names.forEach((name) => {
+      const chip = document.createElement("span");
+      chip.className = inline ? "indexing-chip indexing-chip--inline" : "indexing-chip";
+      chip.textContent = name;
+      wrap.appendChild(chip);
+    });
+  }
+
+  function renderHomeRcsiBlock(card) {
+    const issnLine = issnLineForCard(card);
+    const strip = document.createElement("section");
+    strip.className = "info-strip";
+    const kickerId = `home-rcsi-${card.id}`;
+    strip.setAttribute("aria-labelledby", kickerId);
+
+    const gridItems = [
+      {
+        labelKey: "home.rcsi.issn",
+        value: issnLine,
+        tipKey: card.legacyIssn ? "home.rcsi.issn.tip" : null,
+      },
+      { labelKey: "home.rcsi.vak", value: card.vakWhiteListLevel == null ? "—" : String(card.vakWhiteListLevel), tipKey: "home.rcsi.vak.tip" },
+      { labelKey: "home.rcsi.included", value: formatRuDateFromIso(card.whiteListIncludedDate) },
+      { labelKey: "home.rcsi.doi", value: card.doiRegistrationAgency || "—" },
+    ];
+
+    const gridHtml = gridItems
+      .map((item) => {
+        const tip =
+          item.tipKey || item.tipText
+            ? `<span class="info-tip"${item.tipKey ? ` data-i18n="${item.tipKey}"` : ""}>${item.tipText || t(item.tipKey)}</span>`
+            : "";
+        const tooltip = item.tipKey ? ` data-tooltip-key="${item.tipKey}"` : "";
+        return `<div class="info-item"${tooltip}>
+          <span class="info-label" data-i18n="${item.labelKey}">${t(item.labelKey)}</span>
+          <strong>${item.value}</strong>${tip}
+        </div>`;
+      })
+      .join("");
+
+    strip.innerHTML = `<div class="container">
+      <p class="info-strip-kicker" id="${kickerId}" data-i18n="${card.titleKey}">${t(card.titleKey)}</p>
+      <div class="info-strip-grid">${gridHtml}</div>
+    </div>`;
+
+    const bar = document.createElement("section");
+    bar.className = "indexing-bar";
+    bar.setAttribute("aria-label", t("home.rcsi.indexing"));
+    const barInner = document.createElement("div");
+    barInner.className = "container";
+    const label = document.createElement("span");
+    label.className = "indexing-bar-label";
+    label.setAttribute("data-i18n", "home.rcsi.indexing");
+    label.textContent = t("home.rcsi.indexing");
+    const chips = document.createElement("div");
+    chips.className = "indexing-chips";
+    fillIndexingChips(chips, Array.isArray(card.indexing) ? card.indexing : [], false);
+    barInner.appendChild(label);
+    barInner.appendChild(chips);
+    if (card.rcsiCardUrl) {
+      const foot = document.createElement("p");
+      foot.className = "rcsi-footnote";
+      const a = document.createElement("a");
+      a.className = "text-link";
+      a.href = card.rcsiCardUrl;
+      a.rel = "noopener noreferrer";
+      a.target = "_blank";
+      a.setAttribute("data-i18n", "home.rcsi.card");
+      a.textContent = t("home.rcsi.card");
+      foot.appendChild(a);
+      barInner.appendChild(foot);
+    }
+    bar.appendChild(barInner);
+
+    return [strip, bar];
+  }
+
+  function renderAboutRcsiPanel(card) {
+    const panel = document.createElement("div");
+    panel.className = "dl-panel rcsi-about-panel";
+    panel.id = `about-rcsi-${card.id}`;
+
+    const dl = document.createElement("dl");
+    const rows = [
+      { dtKey: "home.rcsi.issn", dd: issnLineForCard(card) },
+      card.legacyIssn ? { dtKey: "about.rcsi.legacyIssn", dd: card.legacyIssn } : null,
+      { dtKey: "home.rcsi.vak", dd: card.vakWhiteListLevel == null ? "—" : String(card.vakWhiteListLevel) },
+      { dtKey: "home.rcsi.included", dd: formatRuDateFromIso(card.whiteListIncludedDate) },
+      { dtKey: "home.rcsi.doi", dd: card.doiRegistrationAgency || "—" },
+      card.language ? { dtKey: "about.rcsi.language", dd: card.language, noI18n: true } : null,
+      card.countries && card.countries.length ? { dtKey: "about.rcsi.countries", dd: card.countries.join(", "), noI18n: true } : null,
+    ].filter(Boolean);
+
+    rows.forEach((row) => {
+      const dt = document.createElement("dt");
+      if (!row.noI18n) dt.setAttribute("data-i18n", row.dtKey);
+      dt.textContent = t(row.dtKey);
+      const dd = document.createElement("dd");
+      dd.textContent = row.dd;
+      dl.appendChild(dt);
+      dl.appendChild(dd);
+    });
+
+    const idxDt = document.createElement("dt");
+    idxDt.setAttribute("data-i18n", "home.rcsi.indexing");
+    idxDt.textContent = t("home.rcsi.indexing");
+    const idxDd = document.createElement("dd");
+    fillIndexingChips(idxDd, Array.isArray(card.indexing) ? card.indexing : [], true);
+    dl.appendChild(idxDt);
+    dl.appendChild(idxDd);
+
+    const title = document.createElement("h3");
+    title.className = "rcsi-about-title";
+    title.setAttribute("data-i18n", card.titleKey);
+    title.textContent = t(card.titleKey);
+
+    panel.appendChild(title);
+    panel.appendChild(dl);
+
+    if (card.rcsiCardUrl) {
+      const p = document.createElement("p");
+      const a = document.createElement("a");
+      a.href = card.rcsiCardUrl;
+      a.rel = "noopener noreferrer";
+      a.target = "_blank";
+      a.setAttribute("data-i18n", "home.rcsi.card");
+      a.textContent = t("home.rcsi.card");
+      p.appendChild(a);
+      panel.appendChild(p);
+    }
+
+    return panel;
+  }
+
+  function hydrateJournalRecord() {
+    const cards = journalRcsiCards();
+    if (!cards.length) return;
+
+    const homeRoot = document.getElementById("home-rcsi-root");
+    if (homeRoot) {
+      homeRoot.textContent = "";
+      cards.forEach((card) => {
+        renderHomeRcsiBlock(card).forEach((node) => homeRoot.appendChild(node));
+      });
+    }
+
+    const aboutRoot = document.getElementById("about-rcsi-root");
+    if (aboutRoot) {
+      aboutRoot.textContent = "";
+      cards.forEach((card) => aboutRoot.appendChild(renderAboutRcsiPanel(card)));
+    }
   }
 
   function hydrateCommunityChannels() {
-    const wrap = document.getElementById("home-call-channels");
     const channels = CFG.communityChannels || {};
-    if (!wrap) return;
-
     const links = {
       max: channels.maxUrl,
       telegram: channels.telegramUrl,
     };
 
-    let visible = 0;
-    wrap.querySelectorAll("[data-channel]").forEach((el) => {
-      const key = el.getAttribute("data-channel");
-      const url = key ? links[key] : null;
-      if (url) {
-        el.setAttribute("href", url);
-        el.hidden = false;
-        visible += 1;
-      } else {
-        el.hidden = true;
-        el.removeAttribute("href");
+    document.querySelectorAll("#home-call-channels").forEach((wrap) => {
+      if (!wrap) return;
+      let visible = 0;
+      wrap.querySelectorAll("[data-channel]").forEach((el) => {
+        const key = el.getAttribute("data-channel");
+        const url = key ? links[key] : null;
+        if (url) {
+          el.setAttribute("href", url);
+          el.hidden = false;
+          visible += 1;
+        } else {
+          el.hidden = true;
+          el.removeAttribute("href");
+        }
+      });
+      if (wrap.id === "home-call-channels") {
+        wrap.hidden = visible === 0;
       }
     });
-
-    wrap.hidden = visible === 0;
   }
 
   function hydratePartnersAndFunding() {
@@ -662,7 +862,7 @@
       if (h1 && meta.h1) h1.textContent = meta.h1;
       if (lede && meta.lede) lede.textContent = meta.lede;
       if (meta.title && PAGE !== "home") {
-        document.title = `${meta.title} — ${NAME}`;
+        document.title = `${meta.title} — ${langBrandName()}`;
       }
       const emptyH2 = document.querySelector(".page-main .empty-state h2, .container > .empty-state h2");
       if (emptyH2 && meta.h1) emptyH2.textContent = meta.h1;
@@ -919,6 +1119,11 @@
     window.BSi18n.setLanguage(lang);
     hydratePageChrome();
     hydrateProse();
+    if (PAGE === "home") {
+      const homeTitle = t("home.doc.title");
+      if (homeTitle && homeTitle !== "home.doc.title") document.title = homeTitle;
+    }
+    mountMarginField();
     markLangSwitcher();
     window.dispatchEvent(new CustomEvent("bs:langchange", { detail: { lang } }));
   }

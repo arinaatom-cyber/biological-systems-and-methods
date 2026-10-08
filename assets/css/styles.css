@@ -125,9 +125,18 @@ a:hover {
   margin-inline: auto;
 }
 
-/* Side-margin notes: biology / chemistry, gray-green */
+/* Side-margin notes: handwritten labels (wide viewports only) */
 .page-margin-field {
-  display: none;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.site-header,
+main,
+.site-footer {
+  position: relative;
+  z-index: 1;
 }
 .page-margin-field-col {
   position: absolute;
@@ -2470,6 +2479,16 @@ label .hint {
   margin: 0 0 0.85rem;
   font-family: var(--font-sans);
 }
+.hero-kicker--banner {
+  margin: 0 0 0.65rem;
+  color: rgba(200, 230, 220, 0.88);
+  letter-spacing: 0.14em;
+  font-weight: 600;
+}
+#home-rcsi-root {
+  border-top: 1px solid var(--line);
+  background: var(--bg-soft);
+}
 .hero-intro h2 {
   font-family: var(--font-serif);
   font-weight: 600;
@@ -2548,7 +2567,18 @@ label .hint {
 .btn-on-dark:hover { background: rgba(255,255,255,0.08); color: #fff; }
 
 .info-strip { border-bottom: 1px solid var(--line); background: #fff; }
+.info-strip-kicker { margin: 0; padding: 1rem 0 0; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
 .info-strip-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; padding: 1.25rem 0; }
+.indexing-bar { border-bottom: 1px solid var(--line); background: #fff; }
+.indexing-bar .container { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem 0.65rem; padding: 0 0 1.15rem; }
+.indexing-bar-label { font-size: 0.8rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
+.indexing-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.indexing-chip { display: inline-block; padding: 0.22rem 0.55rem; border: 1px solid var(--line); font-size: 0.85rem; background: var(--bg-soft); }
+.indexing-chip--inline { margin: 0 0.35rem 0.35rem 0; }
+.rcsi-footnote { margin: 0; flex: 1 1 100%; font-size: 0.88rem; }
+.rcsi-about-panel { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
+.rcsi-about-panel:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.rcsi-about-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; margin: 0 0 0.75rem; }
 .info-item { display: flex; flex-direction: column; gap: 0.25rem; }
 .info-label { font-size: 0.8rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
 .info-item strong { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; letter-spacing: normal; }
