@@ -6,7 +6,7 @@
   const ACRONYM = CFG.journalNameShort || CFG.journalAcronym || "БМХ";
   window.BS = window.BS || {};
   window.BS.NAME = NAME;
-  const ASSET_V = "m24";
+  const ASSET_V = "m25";
   const t = (key) => window.BSi18n?.t(key) || key;
 
   function contactEmail() {

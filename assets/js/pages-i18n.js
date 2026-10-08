@@ -25,7 +25,12 @@
       reviewers: { kicker: "Редакторам и рецензентам", h1: "Рецензентам", title: "Рецензентам" },
       "editors-guide": { kicker: "Редакторам", h1: "Руководство для редакторов", lede: "Ответственный редактор оценивает соответствие тематике, качество дизайна и полноту деклараций, подбирает рецензентов и принимает решение.", title: "Руководство для редакторов" },
       "reviewers-guide": { kicker: "Рецензентам", h1: "Руководство для рецензентов", lede: "Рецензент оценивает дизайн, статистику, воспроизводимость, интерпретацию и соответствие типу статьи.", title: "Руководство для рецензентов" },
-      editorial: { kicker: "О журнале", h1: "Редакционная коллегия", lede: "Специальный выпуск ведут приглашённые редакторы. Это не редколлегия журнала.", title: "Редакционная коллегия" },
+      editorial: {
+        kicker: "О журнале",
+        h1: "Редакционная коллегия",
+        lede: "Состав редакционной коллегии спецвыпуска публикуется после утверждения.",
+        title: "Редакционная коллегия",
+      },
       policies: { kicker: "Редакционные политики", h1: "Редакционные политики журнала", lede: "Процедуры разработаны с учётом международно признанных принципов публикационной этики.", title: "Редакционные политики" },
       "peer-review": { kicker: "Редакционные политики", h1: "Рецензирование", lede: "Редакционная предварительная оценка и независимое научное рецензирование.", title: "Рецензирование" },
       "publication-ethics": { kicker: "Редакционные политики", h1: "Публикационная этика", lede: "Процедуры разработаны с учётом международно признанных принципов публикационной этики.", title: "Публикационная этика" },
@@ -53,10 +58,15 @@
       issues: {
         kicker: "Выпуски",
         h1: "Специальный выпуск · 2026",
-        lede: "Один выпуск и четыре тематических раздела. Редакция выпуска отдельная от редколлегии журнала.",
+        lede: "Один выпуск и четыре тематических раздела в рамках спецвыпуска 2026.",
         title: "Выпуски",
       },
-      submit: { kicker: "Авторам", h1: "Подать рукопись", lede: "Подача идёт на этот сайт. Публикация в журнале бесплатная, кроме цветных иллюстраций в печати.", title: "Подать рукопись" },
+      submit: {
+        kicker: "Авторам",
+        h1: "Подать рукопись",
+        lede: "Публикация в журнале бесплатная, кроме цветных иллюстраций в печатной версии.",
+        title: "Подать рукопись",
+      },
       join: { kicker: "Редакторам и рецензентам", h1: "Стать редактором или рецензентом", title: "Стать редактором или рецензентом" },
       login: { kicker: "Аккаунт", h1: "Вход", lede: "Войдите через Яндекс, Mail.ru, Gmail или ORCID, чтобы подавать рукописи и сохранять черновики.", title: "Вход" },
       account: { kicker: "Аккаунт", h1: "Аккаунт", title: "Аккаунт" },
@@ -66,7 +76,7 @@
       about: {
         kicker: "About",
         h1: "Biomedical Chemistry",
-        lede: "Biomedical Chemistry special issue. Invited editors. News on MAX and Telegram.",
+        lede: "Special issue on computational and experimental methods in biomedical chemistry. Peer review and open access.",
         title: "About",
       },
       aims: {
@@ -111,7 +121,12 @@
       reviewers: { kicker: "Editors & reviewers", h1: "Reviewers", title: "Reviewers" },
       "editors-guide": { kicker: "Editors", h1: "Editor guide", lede: "The handling editor assesses scope, design quality and declarations, selects reviewers and makes the decision.", title: "Editor guide" },
       "reviewers-guide": { kicker: "Reviewers", h1: "Reviewer guide", lede: "Reviewers assess design, statistics, reproducibility, interpretation and fit to the article type.", title: "Reviewer guide" },
-      editorial: { kicker: "About", h1: "Editorial board", lede: "The special-issue editors are not the journal board. Names are published only after they are confirmed.", title: "Editorial board" },
+      editorial: {
+        kicker: "About",
+        h1: "Editorial board",
+        lede: "Special-issue board membership is published after confirmation.",
+        title: "Editorial board",
+      },
       policies: { kicker: "Editorial policies", h1: "Editorial policies", lede: "Procedures follow internationally recognised publication-ethics principles.", title: "Editorial policies" },
       "peer-review": { kicker: "Editorial policies", h1: "Peer review", lede: "Editorial screening and independent scientific peer review.", title: "Peer review" },
       "publication-ethics": { kicker: "Editorial policies", h1: "Publication ethics", lede: "Procedures follow internationally recognised publication-ethics principles.", title: "Publication ethics" },
@@ -139,13 +154,13 @@
       issues: {
         kicker: "Issues",
         h1: "Special issue · 2026",
-        lede: "One issue in four thematic sections. This issue’s editors are separate from the journal board.",
+        lede: "One issue in four thematic sections within the 2026 special issue.",
         title: "Issues",
       },
       submit: {
         kicker: "Authors",
         h1: "Submit manuscript",
-        lede: "Submit on this site. Publication is free except colour figures in the print edition.",
+        lede: "Publication is free except colour figures in the print edition.",
         title: "Submit manuscript",
       },
       join: { kicker: "Editors & reviewers", h1: "Become an editor or reviewer", title: "Become an editor or reviewer" },
@@ -175,7 +190,7 @@
       editorial: {
         kicker: "关于期刊",
         h1: "编委会",
-        lede: "本专刊由特邀编辑负责，与主刊编委会不同。名单确认后公布。",
+        lede: "专刊编委会名单确认后公布。",
         title: "编委会",
       },
       policies: { kicker: "编辑政策", h1: "编辑政策", lede: "程序遵循国际公认的出版伦理原则。", title: "编辑政策" },
@@ -217,7 +232,7 @@
       "editorial.html": { title: "Редакционная коллегия", blurb: "Состав формируется; вымышленные профили не публикуются." },
       "publisher.html": { title: "Издатель", blurb: "Учредитель — ИБМХ имени В.Н. Ореховича. ISSN 2310-6972." },
       "open-access.html": { title: "Модель открытого доступа", blurb: "CC BY через 12 месяцев после публикации." },
-      "history.html": { title: "История журнала", blurb: "С 1955 года. Этот сайт — спецвыпуск 2026." },
+      "history.html": { title: "История журнала", blurb: "С 1955 года. Специальный выпуск 2026." },
       "news.html": { title: "Новости", blurb: "Сообщения редакции." },
       "contact.html": { title: "Контакты", blurb: "Редакционный офис." },
       "authors-guidelines.html": { title: "Инструкции авторам", blurb: "Структура рукописи и требования к материалам." },
@@ -329,7 +344,7 @@
       confOffBody: "Раздел конференций сейчас не ведётся.",
       historyEmpty: "Хронология и ключевые этапы развития редакции будут опубликованы в этом разделе.",
       newsEmpty: "Новости редакции будут опубликованы в этом разделе.",
-      boardEmpty: "Имена приглашённых редакторов появятся здесь после подтверждения. Вымышленные профили не добавляются.",
+      boardEmpty: "Состав редакционной коллегии появится здесь после подтверждения. Вымышленные профили не добавляются.",
       contactCoord: "Email координатора",
       contactSupport: "Техническая поддержка",
       contactSub: "Вопросы о рукописях",
@@ -505,8 +520,8 @@
   const bodies = {
     ru: {
       "about": [
-        "Это специальный выпуск того же журнала. Его ведут приглашённые редакторы, не редколлегия «Биомедицинской химии».",
-        "Главный редактор журнала — А.И. Арчаков. Приглашённые редакторы выпуска на сайте появятся, когда состав будет подтверждён."
+        "Специальный выпуск журнала «Биомедицинская химия» (ISSN 2310-6972, eISSN 2310-6905) посвящён вычислительным и экспериментальным методам.",
+        "Главный редактор журнала — А.И. Арчаков. Состав редакционной коллегии спецвыпуска публикуется после утверждения."
       ],
       "accessibility": [
         "Если страница недоступна, напишите координатору — мы исправим проблему."
@@ -576,7 +591,7 @@
     },
     en: {
       "about": [
-        "Special issue of Biomeditsinskaya Khimiya under the same ISSNs. Invited editors run this site and this submission flow; the issue board is not the journal board."
+        "Special issue of Biomeditsinskaya Khimiya (ISSN 2310-6972, eISSN 2310-6905) on computational and experimental methods. Special-issue board membership is published after confirmation."
       ],
       "accessibility": [
         "The site uses semantic markup, keyboard navigation and a visible focus state."
